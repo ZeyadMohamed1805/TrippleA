@@ -1,0 +1,20 @@
+@use '@angular/material' as mat;
+@include mat.core();
+
+$custom-primary: mat.define-palette(mat.$light-blue-palette, 100, 500, 900);
+$custom-accent: mat.define-palette(mat.$teal-palette, 700, 800, 900);
+$custom-warn: mat.define-palette(mat.$red-palette);
+
+$custom-theme: mat.define-light-theme((
+  color: (
+    primary: $custom-primary,
+    accent: $custom-accent,
+    warn: $custom-warn,
+  ),
+  typography: mat.define-typography-config(
+    $font-family: 'Poppins, sans-serif'
+  ),
+  density: 0
+));
+
+@include mat.all-component-themes($custom-theme);
