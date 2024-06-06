@@ -12,7 +12,7 @@ $custom-theme: mat.define-light-theme((
     warn: $custom-warn,
   ),
   typography: mat.define-typography-config(
-    $font-family: 'Poppins, sans-serif'
+    $font-family: '"Poppins", sans-serif'
   ),
   density: 0
 ));
