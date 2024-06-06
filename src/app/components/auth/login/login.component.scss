@@ -1,0 +1,11 @@
+.login {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    padding: 16px;
+    gap: 8px;
+
+    .large-button.mat-mdc-flat-button {
+        padding: 16px;
+    }
+}
