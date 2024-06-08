@@ -5,8 +5,6 @@ import { Component } from '@angular/core';
   standalone: true,
   imports: [],
   templateUrl: './static.component.html',
-  styleUrl: './static.component.scss'
+  styleUrl: './static.component.scss',
 })
-export class StaticComponent {
-
-}
+export class StaticComponent {}
