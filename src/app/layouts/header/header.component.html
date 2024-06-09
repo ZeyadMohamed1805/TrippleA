@@ -1,1 +1,15 @@
-<p>header works!</p>
+<header>
+  <nav>
+    <img src="../../../assets/logos/dark-logo.svg" alt="Logo" />
+    <div class="content">
+      <ul>
+        @for( icon of icons; track icon ) {
+        <li>
+          <img [src]="icon" alt="icon" />
+        </li>
+        }
+      </ul>
+      <div class="avatar">Z</div>
+    </div>
+  </nav>
+</header>

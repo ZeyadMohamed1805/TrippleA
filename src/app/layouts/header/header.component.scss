@@ -1,0 +1,45 @@
+header {
+    width: 100%;
+    padding: 24px 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 0 5px;
+
+    nav {
+        width: 100%;
+        max-width: 1400px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 16px;
+
+        .content {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+
+            ul {
+                list-style: none;
+                display: flex;
+                align-items: center;
+                gap: 16px;
+    
+                li {
+                    cursor: pointer;
+                }
+            }
+
+            .avatar {
+                background-color: var(--opacity-color);
+                width: 60px;
+                height: 60px;
+                border-radius: 50%;
+                display: grid;
+                place-items: center;
+                font-size: 24px;
+                cursor: pointer;
+            }
+        }
+    }
+}
