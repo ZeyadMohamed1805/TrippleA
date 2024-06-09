@@ -1,0 +1,10 @@
+.avatar {
+    background-color: var(--opacity-color);
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    display: grid;
+    place-items: center;
+    font-size: 24px;
+    cursor: pointer;
+}

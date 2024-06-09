@@ -6,7 +6,7 @@ header {
     align-items: center;
     justify-content: center;
     box-shadow: 0 0 5px;
-    position: fixed;
+    position: sticky;
     top: 0;
 
     nav {
@@ -31,17 +31,6 @@ header {
                 li {
                     cursor: pointer;
                 }
-            }
-
-            .avatar {
-                background-color: var(--opacity-color);
-                width: 60px;
-                height: 60px;
-                border-radius: 50%;
-                display: grid;
-                place-items: center;
-                font-size: 24px;
-                cursor: pointer;
             }
         }
     }

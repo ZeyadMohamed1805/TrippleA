@@ -1,9 +1,10 @@
 import { Component } from '@angular/core';
+import { AvatarComponent } from '../../components/common/avatar/avatar.component';
 
 @Component({
   selector: 'app-header',
   standalone: true,
-  imports: [],
+  imports: [AvatarComponent],
   templateUrl: './header.component.html',
   styleUrl: './header.component.scss',
 })
