@@ -1,0 +1,17 @@
+footer {
+    background-color: var(--dark-blue-color);
+    color: var(--white-color);
+    width: 100%;
+    padding: 24px 40px;
+    display: flex;
+    justify-content: center;
+
+    .container {
+        max-width: 1400px;
+        width: 100%;
+
+        p {
+            text-align: center;
+        }
+    }
+}
