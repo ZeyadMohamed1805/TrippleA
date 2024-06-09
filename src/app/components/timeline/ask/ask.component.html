@@ -1,1 +1,14 @@
-<div class="ask"></div>
+<div class="ask">
+  <app-avatar />
+  <div class="content">
+    <textarea placeholder="What's on your mind?"></textarea>
+    <div class="actions">
+      @for( action of actions; track action ) {
+      <button class="poppins-medium">
+        <img src="../../../../assets/icons/bookmark.svg" alt="action" />
+        {{ action }}
+      </button>
+      }
+    </div>
+  </div>
+</div>

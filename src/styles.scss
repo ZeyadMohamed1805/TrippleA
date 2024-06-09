@@ -1,6 +1,7 @@
 :root {
     --primary-color: #32BFBF;
     --secondary-color: #1C836D;
+    --light-blue-color: rgba(11, 170, 202, 0.4);
     --white-color: #FFFFFF;
     --dark-blue-color: #102E44;
     --black-color: #121212;
@@ -19,20 +20,16 @@
 
 .poppins-regular {
     font-weight: 400;
-    font-style: normal;
 }
 
 .poppins-medium {
     font-weight: 500;
-    font-style: normal;
 }
 
 .poppins-semibold {
     font-weight: 600;
-    font-style: normal;
 }
 
 .poppins-bold {
     font-weight: 700;
-    font-style: normal;
 }
