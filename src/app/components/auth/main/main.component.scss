@@ -12,13 +12,15 @@
         max-width: 1400px;
         padding: 80px 40px;
         display: flex;
-        justify-content: space-between;
+        justify-content: flex-end;
         align-items: flex-end;
         gap: 16px;
 
         .auth-content {
             color: var(--white-color);
-            align-self: flex-start;
+            position: absolute;
+            left: 40px;
+            top: 80px;
             display: flex;
             flex-direction: column;
             gap: 40px;
@@ -34,6 +36,21 @@
             p {
                 font-size: 24px;
             }
+        }
+    }
+}
+
+
+@media ( max-width: 680px ) {
+    .auth .auth-container .auth-content {
+        gap: 24px;
+        
+        h1 {
+            font-size: 44px;
+        }
+
+        p {
+            font-size: 24px;
         }
     }
 }
