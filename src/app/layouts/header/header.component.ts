@@ -11,6 +11,7 @@ import { Router, RouterLink } from '@angular/router';
 })
 export class HeaderComponent {
   links: { icon: string; path: string }[] = [
+    { icon: '../../../assets/icons/timeline.svg', path: '/timeline' },
     { icon: '../../../assets/icons/search.svg', path: '/search' },
     { icon: '../../../assets/icons/bookmark.svg', path: '/bookmarks' },
     { icon: '../../../assets/icons/notification.svg', path: '/notifications' },
