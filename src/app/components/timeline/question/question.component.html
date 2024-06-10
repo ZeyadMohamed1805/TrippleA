@@ -1,1 +1,30 @@
-<p>question works!</p>
+<div class="question">
+  <div class="user">
+    <app-avatar />
+    <div class="data">
+      <h3>Zeyad Mohamed</h3>
+      <p>Software Engineer</p>
+      <span>09/06/2024</span>
+    </div>
+  </div>
+  <p class="description">
+    Lorem Ipsum is simply dummy text of the printing and typesetting industry.
+    Lorem Ipsum has been the industry's standard dummy text ever since the
+    1500s.
+  </p>
+  <img
+    class="question-image"
+    src="../../../../assets/images/question.svg"
+    alt="Question"
+  />
+  <div class="actions">
+    @for( action of actions; track action ) {
+    <div class="action">
+      <img src="../../../../assets/icons/bookmark.svg" alt="Action" />
+      <span>
+        {{ action }}
+      </span>
+    </div>
+    }
+  </div>
+</div>

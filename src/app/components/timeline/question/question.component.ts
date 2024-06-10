@@ -1,12 +1,13 @@
 import { Component } from '@angular/core';
+import { AvatarComponent } from '../../common/avatar/avatar.component';
 
 @Component({
   selector: 'app-question',
   standalone: true,
-  imports: [],
+  imports: [AvatarComponent],
   templateUrl: './question.component.html',
-  styleUrl: './question.component.scss'
+  styleUrl: './question.component.scss',
 })
 export class QuestionComponent {
-
+  actions: string[] = ['Action One', 'Action Two', 'Action Three'];
 }
