@@ -3,9 +3,11 @@
     <img src="../../../assets/logos/dark-logo.svg" alt="Logo" />
     <div class="content">
       <ul>
-        @for( icon of icons; track icon ) {
+        @for( link of links; track link ) {
         <li>
-          <img [src]="icon" alt="icon" />
+          <a [routerLink]="link.path">
+            <img [src]="link.icon" alt="icon" />
+          </a>
         </li>
         }
       </ul>
