@@ -4,3 +4,9 @@
     min-width: 600px;
     border-radius: 8px;
 }
+
+@media ( max-width: 680px ) {
+    .form {
+        min-width: calc(100vw - 80px);
+    }
+}
