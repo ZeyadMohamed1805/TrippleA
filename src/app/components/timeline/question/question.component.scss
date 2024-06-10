@@ -1,33 +1,35 @@
-.ask {
+.question {
+    width: 100%;
     background-color: var(--white-color);
     padding: 16px;
     display: flex;
     flex-direction: column;
     gap: 16px;
-    box-shadow: 0 0 1px;
 
-    .input {
+    .user {
         width: 100%;
         display: flex;
         gap: 16px;
 
-        textarea {
-            min-width: none;
-            width: 100%;
-            resize: none;
-            outline: none;
-            border: none;
-            padding: 16px;
-            min-height: 120px;
+        .data {
+            display: flex;
+            flex-direction: column;
         }
+    }
+
+    .question-image {
+        width: 100%;
+        aspect-ratio: 5 / 2;
+        min-height: 320px;
+        object-fit: cover;
     }
 
     .actions {
         width: 100%;
         display: grid;
-        grid-template-columns: repeat(4, 1fr);
+        grid-template-columns: repeat(3, 1fr);
 
-        button {
+        .action {
             cursor: pointer;
             border: none;
             outline: none;
