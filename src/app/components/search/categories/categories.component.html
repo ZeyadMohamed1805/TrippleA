@@ -2,7 +2,7 @@
   <mat-label>Categories</mat-label>
   <mat-chip-grid #chipGrid aria-label="category selection">
     @for (category of categories(); track $index) {
-    <mat-chip-row (removed)="remove(category)">
+    <mat-chip-row (removed)="remove(category)" highlighted color="accent">
       {{ category }}
       <button matChipRemove [attr.aria-label]="'remove ' + category">
         <mat-icon>cancel</mat-icon>
