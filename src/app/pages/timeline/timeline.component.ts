@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { AskComponent } from '../../components/timeline/ask/ask.component';
-import { QuestionComponent } from '../../components/timeline/question/question.component';
+import { QuestionComponent } from '../../components/common/question/question.component';
 
 @Component({
   selector: 'app-timeline',
