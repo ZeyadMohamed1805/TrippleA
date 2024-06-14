@@ -1,12 +1,11 @@
 import { Component } from '@angular/core';
+import { FiltersComponent } from '../../components/search/filters/filters.component';
 
 @Component({
   selector: 'app-search',
   standalone: true,
-  imports: [],
+  imports: [FiltersComponent],
   templateUrl: './search.component.html',
-  styleUrl: './search.component.scss'
+  styleUrl: './search.component.scss',
 })
-export class SearchComponent {
-
-}
+export class SearchComponent {}

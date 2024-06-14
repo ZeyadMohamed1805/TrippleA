@@ -1,36 +1,10 @@
-<div>
+<div class="filters">
   <form>
-    <div></div>
-    <mat-form-field class="example-chip-list">
-      <mat-label>Favorite Fruits</mat-label>
-      <mat-chip-grid #chipGrid aria-label="Fruit selection">
-        @for (category of categories(); track $index) {
-        <mat-chip-row (removed)="remove(category)">
-          {{ category }}
-          <button matChipRemove [attr.aria-label]="'remove ' + category">
-            <mat-icon>cancel</mat-icon>
-          </button>
-        </mat-chip-row>
-        }
-      </mat-chip-grid>
-      <input
-        name="currentCategory"
-        placeholder="New Category..."
-        #categoryInput
-        [(ngModel)]="currentCategory"
-        [matChipInputFor]="chipGrid"
-        [matAutocomplete]="auto"
-        [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
-        (matChipInputTokenEnd)="add($event)"
-      />
-      <mat-autocomplete
-        #auto="matAutocomplete"
-        (optionSelected)="selected($event)"
-      >
-        @for (category of filteredCategories(); track $index) {
-        <mat-option [value]="category">{{ category }}</mat-option>
-        }
-      </mat-autocomplete>
+    <mat-form-field class="name" color="accent">
+      <mat-label>Name</mat-label>
+      <input matInput placeholder="Name" />
     </mat-form-field>
+    <app-categories />
   </form>
+  <mat-divider />
 </div>
