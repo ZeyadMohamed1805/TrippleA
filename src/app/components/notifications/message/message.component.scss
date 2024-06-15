@@ -1,0 +1,31 @@
+.message {
+    width: 100%;
+    padding: 16px;
+    display: flex;
+    gap: 16px;
+    box-shadow: 0 0 1px;
+    cursor: pointer;
+    transition-duration: 0.25s;
+
+    &:hover {
+        background-color: var(--primary-color);
+    }
+
+    .description {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+
+        span {
+            font-size: 12px;
+        }
+    }
+}
+
+.isUnread {
+    background-color: rgb(202, 253, 255);
+}
+
+.isRead {
+    background-color: var(--white-color);
+}
