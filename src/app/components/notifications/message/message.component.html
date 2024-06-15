@@ -1,0 +1,14 @@
+<div class="message" [ngClass]="isRead ? 'isRead' : 'isUnread'">
+  <app-avatar />
+  <div class="description">
+    <p>
+      Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquid vitae
+      iste voluptatum nobis architecto necessitatibus sint dignissimos
+      laboriosam, quasi a deleniti eligendi laborum consequuntur! In ut sapiente
+      voluptate provident deleniti!
+    </p>
+    <span>
+      {{ date | date }}
+    </span>
+  </div>
+</div>
