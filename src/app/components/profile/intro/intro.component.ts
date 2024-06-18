@@ -1,12 +1,11 @@
 import { Component } from '@angular/core';
+import { AvatarComponent } from '../../common/avatar/avatar.component';
 
 @Component({
   selector: 'app-intro',
   standalone: true,
-  imports: [],
+  imports: [AvatarComponent],
   templateUrl: './intro.component.html',
-  styleUrl: './intro.component.scss'
+  styleUrl: './intro.component.scss',
 })
-export class IntroComponent {
-
-}
+export class IntroComponent {}
