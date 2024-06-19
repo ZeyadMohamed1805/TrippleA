@@ -7,6 +7,7 @@ import { BookmarksComponent } from './pages/bookmarks/bookmarks.component';
 import { NotificationsComponent } from './pages/notifications/notifications.component';
 import { ProfileComponent } from './pages/profile/profile.component';
 import { QuestionComponent } from './pages/question/question.component';
+import { NotFoundComponent } from './pages/not-found/not-found.component';
 
 export const routes: Routes = [
   { path: '', pathMatch: 'full', redirectTo: 'loading' },
@@ -18,4 +19,5 @@ export const routes: Routes = [
   { path: 'bookmarks', component: BookmarksComponent },
   { path: 'notifications', component: NotificationsComponent },
   { path: 'profile', component: ProfileComponent },
+  { path: '**', component: NotFoundComponent },
 ];
