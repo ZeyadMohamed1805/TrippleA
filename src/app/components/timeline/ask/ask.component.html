@@ -5,7 +5,7 @@
   </div>
   <div class="actions">
     @for( action of actions; track action ) {
-    <button class="poppins-medium">
+    <button class="poppins-medium" (click)="$last && onSearchClick()">
       <img src="../../../../assets/icons/bookmark.svg" alt="action" />
       {{ action }}
     </button>
