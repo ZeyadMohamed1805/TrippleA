@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { AvatarComponent } from '../avatar/avatar.component';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-question',
@@ -10,4 +11,10 @@ import { AvatarComponent } from '../avatar/avatar.component';
 })
 export class QuestionComponent {
   actions: string[] = ['Details', 'Answer', 'Share'];
+
+  constructor(private router: Router) {}
+
+  onDetailsClick(): void {
+    this.router.navigateByUrl('question');
+  }
 }

@@ -19,7 +19,7 @@
   />
   <div class="actions">
     @for( action of actions; track action ) {
-    <div class="action">
+    <div class="action" (click)="$first && onDetailsClick()">
       <img src="../../../../assets/icons/bookmark.svg" alt="Action" />
       <span>
         {{ action }}
