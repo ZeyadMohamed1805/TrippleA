@@ -10,7 +10,7 @@ import { Router } from '@angular/router';
   styleUrl: './question.component.scss',
 })
 export class QuestionComponent {
-  actions: string[] = ['Details', 'Answer', 'Share'];
+  actions: string[] = ['Details', 'Bookmark', 'Share'];
 
   constructor(private router: Router) {}
 
