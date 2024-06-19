@@ -6,14 +6,18 @@ import { SearchComponent } from './pages/search/search.component';
 import { BookmarksComponent } from './pages/bookmarks/bookmarks.component';
 import { NotificationsComponent } from './pages/notifications/notifications.component';
 import { ProfileComponent } from './pages/profile/profile.component';
+import { QuestionComponent } from './pages/question/question.component';
+import { NotFoundComponent } from './pages/not-found/not-found.component';
 
 export const routes: Routes = [
   { path: '', pathMatch: 'full', redirectTo: 'loading' },
   { path: 'auth', component: AuthComponent },
   { path: 'loading', component: LoadingComponent },
   { path: 'timeline', component: TimelineComponent },
+  { path: 'question', component: QuestionComponent },
   { path: 'search', component: SearchComponent },
   { path: 'bookmarks', component: BookmarksComponent },
   { path: 'notifications', component: NotificationsComponent },
   { path: 'profile', component: ProfileComponent },
+  { path: '**', component: NotFoundComponent },
 ];
