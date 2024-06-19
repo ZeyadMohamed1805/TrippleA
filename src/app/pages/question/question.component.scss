@@ -10,5 +10,9 @@
     .container {
         width: 100%;
         max-width: 800px;
+        background-color: var(--white-color);
+        display: flex;
+        flex-direction: column;
+        gap: 24px;
     }
 }
