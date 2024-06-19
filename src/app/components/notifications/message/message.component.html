@@ -1,4 +1,8 @@
-<div class="message" [ngClass]="isRead ? 'isRead' : 'isUnread'">
+<div
+  class="message"
+  [ngClass]="isRead ? 'isRead' : 'isUnread'"
+  (click)="onMessageClick()"
+>
   <app-avatar />
   <div class="description">
     <p>
