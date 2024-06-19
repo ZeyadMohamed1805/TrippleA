@@ -41,11 +41,18 @@
             justify-content: center;
             gap: 4px;
             transition-duration: 0.25s;
+            white-space: nowrap;
 
             &:hover {
                 background-color: var(--secondary-color);
                 color: var(--white-color);
             }
         }
+    }
+}
+
+@media (max-width: 800px) {
+    .ask .actions {
+        grid-template-columns: repeat(2, 1fr);
     }
 }
