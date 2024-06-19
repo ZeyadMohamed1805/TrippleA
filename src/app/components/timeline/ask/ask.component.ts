@@ -9,10 +9,5 @@ import { AvatarComponent } from '../../common/avatar/avatar.component';
   styleUrl: './ask.component.scss',
 })
 export class AskComponent {
-  actions: string[] = [
-    'Action One',
-    'Action Two',
-    'Action Three',
-    'Action Four',
-  ];
+  actions: string[] = ['Ask', 'Image', 'Search', 'Draft'];
 }
