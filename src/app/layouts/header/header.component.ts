@@ -24,7 +24,6 @@ export class HeaderComponent {
   links: { icon: string; path: string }[] = [
     { icon: '../../../assets/icons/timeline.svg', path: '/timeline' },
     { icon: '../../../assets/icons/search.svg', path: '/search' },
-    { icon: '../../../assets/icons/bookmark.svg', path: '/bookmarks' },
   ];
 
   constructor(private router: Router) {}
