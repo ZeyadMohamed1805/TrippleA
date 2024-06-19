@@ -3,11 +3,20 @@ import { AvatarComponent } from '../../components/common/avatar/avatar.component
 import { Router, RouterLink } from '@angular/router';
 import { MatIconModule } from '@angular/material/icon';
 import { MatBadgeModule } from '@angular/material/badge';
+import { MatMenuModule } from '@angular/material/menu';
+import { MatDivider } from '@angular/material/divider';
 
 @Component({
   selector: 'app-header',
   standalone: true,
-  imports: [AvatarComponent, RouterLink, MatBadgeModule, MatIconModule],
+  imports: [
+    AvatarComponent,
+    RouterLink,
+    MatBadgeModule,
+    MatIconModule,
+    MatMenuModule,
+    MatDivider,
+  ],
   templateUrl: './header.component.html',
   styleUrl: './header.component.scss',
 })
@@ -20,7 +29,7 @@ export class HeaderComponent {
 
   constructor(private router: Router) {}
 
-  onAvatarClick(): void {
-    this.router.navigateByUrl('profile');
+  onAvatarClick(route: string): void {
+    this.router.navigateByUrl(route);
   }
 }

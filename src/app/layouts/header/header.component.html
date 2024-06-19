@@ -13,14 +13,21 @@
         <li>
           <a routerLink="notifications">
             <div matBadge="0" matBadgeColor="warn">
-              <img src="../../../assets/icons/notification.svg" />
+              <img src="../../../assets/icons/notification.svg" alt="avatar" />
             </div>
           </a>
         </li>
       </ul>
-      <div class="avatar" (click)="onAvatarClick()">
+      <div class="avatar" [matMenuTriggerFor]="menu">
         <app-avatar />
       </div>
+      <mat-menu #menu="matMenu">
+        <button mat-menu-item (click)="onAvatarClick('profile')">
+          Profile
+        </button>
+        <mat-divider />
+        <button mat-menu-item (click)="onAvatarClick('auth')">Logout</button>
+      </mat-menu>
     </div>
   </nav>
 </header>
