@@ -1,0 +1,33 @@
+.comment {
+    background-color: aliceblue;
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+
+    textarea {
+        width: 100%;
+        resize: none;
+        padding: 16px;
+        height: 120px;
+    }
+
+    .comments {
+        list-style: disc outside;
+        padding: 16px;
+        display: flex;
+        flex-direction: column;
+        gap: 24px;
+
+        li {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+
+            .data {
+                display: flex;
+                gap: 16px;
+            }
+        }
+    }
+}
