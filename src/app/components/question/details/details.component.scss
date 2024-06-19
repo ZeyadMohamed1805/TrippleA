@@ -1,0 +1,26 @@
+.details {
+    width: 100%;
+    background-color: var(--white-color);
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+
+    .user {
+        width: 100%;
+        display: flex;
+        gap: 16px;
+
+        .data {
+            display: flex;
+            flex-direction: column;
+        }
+    }
+
+    .question-image {
+        width: 100%;
+        aspect-ratio: 5 / 2;
+        min-height: 320px;
+        object-fit: cover;
+    }
+}
