@@ -10,11 +10,19 @@ import { Router } from '@angular/router';
   styleUrl: './ask.component.scss',
 })
 export class AskComponent {
-  actions: string[] = ['Ask', 'Image', 'Draft', 'Search'];
+  actions: string[] = ['Ask', 'Search', 'Image', 'Clear'];
+  previewImage: string | undefined;
+  image: any = undefined;
 
   constructor(private router: Router) {}
 
   onSearchClick(): void {
     this.router.navigateByUrl('search');
+  }
+
+  onUpload(event: any) {
+    this.image = event.target.files[0];
+    this.previewImage = URL.createObjectURL(event.target.files[0]);
+    console.log(this.previewImage, this.image);
   }
 }
