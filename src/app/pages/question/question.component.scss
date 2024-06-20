@@ -32,18 +32,37 @@
                 .input {
                     width: 100%;
                     display: flex;
+                    flex-direction: column;
                     gap: 16px;
             
-                    textarea {
-                        min-width: none;
+                    .preview {
                         width: 100%;
-                        font-size: 16px;
-                        resize: none;
-                        outline: none;
-                        border: none;
-                        padding: 16px;
-                        min-height: 120px;
+                        border: solid 1px var(--black-color);
+                        object-position: center;
                     }
+            
+                    .info {
+                        display: flex;
+                        gap: 16px;
+            
+                        .data {
+                            width: 100%;
+                            display: flex;
+                            flex-direction: column;
+                
+                            textarea {
+                                min-width: none;
+                                width: 100%;
+                                resize: none;
+                                font-size: 16px;
+                                outline: none;
+                                border: none;
+                                padding: 16px;
+                                min-height: 120px;
+                            }
+                        }
+                    }
+            
                 }
             
                 .actions {
@@ -74,20 +93,20 @@
                     }
                 }
             }
-            
-            @media (max-width: 800px) {
-                .ask .actions {
-                    grid-template-columns: repeat(2, 1fr);
-                }
-            }
 
             ul {
-                list-style-position: outside;
+                list-style: none;
                 display: flex;
                 flex-direction: column;
                 gap: 40px;
                 padding: 16px;
             }
         }
+    }
+}
+
+@media (max-width: 800px) {
+    .ask .actions {
+        grid-template-columns: repeat(2, 1fr);
     }
 }

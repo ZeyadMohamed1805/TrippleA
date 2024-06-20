@@ -12,5 +12,13 @@ import { AvatarComponent } from '../../components/common/avatar/avatar.component
   styleUrl: './question.component.scss',
 })
 export class QuestionComponent {
-  actions: string[] = ['Answer', 'Image', 'Reset'];
+  actions: string[] = ['Answer', 'Image', 'Clear'];
+  previewImage: string | undefined;
+  image: any = undefined;
+
+  onUpload(event: any) {
+    this.image = event.target.files[0];
+    this.previewImage = URL.createObjectURL(event.target.files[0]);
+    console.log(this.previewImage, this.image);
+  }
 }
