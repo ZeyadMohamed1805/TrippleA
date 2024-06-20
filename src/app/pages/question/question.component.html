@@ -20,11 +20,9 @@
 
       <h2>Answers</h2>
       <ul>
+        @for(item of [1, 2, 3]; track $index) {
         <li><app-answer /></li>
-        <li><app-answer /></li>
-        <li><app-answer /></li>
-        <li><app-answer /></li>
-        <li><app-answer /></li>
+        }
       </ul>
     </div>
   </div>

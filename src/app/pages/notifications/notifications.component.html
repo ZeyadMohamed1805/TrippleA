@@ -1,15 +1,7 @@
 <section class="notifications">
   <div class="container">
-    <app-message [isRead]="false" />
-    <app-message [isRead]="false" />
-    <app-message [isRead]="false" />
-    <app-message [isRead]="true" />
-    <app-message [isRead]="true" />
-    <app-message [isRead]="true" />
-    <app-message [isRead]="true" />
-    <app-message [isRead]="true" />
-    <app-message [isRead]="true" />
-    <app-message [isRead]="true" />
-    <app-message [isRead]="true" />
+    @for(item of [1, 2, 3]; track $index) {
+    <app-message [isRead]="$first ? false : true" />
+    }
   </div>
 </section>

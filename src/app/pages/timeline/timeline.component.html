@@ -1,11 +1,8 @@
 <section class="timeline">
   <div class="container">
     <app-ask />
+    @for(item of [1, 2, 3]; track $index) {
     <app-question />
-    <app-question />
-    <app-question />
-    <app-question />
-    <app-question />
-    <app-question />
+    }
   </div>
 </section>
