@@ -21,13 +21,92 @@
             gap: 40px;
             padding: 16px;
 
+            .answer {
+                background-color: var(--white-color);
+                padding: 16px;
+                display: flex;
+                flex-direction: column;
+                gap: 16px;
+                box-shadow: 0 0 1px;
+            
+                .input {
+                    width: 100%;
+                    display: flex;
+                    flex-direction: column;
+                    gap: 16px;
+            
+                    .preview {
+                        width: 100%;
+                        border: solid 1px var(--black-color);
+                        object-position: center;
+                    }
+            
+                    .info {
+                        display: flex;
+                        gap: 16px;
+            
+                        .data {
+                            width: 100%;
+                            display: flex;
+                            flex-direction: column;
+                
+                            textarea {
+                                min-width: none;
+                                width: 100%;
+                                resize: none;
+                                font-size: 16px;
+                                outline: none;
+                                border: none;
+                                padding: 16px;
+                                min-height: 120px;
+                            }
+                        }
+                    }
+            
+                }
+            
+                .actions {
+                    width: 100%;
+                    display: grid;
+                    grid-template-columns: repeat(3, 1fr);
+            
+                    button {
+                        cursor: pointer;
+                        border: none;
+                        outline: none;
+                        background-color: transparent;
+                        text-align: center;
+                        font-size: 16px;
+                        padding: 16px 8px;
+                        box-shadow: 0 0 1px;
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        gap: 4px;
+                        transition-duration: 0.25s;
+                        white-space: nowrap;
+            
+                        &:hover {
+                            background-color: var(--secondary-color);
+                            color: var(--white-color);
+                        }
+                    }
+                }
+            }
+
             ul {
-                list-style-position: outside;
+                list-style: none;
                 display: flex;
                 flex-direction: column;
                 gap: 40px;
                 padding: 16px;
             }
         }
+    }
+}
+
+@media (max-width: 800px) {
+    .ask .actions {
+        grid-template-columns: repeat(2, 1fr);
     }
 }

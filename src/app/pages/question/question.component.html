@@ -3,13 +3,52 @@
     <app-details />
     <mat-divider />
     <div class="answers">
+      <div class="answer">
+        <div class="input">
+          <div class="info">
+            <app-avatar />
+            <div class="data">
+              <textarea placeholder="Answer this question"></textarea>
+            </div>
+          </div>
+          @if(previewImage) {<img
+            class="preview"
+            [src]="previewImage"
+            alt="Preview Image"
+          />}
+        </div>
+        <div class="actions">
+          @for( action of actions; track action ) { @if($index === 1) {
+          <button
+            type="button"
+            class="poppins-medium"
+            (click)="fileInput.click()"
+          >
+            <input
+              type="file"
+              hidden
+              #fileInput
+              (change)="onUpload($event)"
+              accept="image/*"
+              multiple
+            />
+            <img src="../../../../assets/icons/bookmark.svg" alt="action" />
+            {{ action }}
+          </button>
+          } @else {
+          <button type="button" class="poppins-medium">
+            <img src="../../../../assets/icons/bookmark.svg" alt="action" />
+            {{ action }}
+          </button>
+          } }
+        </div>
+      </div>
+
       <h2>Answers</h2>
       <ul>
+        @for(item of [1, 2, 3]; track $index) {
         <li><app-answer /></li>
-        <li><app-answer /></li>
-        <li><app-answer /></li>
-        <li><app-answer /></li>
-        <li><app-answer /></li>
+        }
       </ul>
     </div>
   </div>
