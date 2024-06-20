@@ -3,6 +3,21 @@
     <app-details />
     <mat-divider />
     <div class="answers">
+      <div class="answer">
+        <div class="input">
+          <app-avatar />
+          <textarea placeholder="Answer this question..."></textarea>
+        </div>
+        <div class="actions">
+          @for( action of actions; track action ) {
+          <button class="poppins-medium">
+            <img src="../../../../assets/icons/bookmark.svg" alt="action" />
+            {{ action }}
+          </button>
+          }
+        </div>
+      </div>
+
       <h2>Answers</h2>
       <ul>
         <li><app-answer /></li>
