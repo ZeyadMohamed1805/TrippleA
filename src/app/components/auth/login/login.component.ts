@@ -6,6 +6,7 @@ import {
   ReactiveFormsModule,
 } from '@angular/forms';
 import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatSnackBar } from '@angular/material/snack-bar';
 import { MatInputModule } from '@angular/material/input';
 import { NgIf } from '@angular/common';
 import { Router } from '@angular/router';
@@ -24,7 +25,8 @@ export class LoginComponent {
   constructor(
     private formBuilder: FormBuilder,
     private router: Router,
-    private authService: AuthService
+    private authService: AuthService,
+    private snackBar: MatSnackBar
   ) {
     this.loginForm = this.formBuilder.group({
       email: ['', [Validators.required, Validators.email]],
@@ -38,8 +40,10 @@ export class LoginComponent {
         console.log(response);
         this.router.navigateByUrl('timeline');
       },
-      error: (error) => {
-        console.log(error);
+      error: () => {
+        this.snackBar.open('Please try again', 'Ok!', {
+          panelClass: ['error-snackbar'],
+        });
       },
     });
   }

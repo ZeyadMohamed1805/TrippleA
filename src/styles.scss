@@ -35,3 +35,17 @@
 .poppins-bold {
     font-weight: 700;
 }
+
+.error-snackbar {
+    background-color: var(--fail-color);
+    color: var(--white-color);
+}
+
+.mat-mdc-snack-bar-container {
+    &.error-snackbar {
+      --mdc-snackbar-container-color: var(--fail-color);
+      --mat-mdc-snack-bar-button-color: var(--white-color);
+      --mdc-snackbar-supporting-text-color: var(--white-color);
+      --mat-snack-bar-button-color: var(--white-color);
+    }
+  }
