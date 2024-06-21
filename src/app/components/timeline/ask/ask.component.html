@@ -53,7 +53,7 @@
       <button
         type="button"
         class="poppins-medium"
-        (click)="$index === 1 && onSearchClick()"
+        (click)="$index === 1 ? onSearchClick() : $last && onClear()"
       >
         <img src="../../../../assets/icons/bookmark.svg" alt="action" />
         {{ action }}

@@ -44,13 +44,18 @@ export class AskComponent {
     this.router.navigateByUrl('search');
   }
 
-  onUpload(event: any) {
+  onUpload(event: any): void {
     this.image = event.target.files[0];
     this.previewImage = URL.createObjectURL(event.target.files[0]);
-    console.log(this.previewImage, this.image);
   }
 
-  onSubmit() {
+  onClear(): void {
+    this.questionForm.reset();
+    this.previewImage = undefined;
+    this.image = undefined;
+  }
+
+  onSubmit(): void {
     let formdata = new FormData();
 
     Object.keys(this.questionForm.value).forEach((key) => {
@@ -60,10 +65,11 @@ export class AskComponent {
     formdata.append('image', this.image);
 
     this.apiService.post<FormData, string>('/AddQuestion', formdata).subscribe({
-      next: () => this.snackBar.open('Question successfully added', 'Awesome!'),
+      next: () => {
+        this.snackBar.open('Question successfully added', 'Awesome!');
+        this.onClear();
+      },
       error: () => this.snackBar.open('Please try again!', 'Got it!'),
     });
-
-    console.log(formdata);
   }
 }
