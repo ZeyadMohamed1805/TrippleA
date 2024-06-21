@@ -9,6 +9,8 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { NgIf } from '@angular/common';
 import { Router } from '@angular/router';
+import { AuthService } from '../../../services/auth/auth.service';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-register',
@@ -20,15 +22,30 @@ import { Router } from '@angular/router';
 export class RegisterComponent {
   registerForm: FormGroup;
 
-  constructor(private formBuilder: FormBuilder, private router: Router) {
+  constructor(
+    private formBuilder: FormBuilder,
+    private router: Router,
+    private authService: AuthService,
+    private snackBar: MatSnackBar
+  ) {
     this.registerForm = this.formBuilder.group({
+      name: ['', [Validators.required, Validators.minLength(5)]],
+      username: ['', [Validators.required, Validators.minLength(8)]],
       email: ['', [Validators.required, Validators.email]],
       password: ['', [Validators.required, Validators.minLength(8)]],
     });
   }
 
   onSubmit(): void {
-    console.log(this.registerForm.value);
-    this.router.navigateByUrl('timeline');
+    this.authService.register(this.registerForm.value).subscribe({
+      next: () => {
+        this.snackBar.open('Registration was successful', 'Hooray!');
+      },
+      error: () => {
+        this.snackBar.open('Please try again', 'Ok!', {
+          panelClass: ['error-snackbar'],
+        });
+      },
+    });
   }
 }
