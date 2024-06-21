@@ -75,7 +75,10 @@ export class AskComponent {
         this.snackBar.open('Question successfully added', 'Awesome!');
         this.onClear();
       },
-      error: () => this.snackBar.open('Please try again!', 'Got it!'),
+      error: () =>
+        this.snackBar.open('Please try again', 'Ok!', {
+          panelClass: ['error-snackbar'],
+        }),
     });
   }
 }
