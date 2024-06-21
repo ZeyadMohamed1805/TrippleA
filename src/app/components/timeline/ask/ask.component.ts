@@ -3,8 +3,12 @@ import { AvatarComponent } from '../../common/avatar/avatar.component';
 import { MatSelectModule } from '@angular/material/select';
 import { MatInputModule } from '@angular/material/input';
 import { Router } from '@angular/router';
-import { FormBuilder, FormGroup, ReactiveFormsModule } from '@angular/forms';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import {
+  FormBuilder,
+  FormGroup,
+  ReactiveFormsModule,
+  Validators,
+} from '@angular/forms';
 import { ApiService } from '../../../services/api/api.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 
@@ -34,9 +38,9 @@ export class AskComponent {
     private snackBar: MatSnackBar
   ) {
     this.questionForm = this.formBuilder.group({
-      categoryid: [''],
-      title: [''],
-      description: [''],
+      categoryid: ['', Validators.required],
+      title: ['', Validators.required],
+      description: ['', Validators.required],
     });
   }
 

@@ -45,7 +45,11 @@
         {{ action }}
       </button>
       } @else if($index === 0) {
-      <button type="submit" class="poppins-medium">
+      <button
+        type="submit"
+        class="poppins-medium"
+        [disabled]="!questionForm.valid"
+      >
         <img src="../../../../assets/icons/bookmark.svg" alt="action" />
         {{ action }}
       </button>
