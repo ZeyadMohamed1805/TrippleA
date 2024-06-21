@@ -1,6 +1,7 @@
 import { AfterViewInit, Component } from '@angular/core';
 import { SpinnerComponent } from '../../components/loading/spinner/spinner.component';
 import { Router } from '@angular/router';
+import { StorageService } from '../../services/storage/storage.service';
 
 @Component({
   selector: 'app-loading',
@@ -10,9 +11,13 @@ import { Router } from '@angular/router';
   styleUrl: './loading.component.scss',
 })
 export class LoadingComponent implements AfterViewInit {
-  constructor(private router: Router) {}
+  constructor(private router: Router, private storageService: StorageService) {}
 
   ngAfterViewInit(): void {
-    setTimeout(() => this.router.navigateByUrl('auth'), 3000);
+    setTimeout(() => {
+      this.storageService.getItem<string>('AAA_TOKEN')
+        ? this.router.navigateByUrl('timeline')
+        : this.router.navigateByUrl('auth');
+    }, 3000);
   }
 }
