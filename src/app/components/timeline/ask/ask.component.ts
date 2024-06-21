@@ -3,21 +3,42 @@ import { AvatarComponent } from '../../common/avatar/avatar.component';
 import { MatSelectModule } from '@angular/material/select';
 import { MatInputModule } from '@angular/material/input';
 import { Router } from '@angular/router';
+import { FormBuilder, FormGroup, ReactiveFormsModule } from '@angular/forms';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { ApiService } from '../../../services/api/api.service';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-ask',
   standalone: true,
-  imports: [AvatarComponent, MatSelectModule, MatInputModule],
+  imports: [
+    AvatarComponent,
+    MatSelectModule,
+    MatInputModule,
+    ReactiveFormsModule,
+  ],
   templateUrl: './ask.component.html',
   styleUrl: './ask.component.scss',
 })
 export class AskComponent {
   actions: string[] = ['Ask', 'Search', 'Image', 'Clear'];
-  categories: string[] = ['One', 'Two', 'Three'];
+  categories: number[] = [1, 2, 3];
   previewImage: string | undefined;
   image: any = undefined;
+  questionForm: FormGroup;
 
-  constructor(private router: Router) {}
+  constructor(
+    private router: Router,
+    private formBuilder: FormBuilder,
+    private apiService: ApiService,
+    private snackBar: MatSnackBar
+  ) {
+    this.questionForm = this.formBuilder.group({
+      categoryid: [''],
+      title: [''],
+      description: [''],
+    });
+  }
 
   onSearchClick(): void {
     this.router.navigateByUrl('search');
@@ -27,5 +48,22 @@ export class AskComponent {
     this.image = event.target.files[0];
     this.previewImage = URL.createObjectURL(event.target.files[0]);
     console.log(this.previewImage, this.image);
+  }
+
+  onSubmit() {
+    let formdata = new FormData();
+
+    Object.keys(this.questionForm.value).forEach((key) => {
+      formdata.append(key, this.questionForm.value[key]);
+    });
+
+    formdata.append('image', this.image);
+
+    this.apiService.post<FormData, string>('/AddQuestion', formdata).subscribe({
+      next: () => this.snackBar.open('Question successfully added', 'Awesome!'),
+      error: () => this.snackBar.open('Please try again!', 'Got it!'),
+    });
+
+    console.log(formdata);
   }
 }

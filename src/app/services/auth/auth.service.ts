@@ -12,14 +12,14 @@ export class AuthService {
 
   login(user: TLoginData) {
     return this.api.post<TLoginData, TResponse<TAccessToken>>(
-      '/v1/authentication/signin',
+      '/api/v1/authentication/signin',
       user
     );
   }
 
   register(user: TRegisterData) {
     return this.api.post<TRegisterData, TResponse<string>>(
-      '/v1/user/createUser',
+      '/api/v1/user/createUser',
       user
     );
   }

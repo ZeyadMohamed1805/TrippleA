@@ -1,11 +1,11 @@
 <div class="ask">
-  <div class="input">
+  <form class="input" [formGroup]="questionForm" (ngSubmit)="onSubmit()">
     <div class="info">
       <app-avatar />
       <div class="data">
         <mat-form-field color="accent">
           <mat-label>Category</mat-label>
-          <mat-select>
+          <mat-select formControlName="categoryid">
             @for (category of categories; track category) {
             <mat-option [value]="category">{{ category }}</mat-option>
             }
@@ -15,11 +15,15 @@
     </div>
     <mat-form-field appearance="fill" color="accent">
       <mat-label>Title</mat-label>
-      <input matInput type="text" placeholder="Title" />
+      <input matInput type="text" placeholder="Title" formControlName="title" />
     </mat-form-field>
     <mat-form-field appearance="fill" color="accent">
       <mat-label>Description</mat-label>
-      <textarea matInput placeholder="Description"></textarea>
+      <textarea
+        matInput
+        formControlName="description"
+        placeholder="Description"
+      ></textarea>
     </mat-form-field>
     @if(previewImage) {<img
       class="preview"
@@ -40,6 +44,11 @@
         <img src="../../../../assets/icons/bookmark.svg" alt="action" />
         {{ action }}
       </button>
+      } @else if($index === 0) {
+      <button type="submit" class="poppins-medium">
+        <img src="../../../../assets/icons/bookmark.svg" alt="action" />
+        {{ action }}
+      </button>
       } @else {
       <button
         type="button"
@@ -51,5 +60,5 @@
       </button>
       } }
     </div>
-  </div>
+  </form>
 </div>
