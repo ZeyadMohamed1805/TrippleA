@@ -9,6 +9,7 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { NgIf } from '@angular/common';
 import { Router } from '@angular/router';
+import { AuthService } from '../../../services/auth/auth.service';
 
 @Component({
   selector: 'app-login',
@@ -20,7 +21,11 @@ import { Router } from '@angular/router';
 export class LoginComponent {
   loginForm: FormGroup;
 
-  constructor(private formBuilder: FormBuilder, private router: Router) {
+  constructor(
+    private formBuilder: FormBuilder,
+    private router: Router,
+    private authService: AuthService
+  ) {
     this.loginForm = this.formBuilder.group({
       email: ['', [Validators.required, Validators.email]],
       password: ['', [Validators.required, Validators.minLength(8)]],
@@ -28,7 +33,14 @@ export class LoginComponent {
   }
 
   onSubmit(): void {
-    console.log(this.loginForm.value);
-    this.router.navigateByUrl('timeline');
+    this.authService.login(this.loginForm.value).subscribe({
+      next: (response) => {
+        console.log(response);
+        this.router.navigateByUrl('timeline');
+      },
+      error: (error) => {
+        console.log(error);
+      },
+    });
   }
 }

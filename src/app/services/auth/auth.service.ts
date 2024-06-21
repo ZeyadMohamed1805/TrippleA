@@ -8,18 +8,18 @@ import { TResponse } from '../../types/data/response';
   providedIn: 'root',
 })
 export class AuthService {
-  constructor(private api: ApiService) {}
+  constructor(private readonly api: ApiService) {}
 
   login(user: TLoginData) {
     return this.api.post<TLoginData, TResponse<TAccessToken>>(
-      '/authentication/signin',
+      '/v1/authentication/signin',
       user
     );
   }
 
   register(user: TRegisterData) {
     return this.api.post<TRegisterData, TResponse<string>>(
-      '/authentication/signup',
+      '/v1/user/createUser',
       user
     );
   }
