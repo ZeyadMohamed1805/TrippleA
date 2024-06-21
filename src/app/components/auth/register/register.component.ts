@@ -38,8 +38,7 @@ export class RegisterComponent {
 
   onSubmit(): void {
     this.authService.register(this.registerForm.value).subscribe({
-      next: (response) => {
-        console.log(response);
+      next: () => {
         this.snackBar.open('Registration was successful', 'Hooray!');
       },
       error: () => {

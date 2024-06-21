@@ -11,6 +11,7 @@ import { MatInputModule } from '@angular/material/input';
 import { NgIf } from '@angular/common';
 import { Router } from '@angular/router';
 import { AuthService } from '../../../services/auth/auth.service';
+import { StorageService } from '../../../services/storage/storage.service';
 
 @Component({
   selector: 'app-login',
@@ -26,6 +27,7 @@ export class LoginComponent {
     private formBuilder: FormBuilder,
     private router: Router,
     private authService: AuthService,
+    private storageService: StorageService,
     private snackBar: MatSnackBar
   ) {
     this.loginForm = this.formBuilder.group({
@@ -37,7 +39,10 @@ export class LoginComponent {
   onSubmit(): void {
     this.authService.login(this.loginForm.value).subscribe({
       next: (response) => {
-        console.log(response);
+        this.storageService.setItem<string>(
+          'AAA_TOKEN',
+          response.data.accessToken
+        );
         this.router.navigateByUrl('timeline');
       },
       error: () => {
