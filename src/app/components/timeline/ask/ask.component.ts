@@ -45,7 +45,9 @@ export class AskComponent {
   }
 
   onSearchClick(): void {
-    this.router.navigateByUrl('search');
+    this.router.navigateByUrl(
+      `search?title=${this.questionForm.value.title}&categoryId=${this.questionForm.value.categoryid}`
+    );
   }
 
   onUpload(event: any): void {
