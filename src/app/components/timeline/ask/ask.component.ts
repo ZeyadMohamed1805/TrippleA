@@ -1,16 +1,19 @@
 import { Component } from '@angular/core';
 import { AvatarComponent } from '../../common/avatar/avatar.component';
+import { MatSelectModule } from '@angular/material/select';
+import { MatInputModule } from '@angular/material/input';
 import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-ask',
   standalone: true,
-  imports: [AvatarComponent],
+  imports: [AvatarComponent, MatSelectModule, MatInputModule],
   templateUrl: './ask.component.html',
   styleUrl: './ask.component.scss',
 })
 export class AskComponent {
   actions: string[] = ['Ask', 'Search', 'Image', 'Clear'];
+  categories: string[] = ['One', 'Two', 'Three'];
   previewImage: string | undefined;
   image: any = undefined;
 

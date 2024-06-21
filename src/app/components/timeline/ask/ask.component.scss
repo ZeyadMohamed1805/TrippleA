@@ -10,7 +10,6 @@
         width: 100%;
         display: flex;
         flex-direction: column;
-        gap: 16px;
 
         .preview {
             width: 100%;
@@ -26,20 +25,19 @@
                 width: 100%;
                 display: flex;
                 flex-direction: column;
-    
-                textarea {
-                    min-width: none;
-                    width: 100%;
-                    resize: none;
-                    font-size: 16px;
-                    outline: none;
-                    border: none;
-                    padding: 16px;
-                    min-height: 120px;
-                }
+                gap: 16px;
             }
         }
 
+        textarea {
+            resize: none;
+            min-height: 160px;
+            min-width: none;
+            width: 100%;
+            border: none;
+            font-size: 16px;
+            outline: none;
+        }
     }
 
     .actions {
