@@ -10,12 +10,12 @@
         width: 100%;
         display: flex;
         flex-direction: column;
-        gap: 16px;
 
         .preview {
             width: 100%;
             border: solid 1px var(--black-color);
             object-position: center;
+            margin-bottom: 16px;
         }
 
         .info {
@@ -26,20 +26,19 @@
                 width: 100%;
                 display: flex;
                 flex-direction: column;
-    
-                textarea {
-                    min-width: none;
-                    width: 100%;
-                    resize: none;
-                    font-size: 16px;
-                    outline: none;
-                    border: none;
-                    padding: 16px;
-                    min-height: 120px;
-                }
+                gap: 16px;
             }
         }
 
+        textarea {
+            resize: none;
+            min-height: 160px;
+            min-width: none;
+            width: 100%;
+            border: none;
+            font-size: 16px;
+            outline: none;
+        }
     }
 
     .actions {
@@ -52,6 +51,7 @@
             border: none;
             outline: none;
             background-color: transparent;
+            color: var(--black-color);
             text-align: center;
             font-size: 16px;
             padding: 16px 8px;
