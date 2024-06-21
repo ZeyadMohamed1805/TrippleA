@@ -5,6 +5,12 @@
     padding: 16px;
     gap: 8px;
 
+    .names {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 16px;
+    }
+
     .button {
         background-color: var(--secondary-color);
         color: var(--white-color);
