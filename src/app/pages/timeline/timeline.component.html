@@ -1,8 +1,11 @@
 <section class="timeline">
   <div class="container">
     <app-ask />
-    @for(item of [1, 2, 3]; track $index) {
-    <app-question />
+    @for(question of questionService.questions; track question.id) {
+    <!-- <app-question /> -->
+    <h1>{{ question.id }}</h1>
+    <h1>{{ question.title }}</h1>
     }
+    <button (click)="questionService.getNextPage()">Next</button>
   </div>
 </section>
