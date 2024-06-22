@@ -2,9 +2,7 @@
   <div class="container">
     <app-ask />
     @for(question of questionService.questions; track question.id) {
-    <!-- <app-question /> -->
-    <h1>{{ question.id }}</h1>
-    <h1>{{ question.title }}</h1>
+    <app-question [data]="question" />
     }
     <h1 (scroll)="onScroll()">Loading...</h1>
   </div>

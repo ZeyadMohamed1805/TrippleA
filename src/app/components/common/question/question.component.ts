@@ -1,6 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { AvatarComponent } from '../avatar/avatar.component';
 import { Router } from '@angular/router';
+import { TQuestion } from '../../../types/data/question';
 
 @Component({
   selector: 'app-question',
@@ -11,6 +12,7 @@ import { Router } from '@angular/router';
 })
 export class QuestionComponent {
   actions: string[] = ['Details', 'Bookmark', 'Share'];
+  @Input() data: TQuestion | undefined;
 
   constructor(private router: Router) {}
 
