@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { AvatarComponent } from '../../common/avatar/avatar.component';
 import { MatSelectModule } from '@angular/material/select';
 import { MatInputModule } from '@angular/material/input';
@@ -24,7 +24,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
   templateUrl: './ask.component.html',
   styleUrl: './ask.component.scss',
 })
-export class AskComponent {
+export class AskComponent implements OnInit {
   actions: string[] = ['Ask', 'Search', 'Image', 'Clear'];
   categories: number[] = [1, 2, 3];
   previewImage: string | undefined;
@@ -41,6 +41,13 @@ export class AskComponent {
       categoryid: ['', Validators.required],
       title: ['', Validators.required],
       description: ['', Validators.required],
+    });
+  }
+
+  ngOnInit(): void {
+    this.apiService.get('/api/category').subscribe({
+      next: (response) => console.log(response),
+      error: (error) => console.log(error),
     });
   }
 
