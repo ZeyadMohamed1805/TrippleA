@@ -1,12 +1,14 @@
 import { Injectable } from '@angular/core';
 import { ApiService } from '../api/api.service';
 import { injectInfiniteQuery } from '@tanstack/angular-query-experimental';
+import { TQuestion } from '../../types/data/question';
+import { TPaginatedResponse } from '../../types/data/response';
 
 @Injectable({
   providedIn: 'root',
 })
 export class QuestionService {
-  questions: any[] = [];
+  questions: TQuestion[] = [];
   pageSize: number = 3;
   currentPage: number = 0;
   totalPages: number = 1;
@@ -19,11 +21,11 @@ export class QuestionService {
       pageParam <= this.totalPages &&
       pageParam > this.currentPage &&
       this.apiService
-        .get(
+        .get<TPaginatedResponse<TQuestion[]>>(
           `/GetQuestionsPaginated?PageNumber=${pageParam}&PageSize=${this.pageSize}`
         )
         .subscribe({
-          next: (response: any) => {
+          next: (response) => {
             this.questions = [...this.questions, ...response.data.data];
             this.totalPages = response.data.totalPages;
             this.pageSize = response.data.pageSize;
