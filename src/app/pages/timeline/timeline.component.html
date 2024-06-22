@@ -1,9 +1,12 @@
-<section class="timeline">
+<section class="timeline" (scroll)="isBottomReached && onScroll()">
   <div class="container">
     <app-ask />
     @for(question of questionService.questions; track question.id) {
     <app-question [data]="question" />
+    } @if(questionService.hasNextPage) {
+    <div class="spinner">
+      <app-spinner />
+    </div>
     }
-    <h1 (scroll)="onScroll()">Loading...</h1>
   </div>
 </section>

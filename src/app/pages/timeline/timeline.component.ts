@@ -3,25 +3,34 @@ import { AskComponent } from '../../components/timeline/ask/ask.component';
 import { QuestionComponent } from '../../components/common/question/question.component';
 import { QuestionService } from '../../services/question/question.service';
 import { DOCUMENT } from '@angular/common';
+import { SpinnerComponent } from '../../components/loading/spinner/spinner.component';
 
 @Component({
   selector: 'app-timeline',
   standalone: true,
-  imports: [AskComponent, QuestionComponent],
+  imports: [AskComponent, QuestionComponent, SpinnerComponent],
   templateUrl: './timeline.component.html',
   styleUrl: './timeline.component.scss',
 })
 export class TimelineComponent implements OnInit {
+  isBottomReached: boolean = false;
+
   @HostListener('window:scroll', ['$event'])
   onScroll() {
     const scrollTop = window.scrollY || this.document.documentElement.scrollTop;
     const windowHeight = window.innerHeight;
     const documentHeight = this.document.documentElement.scrollHeight;
 
-    if (scrollTop + windowHeight >= documentHeight) {
+    if (
+      !this.isBottomReached &&
+      scrollTop + windowHeight >= documentHeight - 160
+    ) {
       setTimeout(() => {
         this.questionService.getNextPage();
+        this.isBottomReached = false;
       }, 1000);
+
+      this.isBottomReached = true;
     }
   }
   constructor(

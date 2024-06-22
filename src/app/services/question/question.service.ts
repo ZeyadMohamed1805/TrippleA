@@ -12,13 +12,14 @@ export class QuestionService {
   pageSize: number = 3;
   currentPage: number = 0;
   totalPages: number = 1;
+  hasNextPage: boolean = true;
 
   constructor(private readonly apiService: ApiService) {}
 
   query = injectInfiniteQuery(() => ({
     queryKey: ['questions'],
     queryFn: async ({ pageParam }) =>
-      pageParam <= this.totalPages &&
+      this.hasNextPage &&
       pageParam > this.currentPage &&
       this.apiService
         .get<TPaginatedResponse<TQuestion[]>>(
@@ -30,7 +31,7 @@ export class QuestionService {
             this.totalPages = response.data.totalPages;
             this.pageSize = response.data.pageSize;
             this.currentPage = response.data.currentPage;
-            console.log(this.questions);
+            this.hasNextPage = response.data.hasNextPage;
           },
           error: (error) => console.log(error),
         }),

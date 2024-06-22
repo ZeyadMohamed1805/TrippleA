@@ -1,23 +1,25 @@
-@if(data) {
+<!-- @if(data) { -->
 <div class="question">
   <div class="user">
     <app-avatar />
     <div class="data">
-      <h3>{{ data.userName || "Zeyad Mohamed" }}</h3>
-      <span>{{ data.createdIn }}</span>
+      <h3>{{ data?.userName || "Username" }}</h3>
+      <span>{{ data?.createdIn || "2022/11/11" | date }}</span>
     </div>
   </div>
   <h1>
-    {{ data.title }}
+    {{ data?.title || "Title" }}
   </h1>
   <p class="description">
-    {{ data.description }}
+    {{ data?.description || "Description" }}
   </p>
+  @if (data?.image !== "NOFile") {
   <img
     class="question-image"
-    [src]="data.image || '../../../../assets/images/question.svg'"
+    [src]="data?.image || '../../../../assets/images/question.svg'"
     alt="Question"
   />
+  }
   <div class="actions">
     @for( action of actions; track action ) {
     <div class="action" (click)="$first && onDetailsClick()">
@@ -29,4 +31,4 @@
     }
   </div>
 </div>
-}
+<!-- } -->
