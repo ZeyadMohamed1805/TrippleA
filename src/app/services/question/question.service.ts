@@ -7,8 +7,8 @@ import { injectInfiniteQuery } from '@tanstack/angular-query-experimental';
 })
 export class QuestionService {
   questions: any[] = [];
-  pageSize: number = 2;
-  currentPage: number = 1;
+  pageSize: number = 3;
+  currentPage: number = 0;
   totalPages: number = 1;
 
   constructor(private readonly apiService: ApiService) {}
@@ -17,6 +17,7 @@ export class QuestionService {
     queryKey: ['questions'],
     queryFn: async ({ pageParam }) =>
       pageParam <= this.totalPages &&
+      pageParam > this.currentPage &&
       this.apiService
         .get(
           `/GetQuestionsPaginated?PageNumber=${pageParam}&PageSize=${this.pageSize}`
@@ -31,7 +32,7 @@ export class QuestionService {
           },
           error: (error) => console.log(error),
         }),
-    initialPageParam: this.currentPage,
+    initialPageParam: 1,
     getPreviousPageParam: () => this.currentPage - 1,
     getNextPageParam: () => this.currentPage + 1,
     maxPages: this.totalPages,
