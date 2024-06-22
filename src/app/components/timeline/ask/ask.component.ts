@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { AvatarComponent } from '../../common/avatar/avatar.component';
 import { MatSelectModule } from '@angular/material/select';
 import { MatInputModule } from '@angular/material/input';
@@ -11,6 +11,8 @@ import {
 } from '@angular/forms';
 import { ApiService } from '../../../services/api/api.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { TCategory } from '../../../types/data/category';
+import { TResponse } from '../../../types/data/response';
 
 @Component({
   selector: 'app-ask',
@@ -24,9 +26,9 @@ import { MatSnackBar } from '@angular/material/snack-bar';
   templateUrl: './ask.component.html',
   styleUrl: './ask.component.scss',
 })
-export class AskComponent {
+export class AskComponent implements OnInit {
   actions: string[] = ['Ask', 'Search', 'Image', 'Clear'];
-  categories: number[] = [1, 2, 3];
+  categories: TCategory[] = [];
   previewImage: string | undefined;
   image: any = undefined;
   questionForm: FormGroup;
@@ -41,6 +43,17 @@ export class AskComponent {
       categoryid: ['', Validators.required],
       title: ['', Validators.required],
       description: ['', Validators.required],
+    });
+  }
+
+  ngOnInit(): void {
+    this.apiService.get<TResponse<TCategory[]>>('/api/category').subscribe({
+      next: (response) => (this.categories = response.data),
+      error: () => {
+        this.snackBar.open('Some data were not fetched successfully', 'Ok!', {
+          panelClass: ['error-snackbar'],
+        });
+      },
     });
   }
 
