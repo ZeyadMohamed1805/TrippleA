@@ -10,8 +10,10 @@
     .container {
         width: 100%;
         max-width: 800px;
+        background-color: var(--white-color);
         display: flex;
         flex-direction: column;
+        padding-bottom: 24px;
         gap: 24px;
 
         .spinner {
@@ -20,11 +22,6 @@
             display: grid;
             place-items: center;
             position: relative;
-        }
-
-        h1 {
-            color: transparent;
-            height: 0;
         }
     }
 }

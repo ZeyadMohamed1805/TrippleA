@@ -4,11 +4,12 @@ import { QuestionComponent } from '../../components/common/question/question.com
 import { QuestionService } from '../../services/question/question.service';
 import { DOCUMENT } from '@angular/common';
 import { SpinnerComponent } from '../../components/loading/spinner/spinner.component';
+import { MatDivider } from '@angular/material/divider';
 
 @Component({
   selector: 'app-timeline',
   standalone: true,
-  imports: [AskComponent, QuestionComponent, SpinnerComponent],
+  imports: [AskComponent, QuestionComponent, SpinnerComponent, MatDivider],
   templateUrl: './timeline.component.html',
   styleUrl: './timeline.component.scss',
 })
