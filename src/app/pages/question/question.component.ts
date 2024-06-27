@@ -1,8 +1,9 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { DetailsComponent } from '../../components/question/details/details.component';
 import { MatDivider } from '@angular/material/divider';
 import { AnswerComponent } from '../../components/question/answer/answer.component';
 import { AvatarComponent } from '../../components/common/avatar/avatar.component';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-question',
@@ -11,10 +12,19 @@ import { AvatarComponent } from '../../components/common/avatar/avatar.component
   templateUrl: './question.component.html',
   styleUrl: './question.component.scss',
 })
-export class QuestionComponent {
+export class QuestionComponent implements OnInit {
   actions: string[] = ['Answer', 'Image', 'Clear'];
   previewImage: string | undefined;
   image: any = undefined;
+  questionId: number = 0;
+
+  constructor(private readonly activatedRoute: ActivatedRoute) {}
+
+  ngOnInit(): void {
+    this.activatedRoute.params.subscribe((params) => {
+      this.questionId = params['id'];
+    });
+  }
 
   onUpload(event: any) {
     this.image = event.target.files[0];

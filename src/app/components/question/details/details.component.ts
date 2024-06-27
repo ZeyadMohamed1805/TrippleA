@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { AvatarComponent } from '../../common/avatar/avatar.component';
 
 @Component({
@@ -8,4 +8,10 @@ import { AvatarComponent } from '../../common/avatar/avatar.component';
   templateUrl: './details.component.html',
   styleUrl: './details.component.scss',
 })
-export class DetailsComponent {}
+export class DetailsComponent implements OnInit {
+  @Input() questionId: number | undefined;
+
+  ngOnInit(): void {
+    console.log(this.questionId);
+  }
+}
