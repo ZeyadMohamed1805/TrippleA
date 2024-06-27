@@ -45,6 +45,10 @@ export class QuestionService {
     this.query.data();
   }
 
+  getQuestion(id: number) {
+    return this.apiService.get<any>(`/api/Question/${id}`);
+  }
+
   getNextPage() {
     this.query.fetchNextPage();
   }

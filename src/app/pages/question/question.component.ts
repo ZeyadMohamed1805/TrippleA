@@ -16,7 +16,7 @@ export class QuestionComponent implements OnInit {
   actions: string[] = ['Answer', 'Image', 'Clear'];
   previewImage: string | undefined;
   image: any = undefined;
-  questionId: number = 0;
+  questionId: number | undefined;
 
   constructor(private readonly activatedRoute: ActivatedRoute) {}
 
