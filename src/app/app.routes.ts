@@ -14,7 +14,7 @@ export const routes: Routes = [
   { path: 'auth', component: AuthComponent },
   { path: 'loading', component: LoadingComponent },
   { path: 'timeline', component: TimelineComponent },
-  { path: 'question', component: QuestionComponent },
+  { path: 'question/:id', component: QuestionComponent },
   { path: 'search', component: SearchComponent },
   { path: 'bookmarks', component: BookmarksComponent },
   { path: 'notifications', component: NotificationsComponent },
