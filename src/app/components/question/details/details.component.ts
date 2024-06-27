@@ -18,15 +18,5 @@ export class DetailsComponent implements OnInit {
     private readonly snackBar: MatSnackBar
   ) {}
 
-  ngOnInit(): void {
-    this.questionService.getQuestion(this.questionId!).subscribe({
-      next: (response) => {
-        console.log(response);
-      },
-      error: () =>
-        this.snackBar.open('Please try again', 'Ok!', {
-          panelClass: ['error-snackbar'],
-        }),
-    });
-  }
+  ngOnInit(): void {}
 }

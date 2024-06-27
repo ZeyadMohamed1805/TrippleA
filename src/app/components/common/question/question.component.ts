@@ -18,6 +18,6 @@ export class QuestionComponent {
   constructor(private router: Router) {}
 
   onDetailsClick(): void {
-    this.router.navigateByUrl('question');
+    this.router.navigateByUrl(`question/${this.data?.id}`);
   }
 }
