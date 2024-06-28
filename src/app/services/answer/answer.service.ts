@@ -16,7 +16,7 @@ export class AnswerService {
   constructor(private readonly apiService: ApiService) {}
 
   query = injectInfiniteQuery(() => ({
-    queryKey: ['answers'],
+    queryKey: [`answers-${this.questionId}`],
     queryFn: async ({ pageParam }) =>
       this.questionId &&
       this.hasNextPage &&
