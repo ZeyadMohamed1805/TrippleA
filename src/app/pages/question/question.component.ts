@@ -16,9 +16,6 @@ import { TPaginatedQuestion } from '../../types/data/question';
   styleUrl: './question.component.scss',
 })
 export class QuestionComponent implements OnInit {
-  actions: string[] = ['Answer', 'Image', 'Clear'];
-  previewImage: string | undefined;
-  image: any = undefined;
   questionId: number | undefined;
   question: TPaginatedQuestion | undefined;
 
@@ -43,11 +40,5 @@ export class QuestionComponent implements OnInit {
         });
       },
     });
-  }
-
-  onUpload(event: any) {
-    this.image = event.target.files[0];
-    this.previewImage = URL.createObjectURL(event.target.files[0]);
-    console.log(this.previewImage, this.image);
   }
 }
