@@ -1,6 +1,11 @@
 <section class="search">
   <div class="container">
-    <app-filters />
-    <app-results />
+    <app-filters (request)="onSubmit($event)" />
+    <app-results [questions]="searchService.questions" />
+    @if(searchService.hasNextPage) {
+    <div class="spinner">
+      <app-spinner />
+    </div>
+    }
   </div>
 </section>

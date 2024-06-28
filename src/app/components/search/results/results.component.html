@@ -1,5 +1,5 @@
 <div class="results">
-  @for(item of [1, 2, 3]; track $index ) {
-  <app-question />
+  @for(question of questions; track $index ) {
+  <app-question [data]="question" />
   }
 </div>

@@ -14,8 +14,7 @@ export class SearchService {
   currentPage: number = 0;
   totalPages: number = 1;
   hasNextPage: boolean = true;
-  categoryId: number | undefined;
-  currentSearchType: ESearchType = ESearchType.title;
+  categoryId: number = 1;
 
   constructor(private readonly apiService: ApiService) {}
 
@@ -30,15 +29,11 @@ export class SearchService {
         )
         .subscribe({
           next: (response) => {
-            this.questions =
-              this.currentSearchType === ESearchType.title
-                ? response.data.data
-                : [...this.questions, ...response.data.data];
+            this.questions = [...this.questions, ...response.data.data];
             this.totalPages = response.data.totalPages;
             this.pageSize = response.data.pageSize;
             this.currentPage = response.data.currentPage;
             this.hasNextPage = response.data.hasNextPage;
-            this.currentSearchType = ESearchType.category;
           },
           error: (error) => console.log(error),
         }),
@@ -50,6 +45,11 @@ export class SearchService {
 
   getQuestionsByCategory(categoryId: number) {
     this.categoryId = categoryId;
+    this.questions = [];
+    this.pageSize = 3;
+    this.currentPage = 0;
+    this.totalPages = 1;
+    this.hasNextPage = true;
     this.query.data();
   }
 
@@ -62,9 +62,12 @@ export class SearchService {
         next: (response) => {
           this.questions = response.data.data;
           this.hasNextPage = false;
-          this.currentSearchType = ESearchType.title;
         },
         error: (error) => console.log(error),
       });
+  }
+
+  getNextPage() {
+    this.query.fetchNextPage();
   }
 }
