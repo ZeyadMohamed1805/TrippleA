@@ -18,13 +18,14 @@
 
         .votes {
             position: absolute;
-            border: solid 2px var(--success-color);
+            border: solid 2px;
+            border-radius: 50%;
+            min-width: 64px;
             font-weight: 500;
             aspect-ratio: 1;
             display: grid;
             place-items: center;
             padding: 16px;
-            border-radius: 50%;
             right: 0;
         }
     }

@@ -46,8 +46,8 @@
 
       <h2>Answers</h2>
       <ul>
-        @for(item of [1, 2, 3]; track $index) {
-        <li><app-answer /></li>
+        @for(answer of question?.answersDto?.data; track $index) {
+        <li><app-answer [answer]="answer" /></li>
         }
       </ul>
     </div>
