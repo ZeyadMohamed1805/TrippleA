@@ -1,22 +1,18 @@
-@if(questionId) {
+@if(question) {
 <div class="details">
   <div class="user">
     <app-avatar />
     <div class="data">
-      <h3>Zeyad Mohamed</h3>
-      <p>Software Engineer</p>
-      <span>09/06/2024</span>
+      <h3>{{ question.userId }}</h3>
+      <span>{{ question.createdIn | date }}</span>
     </div>
   </div>
+  <h1>
+    {{ question.title }}
+  </h1>
   <p class="description">
-    Lorem Ipsum is simply dummy text of the printing and typesetting industry.
-    Lorem Ipsum has been the industry's standard dummy text ever since the
-    1500s.
+    {{ question.description }}
   </p>
-  <img
-    class="question-image"
-    src="../../../../assets/images/question.svg"
-    alt="Question"
-  />
+  <img class="question-image" [src]="question.image" alt="Question" />
 </div>
 }
