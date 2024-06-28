@@ -1,6 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { AvatarComponent } from '../../common/avatar/avatar.component';
 import { MatDivider } from '@angular/material/divider';
+import { TComment } from '../../../types/data/comment';
 
 @Component({
   selector: 'app-comment',
@@ -9,4 +10,6 @@ import { MatDivider } from '@angular/material/divider';
   templateUrl: './comment.component.html',
   styleUrl: './comment.component.scss',
 })
-export class CommentComponent {}
+export class CommentComponent {
+  @Input() comments: TComment[] = [];
+}

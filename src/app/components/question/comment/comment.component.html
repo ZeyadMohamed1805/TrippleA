@@ -2,14 +2,12 @@
   <textarea placeholder="Comment on this answer..."></textarea>
   <h3>Comments</h3>
   <ul class="comments">
-    @for(item of [1, 2, 3]; track $index) {
+    @for(comment of comments; track $index) {
     <li>
       <div class="data">
         <app-avatar />
         <p>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestiae
-          quaerat ea cum aliquid, voluptatum adipisci soluta neque facere nobis
-          tempora quae laboriosam non sint animi.
+          {{ comment.content }}
         </p>
       </div>
       @if(!$last) {<mat-divider />}
