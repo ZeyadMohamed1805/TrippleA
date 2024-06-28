@@ -5,7 +5,11 @@
     flex-direction: column;
     gap: 16px;
 
-    .name {
-        width: 100%;
+    .tab-container {
+        padding: 16px 0;
+
+        .name {
+            width: 100%;
+        }
     }
 }

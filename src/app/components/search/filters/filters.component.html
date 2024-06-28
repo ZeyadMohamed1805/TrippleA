@@ -1,10 +1,19 @@
 <div class="filters">
   <form>
-    <mat-form-field class="name" color="accent">
-      <mat-label>Name</mat-label>
-      <input matInput placeholder="Name" />
-    </mat-form-field>
-    <app-categories />
+    <mat-tab-group color="accent">
+      <mat-tab label="Title">
+        <div class="tab-container">
+          <mat-form-field class="name" color="accent">
+            <mat-label>Name</mat-label>
+            <input matInput placeholder="Name" />
+          </mat-form-field>
+        </div>
+      </mat-tab>
+      <mat-tab label="Category">
+        <div class="tab-container">
+          <app-categories />
+        </div>
+      </mat-tab>
+    </mat-tab-group>
   </form>
-  <mat-divider />
 </div>

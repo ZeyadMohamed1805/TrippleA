@@ -1,3 +1,26 @@
+.answers {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+    padding: 16px;
+
+    ul {
+        list-style: none;
+        display: flex;
+        flex-direction: column;
+        gap: 40px;
+        padding: 16px;
+    }
+
+    .spinner {
+        background-color: var(--white-color);
+        height: 160px;
+        display: grid;
+        place-items: center;
+        position: relative;
+    }
+}
+
 .answer {
     width: 100%;
     background-color: var(--white-color);
@@ -18,13 +41,14 @@
 
         .votes {
             position: absolute;
-            border: solid 2px var(--success-color);
+            border: solid 2px;
+            border-radius: 50%;
+            min-width: 64px;
             font-weight: 500;
             aspect-ratio: 1;
             display: grid;
             place-items: center;
             padding: 16px;
-            border-radius: 50%;
             right: 0;
         }
     }

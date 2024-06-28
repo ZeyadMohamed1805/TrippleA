@@ -1,22 +1,15 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { AvatarComponent } from '../../common/avatar/avatar.component';
-import { QuestionService } from '../../../services/question/question.service';
-import { MatSnackBar } from '@angular/material/snack-bar';
+import { TPaginatedQuestion } from '../../../types/data/question';
+import { DatePipe } from '@angular/common';
 
 @Component({
   selector: 'app-details',
   standalone: true,
-  imports: [AvatarComponent],
+  imports: [AvatarComponent, DatePipe],
   templateUrl: './details.component.html',
   styleUrl: './details.component.scss',
 })
-export class DetailsComponent implements OnInit {
-  @Input() questionId: number | undefined;
-
-  constructor(
-    private readonly questionService: QuestionService,
-    private readonly snackBar: MatSnackBar
-  ) {}
-
-  ngOnInit(): void {}
+export class DetailsComponent {
+  @Input() question: TPaginatedQuestion | undefined;
 }

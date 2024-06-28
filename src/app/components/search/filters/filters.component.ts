@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { MatInputModule } from '@angular/material/input';
+import { MatTabsModule } from '@angular/material/tabs';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatDivider } from '@angular/material/divider';
 import { FormsModule } from '@angular/forms';
@@ -11,6 +12,7 @@ import { CategoriesComponent } from '../categories/categories.component';
   imports: [
     CategoriesComponent,
     FormsModule,
+    MatTabsModule,
     MatFormFieldModule,
     MatInputModule,
     MatDivider,

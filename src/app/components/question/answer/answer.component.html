@@ -1,32 +1,54 @@
-<div class="answer">
-  <div class="user">
-    <app-avatar />
-    <div class="data">
-      <h3>Zeyad Mohamed</h3>
-      <p>Software Engineer</p>
-      <span>09/06/2024</span>
-    </div>
-    <div class="votes">+13</div>
-  </div>
-  <p class="description">
-    Lorem Ipsum is simply dummy text of the printing and typesetting industry.
-    Lorem Ipsum has been the industry's standard dummy text ever since the
-    1500s.
-  </p>
-  <img
-    class="answer-image"
-    src="../../../../assets/images/question.svg"
-    alt="Answer"
-  />
-  <div class="actions">
-    @for( action of actions; track action ) {
-    <div class="action">
-      <img src="../../../../assets/icons/bookmark.svg" alt="Action" />
-      <span>
-        {{ action }}
-      </span>
-    </div>
+<div class="answers" (scroll)="isBottomReached && onScroll()">
+  <app-solve />
+  @if(answerService.answers.length) {
+  <h2>Answers</h2>
+  <ul>
+    @for(answer of answerService.answers; track $index) {
+    <li>
+      <div class="answer">
+        <div class="user">
+          <app-avatar />
+          <div class="data">
+            <h3>{{ answer.userId }}</h3>
+            <span>{{ answer.createdIn | date }}</span>
+          </div>
+          <div
+            class="votes"
+            [ngStyle]="{
+              'border-color':
+                answer.votes > 0
+                  ? 'var(--success-color)'
+                  : answer.votes < 0
+                  ? 'var(--fail-color)'
+                  : 'var(--black-color)'
+            }"
+          >
+            {{ answer.votes > 0 ? "+" : answer.votes < 0 ? "-" : null }}
+            {{ answer.votes < 1 ? answer.votes * -1 : answer.votes }}
+          </div>
+        </div>
+        <p class="description">
+          {{ answer.description }}
+        </p>
+        <img class="answer-image" [src]="answer.image" alt="Answer" />
+        <div class="actions">
+          @for( action of actions; track action ) {
+          <div class="action">
+            <img src="../../../../assets/icons/bookmark.svg" alt="Action" />
+            <span>
+              {{ action }}
+            </span>
+          </div>
+          }
+        </div>
+        <app-comment [answerId]="answer.id" />
+      </div>
+    </li>
     }
+  </ul>
+  } @if(answerService.hasNextPage) {
+  <div class="spinner">
+    <app-spinner />
   </div>
-  <app-comment />
+  }
 </div>
