@@ -1,8 +1,7 @@
 import { Component, HostListener, Inject, Input } from '@angular/core';
 import { AvatarComponent } from '../../common/avatar/avatar.component';
 import { CommentComponent } from '../comment/comment.component';
-import { TAnswer } from '../../../types/data/answer';
-import { DOCUMENT, DatePipe, NgStyle } from '@angular/common';
+import { DOCUMENT, DatePipe, NgIf, NgStyle } from '@angular/common';
 import { SolveComponent } from '../solve/solve.component';
 import { AnswerService } from '../../../services/answer/answer.service';
 import { SpinnerComponent } from '../../loading/spinner/spinner.component';
@@ -16,6 +15,7 @@ import { SpinnerComponent } from '../../loading/spinner/spinner.component';
     SolveComponent,
     SpinnerComponent,
     NgStyle,
+    NgIf,
     DatePipe,
   ],
   templateUrl: './answer.component.html',
@@ -24,8 +24,7 @@ import { SpinnerComponent } from '../../loading/spinner/spinner.component';
 })
 export class AnswerComponent {
   actions: string[] = ['Upvote', 'Comment', 'Downvote'];
-  @Input() answers: TAnswer[] = [];
-  paginatedAnswers: TAnswer[] = [];
+  @Input() questionId: number | undefined;
   isBottomReached: boolean = false;
 
   @HostListener('window:scroll', ['$event'])
@@ -52,6 +51,6 @@ export class AnswerComponent {
   ) {}
 
   ngOnInit(): void {
-    this.answerService.getAnswers(17);
+    this.answerService.getAnswers(this.questionId!);
   }
 }

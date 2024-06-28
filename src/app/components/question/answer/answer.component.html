@@ -1,5 +1,6 @@
 <div class="answers" (scroll)="isBottomReached && onScroll()">
   <app-solve />
+  @if(answerService.answers.length) {
   <h2>Answers</h2>
   <ul>
     @for(answer of answerService.answers; track $index) {
@@ -43,10 +44,11 @@
         <app-comment [comments]="answer.commentsDto.data" />
       </div>
     </li>
-    } @if(answerService.hasNextPage) {
-    <div class="spinner">
-      <app-spinner />
-    </div>
     }
   </ul>
+  } @if(answerService.hasNextPage) {
+  <div class="spinner">
+    <app-spinner />
+  </div>
+  }
 </div>

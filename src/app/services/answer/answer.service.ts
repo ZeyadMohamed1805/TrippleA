@@ -33,7 +33,10 @@ export class AnswerService {
             this.currentPage = response.data.currentPage;
             this.hasNextPage = response.data.hasNextPage;
           },
-          error: (error) => console.log(error),
+          error: (error) => {
+            console.log(error);
+            if (error.error.statusCode === 404) this.hasNextPage = false;
+          },
         }),
     initialPageParam: 1,
     getPreviousPageParam: () => this.currentPage - 1,
