@@ -23,7 +23,7 @@ export class AnswerService {
       pageParam > this.currentPage &&
       this.apiService
         .get<TPaginatedResponse<TAnswer[]>>(
-          `/moreAnswers?questionId=${this.questionId}&PageIndex=${pageParam}`
+          `/moreAnswers?questionId=${this.questionId}&PageIndex=${pageParam}&AnswerLimit=${this.pageSize}`
         )
         .subscribe({
           next: (response) => {
@@ -34,7 +34,6 @@ export class AnswerService {
             this.hasNextPage = response.data.hasNextPage;
           },
           error: (error) => {
-            console.log(error);
             if (error.error.statusCode === 404) this.hasNextPage = false;
           },
         }),

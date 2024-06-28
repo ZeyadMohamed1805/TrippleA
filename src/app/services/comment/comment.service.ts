@@ -23,11 +23,10 @@ export class CommentService {
       pageParam > this.currentPage &&
       this.apiService
         .get<TPaginatedResponse<TComment[]>>(
-          `/moreComments?answerId=${this.answerId}&PageIndex=${pageParam}`
+          `/moreComments?answerId=${this.answerId}&PageIndex=${pageParam}&CommentLimit=${this.pageSize}`
         )
         .subscribe({
           next: (response) => {
-            console.log(response);
             this.comments = [...this.comments, ...response.data.data];
             this.totalPages = response.data.totalPages;
             this.pageSize = response.data.pageSize;
@@ -35,7 +34,6 @@ export class CommentService {
             this.hasNextPage = response.data.hasNextPage;
           },
           error: (error) => {
-            console.log(error);
             if (error.error.statusCode === 404) this.hasNextPage = false;
           },
         }),

@@ -15,5 +15,9 @@
     </li>
     }
   </ul>
+  } @if(commentService.hasNextPage) {
+  <button class="button" (click)="onViewMore()">
+    <span> View More </span>
+  </button>
   }
 </div>

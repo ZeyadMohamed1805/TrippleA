@@ -17,7 +17,10 @@ export class CommentComponent implements OnInit {
   constructor(public commentService: CommentService) {}
 
   ngOnInit(): void {
-    console.log(this.answerId);
     this.commentService.getComments(this.answerId!);
+  }
+
+  onViewMore(): void {
+    this.commentService.getNextPage();
   }
 }
