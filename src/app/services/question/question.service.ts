@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import { ApiService } from '../api/api.service';
 import { injectInfiniteQuery } from '@tanstack/angular-query-experimental';
-import { TQuestion } from '../../types/data/question';
-import { TPaginatedResponse } from '../../types/data/response';
+import { TPaginatedQuestion, TQuestion } from '../../types/data/question';
+import { TPaginatedResponse, TResponse } from '../../types/data/response';
 
 @Injectable({
   providedIn: 'root',
@@ -46,7 +46,9 @@ export class QuestionService {
   }
 
   getQuestion(id: number) {
-    return this.apiService.get<any>(`/api/Question/${id}`);
+    return this.apiService.get<TResponse<TPaginatedQuestion>>(
+      `/api/Question/${id}`
+    );
   }
 
   getNextPage() {
