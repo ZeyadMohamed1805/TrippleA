@@ -43,7 +43,7 @@ export class LoginComponent {
           'AAA_TOKEN',
           response.data.accessToken
         );
-        this.router.navigateByUrl('timeline');
+        this.router.navigateByUrl('loading');
       },
       error: () => {
         this.snackBar.open('Please try again', 'Ok!', {

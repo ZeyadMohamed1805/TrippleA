@@ -1,19 +1,29 @@
 <div class="filters">
-  <form>
-    <mat-tab-group color="accent">
+  <form [formGroup]="filtersForm">
+    <mat-tab-group color="accent" #tabs>
       <mat-tab label="Title">
         <div class="tab-container">
           <mat-form-field class="name" color="accent">
-            <mat-label>Name</mat-label>
-            <input matInput placeholder="Name" />
+            <mat-label>Title</mat-label>
+            <input matInput placeholder="Title" formControlName="title" />
           </mat-form-field>
         </div>
       </mat-tab>
       <mat-tab label="Category">
         <div class="tab-container">
-          <app-categories />
+          <mat-form-field color="accent" class="name">
+            <mat-label>Category</mat-label>
+            <mat-select formControlName="categoryId">
+              @for (category of categories; track category) {
+              <mat-option [value]="category.id">{{ category.name }}</mat-option>
+              }
+            </mat-select>
+          </mat-form-field>
         </div>
       </mat-tab>
     </mat-tab-group>
+    <button class="button" type="button" (click)="onSubmit(tabs.selectedIndex)">
+      Search
+    </button>
   </form>
 </div>

@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { QuestionComponent } from '../../common/question/question.component';
+import { TQuestion } from '../../../types/data/question';
 
 @Component({
   selector: 'app-results',
@@ -8,4 +9,6 @@ import { QuestionComponent } from '../../common/question/question.component';
   templateUrl: './results.component.html',
   styleUrl: './results.component.scss',
 })
-export class ResultsComponent {}
+export class ResultsComponent {
+  @Input() questions: TQuestion[] = [];
+}
