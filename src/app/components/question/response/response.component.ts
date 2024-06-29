@@ -20,8 +20,9 @@ export class ResponseComponent implements OnChanges {
   constructor(private readonly userService: UserService) {}
 
   ngOnChanges(): void {
-    this.userService.getUser(this.answer?.userId!).subscribe({
-      next: (response) => (this.userName = response.data.userName),
-    });
+    this.answer &&
+      this.userService.getUser(this.answer.userId).subscribe({
+        next: (response) => (this.userName = response.data.userName),
+      });
   }
 }

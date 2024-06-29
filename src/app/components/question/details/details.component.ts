@@ -1,4 +1,4 @@
-import { Component, Input, OnChanges, OnInit } from '@angular/core';
+import { Component, Input, OnChanges } from '@angular/core';
 import { AvatarComponent } from '../../common/avatar/avatar.component';
 import { TPaginatedQuestion } from '../../../types/data/question';
 import { DatePipe } from '@angular/common';
@@ -18,14 +18,13 @@ export class DetailsComponent implements OnChanges {
   constructor(private readonly userService: UserService) {}
 
   ngOnChanges(): void {
-    console.log(this.question);
-
-    this.userService.getUser(this.question?.userId!).subscribe({
-      next: (response) => {
-        console.log(response);
-        this.userName = response.data.userName;
-      },
-      error: (error) => console.log(error),
-    });
+    this.question &&
+      this.userService.getUser(this.question.userId).subscribe({
+        next: (response) => {
+          console.log(response);
+          this.userName = response.data.userName;
+        },
+        error: (error) => console.log(error),
+      });
   }
 }

@@ -1,4 +1,4 @@
-@if(data) {
+@if(data && data.userName) {
 <div class="user">
   <div class="avatar">{{ data.userName[0] }}</div>
   @if(data.createdIn) {
