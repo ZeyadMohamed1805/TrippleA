@@ -1,7 +1,7 @@
 <section class="notifications">
   <div class="container">
-    @for(item of [1, 2, 3]; track $index) {
-    <app-message [isRead]="$first ? false : true" />
+    @for(notification of notificationService.notifications; track $index) {
+    <app-message [notification]="notification" />
     }
   </div>
 </section>
