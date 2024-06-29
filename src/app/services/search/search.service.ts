@@ -5,9 +5,7 @@ import { TPaginatedResponse } from '../../types/data/response';
 import { injectInfiniteQuery } from '@tanstack/angular-query-experimental';
 import { ESearchType } from '../../types/enums/search';
 
-@Injectable({
-  providedIn: 'root',
-})
+@Injectable()
 export class SearchService {
   questions: TQuestion[] = [];
   pageSize: number = 3;
@@ -25,7 +23,9 @@ export class SearchService {
       pageParam > this.currentPage &&
       this.apiService
         .get<TPaginatedResponse<TQuestion[]>>(
-          `/GetQuestionsByCategoryIdPagenated?CategoryId=${this.categoryId}&PageNumber=${pageParam}&PageSize=${this.pageSize}`
+          `/GetQuestionsByCategoryIdPagenated?CategoryId=${
+            this.categoryId
+          }&PageNumber=${this.currentPage + 1}&PageSize=${this.pageSize}`
         )
         .subscribe({
           next: (response) => {
@@ -76,5 +76,14 @@ export class SearchService {
 
   getNextPage() {
     this.query.fetchNextPage();
+  }
+
+  reset() {
+    this.categoryId = 1;
+    this.questions = [];
+    this.pageSize = 3;
+    this.currentPage = 0;
+    this.totalPages = 1;
+    this.hasNextPage = true;
   }
 }

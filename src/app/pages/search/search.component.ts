@@ -1,4 +1,10 @@
-import { Component, HostListener, Inject, OnInit } from '@angular/core';
+import {
+  Component,
+  HostListener,
+  Inject,
+  OnDestroy,
+  OnInit,
+} from '@angular/core';
 import { FiltersComponent } from '../../components/search/filters/filters.component';
 import { ResultsComponent } from '../../components/search/results/results.component';
 import { SearchService } from '../../services/search/search.service';
@@ -13,6 +19,7 @@ import { MatDivider } from '@angular/material/divider';
   imports: [FiltersComponent, ResultsComponent, SpinnerComponent, MatDivider],
   templateUrl: './search.component.html',
   styleUrl: './search.component.scss',
+  providers: [SearchService],
 })
 export class SearchComponent implements OnInit {
   isBottomReached: boolean = false;

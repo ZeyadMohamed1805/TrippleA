@@ -10,7 +10,10 @@
   <h1>
     {{ data?.title || "Title" }}
   </h1>
-  <p class="description">
+  <p
+    class="description"
+    [ngStyle]="{ 'min-height': data?.image === 'NOFile' && '120px' }"
+  >
     {{ data?.description || "Description" }}
   </p>
   @if (data?.image !== "NOFile") {
