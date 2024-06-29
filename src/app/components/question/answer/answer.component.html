@@ -1,5 +1,5 @@
 <div class="answers" (scroll)="isBottomReached && onScroll()">
-  <app-solve />
+  <app-solve [questionId]="questionId" />
   @if(answerService.answers.length) {
   <h2>Answers</h2>
   <ul>
