@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MessageComponent } from '../../components/notifications/message/message.component';
 import { TokenService } from '../../services/token/token.service';
+import { NotificationService } from '../../services/notification/notification.service';
 
 @Component({
   selector: 'app-notifications',
@@ -10,11 +11,10 @@ import { TokenService } from '../../services/token/token.service';
   styleUrl: './notifications.component.scss',
 })
 export class NotificationsComponent implements OnInit {
-  constructor(private readonly tokenService: TokenService) {}
+  constructor(public notificationService: NotificationService) {}
 
   ngOnInit(): void {
-    console.log(this.tokenService.getUserId());
-    console.log(this.tokenService.getEmail());
-    console.log(this.tokenService.getUsername());
+    this.notificationService.getNotifications();
+    console.log(this.notificationService.notifications);
   }
 }
