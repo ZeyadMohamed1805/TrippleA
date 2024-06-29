@@ -1,18 +1,17 @@
+@if(notification) {
 <div
   class="message"
-  [ngClass]="isRead ? 'isRead' : 'isUnread'"
+  [ngClass]="notification.isRead ? 'isRead' : 'isUnread'"
   (click)="onMessageClick()"
 >
   <app-avatar />
   <div class="description">
     <p>
-      Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquid vitae
-      iste voluptatum nobis architecto necessitatibus sint dignissimos
-      laboriosam, quasi a deleniti eligendi laborum consequuntur! In ut sapiente
-      voluptate provident deleniti!
+      {{ notification.message }}
     </p>
     <span>
-      {{ date | date }}
+      {{ notification.createdIn | date }}
     </span>
   </div>
 </div>
+}

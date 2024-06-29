@@ -2,6 +2,7 @@ import { Component, Input } from '@angular/core';
 import { AvatarComponent } from '../../common/avatar/avatar.component';
 import { DatePipe, NgClass } from '@angular/common';
 import { Router } from '@angular/router';
+import { TNotification } from '../../../types/data/notification';
 
 @Component({
   selector: 'app-message',
@@ -11,12 +12,11 @@ import { Router } from '@angular/router';
   styleUrl: './message.component.scss',
 })
 export class MessageComponent {
-  @Input({ required: true }) isRead: boolean | undefined;
-  date: number = Date.now();
+  @Input() notification: TNotification | undefined;
 
   constructor(private router: Router) {}
 
   onMessageClick(): void {
-    this.router.navigateByUrl('question');
+    this.router.navigateByUrl(`question/${this.notification?.id}`);
   }
 }
