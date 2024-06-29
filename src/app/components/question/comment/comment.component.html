@@ -1,5 +1,9 @@
-<div class="comment">
-  <textarea placeholder="Comment on this answer..."></textarea>
+<form class="comment" [formGroup]="commentForm">
+  <textarea
+    (keydown.enter)="onSubmit()"
+    formControlName="content"
+    placeholder="Comment on this answer..."
+  ></textarea>
   @if(commentService.comments.length) {
   <h3>Comments</h3>
   <ul class="comments">
@@ -11,8 +15,8 @@
     }
   </ul>
   } @if(commentService.hasNextPage) {
-  <button class="button" (click)="onViewMore()">
+  <button type="button" class="button" (click)="onViewMore()">
     <span> View More </span>
   </button>
   }
-</div>
+</form>

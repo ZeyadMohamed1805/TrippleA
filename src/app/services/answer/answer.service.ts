@@ -51,4 +51,8 @@ export class AnswerService {
   getNextPage() {
     this.query.fetchNextPage();
   }
+
+  postAnswers(answer: FormData) {
+    return this.apiService.post('/AddAnswer', answer);
+  }
 }

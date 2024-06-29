@@ -51,4 +51,8 @@ export class CommentService {
   getNextPage() {
     this.query.fetchNextPage();
   }
+
+  postComment(comment: { content: string; answerId: number }) {
+    return this.apiService.post('/AddComment', comment);
+  }
 }

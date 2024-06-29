@@ -1,9 +1,12 @@
-<div class="answer">
+<form class="answer" [formGroup]="answerForm">
   <div class="input">
     <div class="info">
       <app-avatar [data]="{ userName: userName! }" />
       <div class="data">
-        <textarea placeholder="Answer this question"></textarea>
+        <textarea
+          placeholder="Answer this question"
+          formControlName="description"
+        ></textarea>
       </div>
     </div>
     @if(previewImage) {<img
@@ -27,10 +30,14 @@
       {{ action }}
     </button>
     } @else {
-    <button type="button" class="poppins-medium">
+    <button
+      (click)="$index === 2 ? onClear() : onSubmit()"
+      type="button"
+      class="poppins-medium"
+    >
       <img src="../../../../assets/icons/bookmark.svg" alt="action" />
       {{ action }}
     </button>
     } }
   </div>
-</div>
+</form>
