@@ -35,7 +35,10 @@ export class SearchService {
             this.currentPage = response.data.currentPage;
             this.hasNextPage = response.data.hasNextPage;
           },
-          error: (error) => console.log(error),
+          error: (error) => {
+            console.log(error);
+            this.hasNextPage = false;
+          },
         }),
     initialPageParam: 1,
     getPreviousPageParam: () => this.currentPage - 1,
@@ -63,7 +66,11 @@ export class SearchService {
           this.questions = response.data.data;
           this.hasNextPage = false;
         },
-        error: (error) => console.log(error),
+        error: (error) => {
+          console.log(error);
+          this.questions = [];
+          this.hasNextPage = false;
+        },
       });
   }
 

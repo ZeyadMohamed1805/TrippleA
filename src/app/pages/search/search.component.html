@@ -1,10 +1,15 @@
 <section class="search">
   <div class="container">
     <app-filters (request)="onSubmit($event)" />
+    <mat-divider />
     <app-results [questions]="searchService.questions" />
     @if(searchService.hasNextPage) {
     <div class="spinner">
       <app-spinner />
+    </div>
+    } @else if(!searchService.questions.length) {
+    <div class="not-found">
+      <h1>Not Found</h1>
     </div>
     }
   </div>

@@ -22,5 +22,18 @@
             place-items: center;
             position: relative;
         }
+
+        .not-found {
+            width: 100%;
+            height: 100%;
+            display: grid;
+            place-items: center;
+            text-align: center;
+
+            h1 {
+                color: var(--dark-grey-color);
+                font-size: 32px;
+            }
+        }
     }
 }

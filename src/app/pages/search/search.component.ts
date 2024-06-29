@@ -5,11 +5,12 @@ import { SearchService } from '../../services/search/search.service';
 import { DOCUMENT } from '@angular/common';
 import { SpinnerComponent } from '../../components/loading/spinner/spinner.component';
 import { ESearchType } from '../../types/enums/search';
+import { MatDivider } from '@angular/material/divider';
 
 @Component({
   selector: 'app-search',
   standalone: true,
-  imports: [FiltersComponent, ResultsComponent, SpinnerComponent],
+  imports: [FiltersComponent, ResultsComponent, SpinnerComponent, MatDivider],
   templateUrl: './search.component.html',
   styleUrl: './search.component.scss',
 })
