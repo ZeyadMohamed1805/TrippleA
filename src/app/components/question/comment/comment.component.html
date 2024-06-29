@@ -6,7 +6,7 @@
     @for(comment of commentService.comments; track $index) {
     <li>
       <div class="data">
-        <app-avatar />
+        <app-avatar [data]="{ userName: comment.userId }" />
         <p>
           {{ comment.content }}
         </p>

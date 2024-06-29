@@ -19,7 +19,7 @@
         </li>
       </ul>
       <div class="avatar" [matMenuTriggerFor]="menu">
-        <app-avatar />
+        <app-avatar [data]="{ userName: userName! }" />
       </div>
       <mat-menu #menu="matMenu">
         <button mat-menu-item (click)="onAvatarClick('profile')">

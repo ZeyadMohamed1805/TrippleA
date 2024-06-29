@@ -7,11 +7,12 @@
     <li>
       <div class="answer">
         <div class="user">
-          <app-avatar />
-          <div class="data">
-            <h3>{{ answer.userId }}</h3>
-            <span>{{ answer.createdIn | date }}</span>
-          </div>
+          <app-avatar
+            [data]="{
+              userName: answer.userId,
+              createdIn: answer.createdIn.toString()
+            }"
+          />
           <div
             class="votes"
             [ngStyle]="{

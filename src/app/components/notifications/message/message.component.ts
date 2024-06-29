@@ -1,8 +1,9 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { AvatarComponent } from '../../common/avatar/avatar.component';
 import { DatePipe, NgClass } from '@angular/common';
 import { Router } from '@angular/router';
 import { TNotification } from '../../../types/data/notification';
+import { TAvatar } from '../../../types/data/avatar';
 
 @Component({
   selector: 'app-message',
@@ -11,12 +12,19 @@ import { TNotification } from '../../../types/data/notification';
   templateUrl: './message.component.html',
   styleUrl: './message.component.scss',
 })
-export class MessageComponent {
+export class MessageComponent implements OnInit {
   @Input() notification: TNotification | undefined;
+  avatar: TAvatar | undefined;
 
   constructor(private router: Router) {}
 
   onMessageClick(): void {
     this.router.navigateByUrl(`question/${this.notification?.id}`);
+  }
+
+  ngOnInit(): void {
+    this.avatar = {
+      userName: this.notification?.responder || '',
+    };
   }
 }

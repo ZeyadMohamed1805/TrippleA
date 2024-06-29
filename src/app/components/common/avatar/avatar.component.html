@@ -1,1 +1,11 @@
-<div class="avatar">Z</div>
+@if(data) {
+<div class="user">
+  <div class="avatar">{{ data.userName[0] }}</div>
+  @if(data.createdIn) {
+  <div class="data">
+    <h3>{{ data.userName }}</h3>
+    <span>{{ data.createdIn | date }}</span>
+  </div>
+  }
+</div>
+}

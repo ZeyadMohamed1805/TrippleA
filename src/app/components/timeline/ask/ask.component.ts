@@ -13,6 +13,7 @@ import { ApiService } from '../../../services/api/api.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { TCategory } from '../../../types/data/category';
 import { TResponse } from '../../../types/data/response';
+import { TokenService } from '../../../services/token/token.service';
 
 @Component({
   selector: 'app-ask',
@@ -32,11 +33,13 @@ export class AskComponent implements OnInit {
   previewImage: string | undefined;
   image: any = undefined;
   questionForm: FormGroup;
+  userName: string | undefined;
 
   constructor(
     private router: Router,
     private formBuilder: FormBuilder,
     private apiService: ApiService,
+    private tokenService: TokenService,
     private snackBar: MatSnackBar
   ) {
     this.questionForm = this.formBuilder.group({
@@ -47,6 +50,7 @@ export class AskComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.userName = this.tokenService.getUsername();
     this.apiService.get<TResponse<TCategory[]>>('/api/category').subscribe({
       next: (response) => (this.categories = response.data),
       error: () => {

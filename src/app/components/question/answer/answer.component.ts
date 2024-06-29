@@ -1,4 +1,4 @@
-import { Component, HostListener, Inject, Input } from '@angular/core';
+import { Component, HostListener, Inject, Input, OnInit } from '@angular/core';
 import { AvatarComponent } from '../../common/avatar/avatar.component';
 import { CommentComponent } from '../comment/comment.component';
 import { DOCUMENT, DatePipe, NgIf, NgStyle } from '@angular/common';
@@ -22,7 +22,7 @@ import { SpinnerComponent } from '../../loading/spinner/spinner.component';
   styleUrl: './answer.component.scss',
   providers: [AnswerService],
 })
-export class AnswerComponent {
+export class AnswerComponent implements OnInit {
   actions: string[] = ['Upvote', 'Comment', 'Downvote'];
   @Input() questionId: number | undefined;
   isBottomReached: boolean = false;
