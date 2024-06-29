@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { MessageComponent } from '../../components/notifications/message/message.component';
-import { TokenService } from '../../services/token/token.service';
 import { NotificationService } from '../../services/notification/notification.service';
 
 @Component({
@@ -14,7 +13,7 @@ export class NotificationsComponent implements OnInit {
   constructor(public notificationService: NotificationService) {}
 
   ngOnInit(): void {
-    this.notificationService.getNotifications();
-    console.log(this.notificationService.notifications);
+    this.notificationService.connect();
+    this.notificationService.receiveNotifications();
   }
 }

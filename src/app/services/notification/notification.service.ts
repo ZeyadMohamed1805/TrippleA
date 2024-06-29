@@ -1,31 +1,28 @@
 import { Injectable } from '@angular/core';
-import { TokenService } from '../token/token.service';
-import { ApiService } from '../api/api.service';
+import * as signalR from '@microsoft/signalr';
 
 @Injectable({
   providedIn: 'root',
 })
 export class NotificationService {
-  userId: string | undefined;
-  notifications: any = [];
+  private hubConnection: signalR.HubConnection | undefined;
 
-  constructor(
-    private readonly tokenService: TokenService,
-    private readonly apiService: ApiService
-  ) {
-    this.userId = tokenService.getUserId();
-  }
+  constructor() {}
 
-  getNotifications() {
-    this.notifications = this.apiService
-      .get(`/api/Notification?userId=${this.userId}`)
-      .subscribe({
-        next: (response) => {
-          console.log(response);
-        },
-        error: (error) => {
-          console.log(error);
-        },
-      });
-  }
+  public connect = () => {
+    this.hubConnection = new signalR.HubConnectionBuilder()
+      .withUrl('https://localhost:7061/notificationHub')
+      .build();
+
+    this.hubConnection
+      .start()
+      .then(() => console.log('Connection started'))
+      .catch((err) => console.log('Error while starting connection: ' + err));
+  };
+
+  public receiveNotifications = () => {
+    this.hubConnection!.on('ReceiveNotification', (user, message) => {
+      console.log(`Message from ${user}: ${message}`);
+    });
+  };
 }
