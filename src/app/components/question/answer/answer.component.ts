@@ -5,6 +5,7 @@ import { DOCUMENT, DatePipe, NgIf, NgStyle } from '@angular/common';
 import { SolveComponent } from '../solve/solve.component';
 import { AnswerService } from '../../../services/answer/answer.service';
 import { SpinnerComponent } from '../../loading/spinner/spinner.component';
+import { ResponseComponent } from '../response/response.component';
 
 @Component({
   selector: 'app-answer',
@@ -14,6 +15,7 @@ import { SpinnerComponent } from '../../loading/spinner/spinner.component';
     CommentComponent,
     SolveComponent,
     SpinnerComponent,
+    ResponseComponent,
     NgStyle,
     NgIf,
     DatePipe,

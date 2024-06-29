@@ -5,45 +5,7 @@
   <ul>
     @for(answer of answerService.answers; track $index) {
     <li>
-      <div class="answer">
-        <div class="user">
-          <app-avatar
-            [data]="{
-              userName: answer.userId,
-              createdIn: answer.createdIn.toString()
-            }"
-          />
-          <div
-            class="votes"
-            [ngStyle]="{
-              'border-color':
-                answer.votes > 0
-                  ? 'var(--success-color)'
-                  : answer.votes < 0
-                  ? 'var(--fail-color)'
-                  : 'var(--black-color)'
-            }"
-          >
-            {{ answer.votes > 0 ? "+" : answer.votes < 0 ? "-" : null }}
-            {{ answer.votes < 1 ? answer.votes * -1 : answer.votes }}
-          </div>
-        </div>
-        <p class="description">
-          {{ answer.description }}
-        </p>
-        <img class="answer-image" [src]="answer.image" alt="Answer" />
-        <div class="actions">
-          @for( action of actions; track action ) {
-          <div class="action">
-            <img src="../../../../assets/icons/bookmark.svg" alt="Action" />
-            <span>
-              {{ action }}
-            </span>
-          </div>
-          }
-        </div>
-        <app-comment [answerId]="answer.id" />
-      </div>
+      <app-response [answer]="answer" />
     </li>
     }
   </ul>
