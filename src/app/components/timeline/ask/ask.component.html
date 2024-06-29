@@ -1,7 +1,7 @@
 <div class="ask">
   <form class="input" [formGroup]="questionForm" (ngSubmit)="onSubmit()">
     <div class="info">
-      <app-avatar />
+      <app-avatar [data]="{ userName: userName! }" />
       <div class="data">
         <mat-form-field color="accent">
           <mat-label>Category</mat-label>

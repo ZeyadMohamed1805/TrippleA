@@ -1,10 +1,11 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { AvatarComponent } from '../../components/common/avatar/avatar.component';
 import { Router, RouterLink } from '@angular/router';
 import { MatIconModule } from '@angular/material/icon';
 import { MatBadgeModule } from '@angular/material/badge';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatDivider } from '@angular/material/divider';
+import { TokenService } from '../../services/token/token.service';
 
 @Component({
   selector: 'app-header',
@@ -20,13 +21,21 @@ import { MatDivider } from '@angular/material/divider';
   templateUrl: './header.component.html',
   styleUrl: './header.component.scss',
 })
-export class HeaderComponent {
+export class HeaderComponent implements OnInit {
+  userName: string | undefined;
   links: { icon: string; path: string }[] = [
     { icon: '../../../assets/icons/timeline.svg', path: '/timeline' },
     { icon: '../../../assets/icons/search.svg', path: '/search' },
   ];
 
-  constructor(private router: Router) {}
+  constructor(
+    private readonly router: Router,
+    private readonly tokenService: TokenService
+  ) {}
+
+  ngOnInit(): void {
+    this.userName = this.tokenService.getUsername();
+  }
 
   onAvatarClick(route: string): void {
     this.router.navigateByUrl(route);

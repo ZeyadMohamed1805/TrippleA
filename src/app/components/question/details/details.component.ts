@@ -1,7 +1,8 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, OnChanges } from '@angular/core';
 import { AvatarComponent } from '../../common/avatar/avatar.component';
 import { TPaginatedQuestion } from '../../../types/data/question';
 import { DatePipe } from '@angular/common';
+import { UserService } from '../../../services/user/user.service';
 
 @Component({
   selector: 'app-details',
@@ -10,6 +11,20 @@ import { DatePipe } from '@angular/common';
   templateUrl: './details.component.html',
   styleUrl: './details.component.scss',
 })
-export class DetailsComponent {
+export class DetailsComponent implements OnChanges {
   @Input() question: TPaginatedQuestion | undefined;
+  userName: string | undefined;
+
+  constructor(private readonly userService: UserService) {}
+
+  ngOnChanges(): void {
+    this.question &&
+      this.userService.getUser(this.question.userId).subscribe({
+        next: (response) => {
+          console.log(response);
+          this.userName = response.data.userName;
+        },
+        error: (error) => console.log(error),
+      });
+  }
 }

@@ -5,12 +5,7 @@
   <ul class="comments">
     @for(comment of commentService.comments; track $index) {
     <li>
-      <div class="data">
-        <app-avatar />
-        <p>
-          {{ comment.content }}
-        </p>
-      </div>
+      <app-reply [comment]="comment" />
       @if(!$last) {<mat-divider />}
     </li>
     }

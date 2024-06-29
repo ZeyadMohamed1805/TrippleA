@@ -4,7 +4,7 @@
   [ngClass]="notification.isRead ? 'isRead' : 'isUnread'"
   (click)="onMessageClick()"
 >
-  <app-avatar />
+  <app-avatar [data]="avatar" />
   <div class="description">
     <p>
       {{ notification.message }}

@@ -1,12 +1,6 @@
 <!-- @if(data) { -->
 <div class="question">
-  <div class="user">
-    <app-avatar />
-    <div class="data">
-      <h3>{{ data?.userName || "Username" }}</h3>
-      <span>{{ data?.createdIn || "2022/11/11" | date }}</span>
-    </div>
-  </div>
+  @if(data) {<app-avatar [data]="avatar" />}
   <h1>
     {{ data?.title || "Title" }}
   </h1>

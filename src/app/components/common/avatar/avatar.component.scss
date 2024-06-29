@@ -1,10 +1,21 @@
-.avatar {
-    background-color: var(--opacity-color);
-    width: 52px;
-    height: 52px;
-    border-radius: 50%;
-    display: grid;
-    place-items: center;
-    font-size: 24px;
-    cursor: pointer;
+.user {
+    width: 100%;
+    display: flex;
+    gap: 16px;
+
+    .avatar {
+        background-color: var(--opacity-color);
+        width: 52px;
+        height: 52px;
+        border-radius: 50%;
+        display: grid;
+        place-items: center;
+        font-size: 24px;
+        cursor: pointer;
+    }
+
+    .data {
+        display: flex;
+        flex-direction: column;
+    }
 }
