@@ -4,6 +4,7 @@ import { CommentComponent } from '../comment/comment.component';
 import { TAnswer } from '../../../types/data/answer';
 import { NgStyle } from '@angular/common';
 import { UserService } from '../../../services/user/user.service';
+import { VoteService } from '../../../services/vote/vote.service';
 
 @Component({
   selector: 'app-response',
@@ -11,13 +12,17 @@ import { UserService } from '../../../services/user/user.service';
   imports: [AvatarComponent, CommentComponent, NgStyle],
   templateUrl: './response.component.html',
   styleUrl: './response.component.scss',
+  providers: [VoteService],
 })
 export class ResponseComponent implements OnChanges {
   actions: string[] = ['Upvote', 'Comment', 'Downvote'];
   @Input() answer: TAnswer | undefined;
   userName: string | undefined;
 
-  constructor(private readonly userService: UserService) {}
+  constructor(
+    private readonly userService: UserService,
+    public voteService: VoteService
+  ) {}
 
   ngOnChanges(): void {
     this.answer &&

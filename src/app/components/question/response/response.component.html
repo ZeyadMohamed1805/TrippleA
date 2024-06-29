@@ -28,7 +28,14 @@
   <img class="answer-image" [src]="answer.image" alt="Answer" />
   <div class="actions">
     @for( action of actions; track action ) {
-    <div class="action">
+    <div
+      class="action"
+      (click)="
+        $first
+          ? voteService.upVote(answer.id)
+          : $last && voteService.downVote(answer.id)
+      "
+    >
       <img src="../../../../assets/icons/bookmark.svg" alt="Action" />
       <span>
         {{ action }}

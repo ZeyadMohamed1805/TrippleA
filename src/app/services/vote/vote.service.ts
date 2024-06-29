@@ -41,7 +41,7 @@ export class VoteService {
       .subscribe({
         next: () => {
           this.votes++;
-          this.snackBar.open('Answer Upvoted!', 'Awesome!');
+          this.snackBar.open('Answer Downvoted!', 'Awesome!');
         },
         error: (error) => {
           console.log(error);
