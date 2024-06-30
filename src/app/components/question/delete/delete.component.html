@@ -1,1 +1,12 @@
-<p>delete works!</p>
+<div class="delete">
+  <h2 mat-dialog-title>Delete Comment</h2>
+  <mat-dialog-content>
+    <span> Would you like to delete this comment? </span>
+  </mat-dialog-content>
+  <mat-dialog-actions>
+    <button mat-button mat-dialog-close><span>Cancel</span></button>
+    <button mat-button mat-dialog-close cdkFocusInitial (click)="onConfirm()">
+      <span>Confirm</span>
+    </button>
+  </mat-dialog-actions>
+</div>
