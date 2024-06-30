@@ -12,7 +12,10 @@
         }
         <li>
           <a routerLink="notifications">
-            <div matBadge="0" matBadgeColor="warn">
+            <div
+              [matBadge]="notificationService.notifications.length"
+              matBadgeColor="warn"
+            >
               <img src="../../../assets/icons/notification.svg" alt="avatar" />
             </div>
           </a>
