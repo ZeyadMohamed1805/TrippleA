@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { IntroComponent } from '../../components/profile/intro/intro.component';
 import { TokenService } from '../../services/token/token.service';
 import { TabsComponent } from '../../components/profile/tabs/tabs.component';
+import { UserService } from '../../services/user/user.service';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-profile',
@@ -11,11 +13,18 @@ import { TabsComponent } from '../../components/profile/tabs/tabs.component';
   styleUrl: './profile.component.scss',
 })
 export class ProfileComponent implements OnInit {
-  userName: string | undefined;
+  userId: string | undefined;
 
-  constructor(public tokenService: TokenService) {}
+  constructor(
+    private readonly activatedRoute: ActivatedRoute,
+    public tokenService: TokenService,
+    public userService: UserService
+  ) {}
 
   ngOnInit(): void {
-    this.userName = this.tokenService.getUsername();
+    this.activatedRoute.params.subscribe((params) => {
+      this.userId = params['id'];
+    });
+    this.userId && this.userService.getUserProfile(this.userId!);
   }
 }
