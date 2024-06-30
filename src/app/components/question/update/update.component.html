@@ -1,0 +1,26 @@
+@if (data.comment) {
+<form class="update" [formGroup]="formGroup">
+  <mat-form-field appearance="fill" color="accent" class="field">
+    <mat-label>Content</mat-label>
+    <textarea
+      matInput
+      formControlName="content"
+      placeholder="Update content..."
+    ></textarea>
+  </mat-form-field>
+  <mat-dialog-actions>
+    <button type="button" mat-button mat-dialog-close>
+      <span>Cancel</span>
+    </button>
+    <button
+      type="button"
+      mat-button
+      mat-dialog-close
+      cdkFocusInitial
+      (click)="onConfirm()"
+    >
+      <span>Confirm</span>
+    </button>
+  </mat-dialog-actions>
+</form>
+}

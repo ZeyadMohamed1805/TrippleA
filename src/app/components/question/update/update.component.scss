@@ -1,0 +1,21 @@
+.update {
+    width: 320px;
+    padding: 16px;
+    background-color: var(--white-color);
+    color: var(--alice-blue);
+
+    .field {
+        width: 100%;
+    }
+    
+    textarea {
+        width: 100%;
+        resize: none;
+        padding: 16px;
+        height: 120px;
+    }
+
+    span {
+        color: var(--alice-blue);
+    }
+}

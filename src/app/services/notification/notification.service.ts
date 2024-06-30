@@ -11,6 +11,7 @@ import { TokenService } from '../token/token.service';
 export class NotificationService {
   private hubConnection: signalR.HubConnection | undefined;
   notifications: TNotification[] = [];
+  unreadCount: number = 0;
 
   constructor(
     private readonly apiService: ApiService,
@@ -34,6 +35,19 @@ export class NotificationService {
     });
   }
 
+  patchNotifications() {
+    const userId = this.tokenService.getUserId();
+    this.apiService
+      .patch<null, TResponse<string>>(
+        `/api/notification?userId=${userId}`,
+        null
+      )
+      .subscribe({
+        next: (response) => (this.unreadCount = 0),
+        error: (error) => console.log(error),
+      });
+  }
+
   getNotifications() {
     const userId = this.tokenService.getUserId();
     this.apiService
@@ -41,6 +55,9 @@ export class NotificationService {
       .subscribe({
         next: (response) => {
           this.notifications = response.data;
+          this.unreadCount = response.data.filter(
+            (notification) => notification.isRead === false
+          ).length;
         },
         error: (error) => console.log(error),
       });
