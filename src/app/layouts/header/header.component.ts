@@ -8,6 +8,7 @@ import { MatDivider } from '@angular/material/divider';
 import { TokenService } from '../../services/token/token.service';
 import { NotificationService } from '../../services/notification/notification.service';
 import { TitleCasePipe } from '@angular/common';
+import { AuthService } from '../../services/auth/auth.service';
 
 @Component({
   selector: 'app-header',
@@ -33,6 +34,7 @@ export class HeaderComponent implements OnInit {
 
   constructor(
     private readonly router: Router,
+    private readonly authService: AuthService,
     private readonly tokenService: TokenService,
     public notificationService: NotificationService
   ) {}
@@ -44,7 +46,11 @@ export class HeaderComponent implements OnInit {
     this.notificationService.receiveNotifications();
   }
 
-  onAvatarClick(route: string): void {
-    this.router.navigateByUrl(route);
+  onProfileClick(): void {
+    this.router.navigateByUrl('profile');
+  }
+
+  onLogout() {
+    this.authService.logout();
   }
 }

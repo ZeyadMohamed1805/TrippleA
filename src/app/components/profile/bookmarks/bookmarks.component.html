@@ -1,0 +1,24 @@
+@if(bookmarkService.bookmarks) {
+<div class="bookmarks-container">
+  @for(bookmark of bookmarkService.bookmarks; track bookmark.id) {
+  <app-details [question]="bookmark" />
+  <div class="actions">
+    @for( action of actions; track action ) {
+    <button
+      class="action poppins-medium"
+      (click)="
+        $first
+          ? onDetailsClick(bookmark.id)
+          : $last
+          ? onShareClick()
+          : onRemoveClick(bookmark.id)
+      "
+    >
+      <mat-icon>{{ icons[$index] }}</mat-icon>
+      {{ action }}
+    </button>
+    }
+  </div>
+  }
+</div>
+}
