@@ -3,6 +3,7 @@ import { ApiService } from '../api/api.service';
 import { TComment } from '../../types/data/comment';
 import { injectInfiniteQuery } from '@tanstack/angular-query-experimental';
 import { TPaginatedResponse } from '../../types/data/response';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Injectable()
 export class CommentService {
@@ -13,7 +14,10 @@ export class CommentService {
   hasNextPage: boolean = true;
   answerId: number | undefined;
 
-  constructor(private readonly apiService: ApiService) {}
+  constructor(
+    private readonly apiService: ApiService,
+    private readonly snackBar: MatSnackBar
+  ) {}
 
   query = injectInfiniteQuery(() => ({
     queryKey: [`comment-${this.answerId}`],
@@ -54,5 +58,42 @@ export class CommentService {
 
   postComment(comment: { content: string; answerId: number }) {
     return this.apiService.post('/AddComment', comment);
+  }
+
+  updateComment(id: number, content: string) {
+    this.apiService
+      .put<{ id: number; content: string }, null>('/editComment', {
+        id,
+        content,
+      })
+      .subscribe({
+        next: (response) => {
+          console.log(response);
+          const commentIndex: number = this.comments.findIndex(
+            (comment) => (comment.id = id)
+          );
+          this.comments[commentIndex].content = content;
+        },
+        error: () =>
+          this.snackBar.open('Please try again', 'Ok!', {
+            panelClass: ['error-snackbar'],
+          }),
+      });
+  }
+
+  deleteComment(id: number) {
+    this.apiService.delete<null>(`/deleteComment?id=${id}`).subscribe({
+      next: (response) => {
+        console.log(response);
+        const commentIndex: number = this.comments.findIndex(
+          (comment) => (comment.id = id)
+        );
+        this.comments.splice(commentIndex, 1);
+      },
+      error: () =>
+        this.snackBar.open('Please try again', 'Ok!', {
+          panelClass: ['error-snackbar'],
+        }),
+    });
   }
 }
