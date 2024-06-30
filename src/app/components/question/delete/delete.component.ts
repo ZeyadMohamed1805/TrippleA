@@ -13,11 +13,12 @@ import { CommentService } from '../../../services/comment/comment.service';
 })
 export class DeleteComponent {
   constructor(
-    @Inject(MAT_DIALOG_DATA) public commentId: number,
+    @Inject(MAT_DIALOG_DATA) public data: { type: string; id: number },
     private readonly commentService: CommentService
   ) {}
 
   onConfirm() {
-    this.commentService.deleteComment(this.commentId);
+    this.data.type === 'Comment' &&
+      this.commentService.deleteComment(this.data.id);
   }
 }

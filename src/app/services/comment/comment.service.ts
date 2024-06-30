@@ -67,12 +67,8 @@ export class CommentService {
         content,
       })
       .subscribe({
-        next: (response) => {
-          console.log(response);
-          const commentIndex: number = this.comments.findIndex(
-            (comment) => (comment.id = id)
-          );
-          this.comments[commentIndex].content = content;
+        next: () => {
+          this.snackBar.open('Comment Updated!', 'Awesome!');
         },
         error: () =>
           this.snackBar.open('Please try again', 'Ok!', {
@@ -83,12 +79,8 @@ export class CommentService {
 
   deleteComment(id: number) {
     this.apiService.delete<null>(`/deleteComment?id=${id}`).subscribe({
-      next: (response) => {
-        console.log(response);
-        const commentIndex: number = this.comments.findIndex(
-          (comment) => (comment.id = id)
-        );
-        this.comments.splice(commentIndex, 1);
+      next: () => {
+        this.snackBar.open('Comment Deleted!', 'Awesome!');
       },
       error: () =>
         this.snackBar.open('Please try again', 'Ok!', {

@@ -34,13 +34,18 @@ export class ReplyComponent implements OnChanges {
 
   onUpdate() {
     this.dialog.open(UpdateComponent, {
-      data: this.comment?.id,
+      data: {
+        comment: this.comment,
+      },
     });
   }
 
   onDelete() {
     this.dialog.open(DeleteComponent, {
-      data: this.comment?.id,
+      data: {
+        type: 'Comment',
+        id: this.comment?.id,
+      },
     });
   }
 }
