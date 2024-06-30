@@ -14,6 +14,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 import { TCategory } from '../../../types/data/category';
 import { TResponse } from '../../../types/data/response';
 import { TokenService } from '../../../services/token/token.service';
+import { MatIcon } from '@angular/material/icon';
 
 @Component({
   selector: 'app-ask',
@@ -23,12 +24,14 @@ import { TokenService } from '../../../services/token/token.service';
     MatSelectModule,
     MatInputModule,
     ReactiveFormsModule,
+    MatIcon,
   ],
   templateUrl: './ask.component.html',
   styleUrl: './ask.component.scss',
 })
 export class AskComponent implements OnInit {
   actions: string[] = ['Ask', 'Search', 'Image', 'Clear'];
+  icons: string[] = ['question_answer', 'search', 'image', 'cancel'];
   categories: TCategory[] = [];
   previewImage: string | undefined;
   image: any = undefined;
@@ -43,9 +46,9 @@ export class AskComponent implements OnInit {
     private snackBar: MatSnackBar
   ) {
     this.questionForm = this.formBuilder.group({
-      categoryid: ['', Validators.required],
-      title: ['', Validators.required],
-      description: ['', Validators.required],
+      categoryid: [0],
+      title: [''],
+      description: [''],
     });
   }
 
@@ -79,23 +82,33 @@ export class AskComponent implements OnInit {
   }
 
   onSubmit(): void {
-    let formdata = new FormData();
+    console.log(this.questionForm.value);
 
-    Object.keys(this.questionForm.value).forEach((key) => {
-      formdata.append(key, this.questionForm.value[key]);
-    });
+    if (
+      this.questionForm.value.categoryid &&
+      this.questionForm.value.title.length &&
+      this.questionForm.value.description.length
+    ) {
+      let formdata = new FormData();
 
-    formdata.append('image', this.image);
+      Object.keys(this.questionForm.value).forEach((key) => {
+        formdata.append(key, this.questionForm.value[key]);
+      });
 
-    this.apiService.post<FormData, string>('/AddQuestion', formdata).subscribe({
-      next: () => {
-        this.snackBar.open('Question successfully added', 'Awesome!');
-        this.onClear();
-      },
-      error: () =>
-        this.snackBar.open('Please try again', 'Ok!', {
-          panelClass: ['error-snackbar'],
-        }),
-    });
+      formdata.append('image', this.image);
+
+      this.apiService
+        .post<FormData, string>('/AddQuestion', formdata)
+        .subscribe({
+          next: () => {
+            this.snackBar.open('Question successfully added', 'Awesome!');
+            this.onClear();
+          },
+          error: () =>
+            this.snackBar.open('Please try again', 'Ok!', {
+              panelClass: ['error-snackbar'],
+            }),
+        });
+    }
   }
 }

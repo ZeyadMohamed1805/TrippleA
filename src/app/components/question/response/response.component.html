@@ -10,12 +10,12 @@
     <div
       class="votes"
       [ngStyle]="{
-        'border-color':
+        'background-color':
           answer.votes > 0
             ? 'var(--success-color)'
             : answer.votes < 0
             ? 'var(--fail-color)'
-            : 'var(--black-color)'
+            : 'var(--light-blue-color)'
       }"
     >
       {{ answer.votes > 0 ? "+" : answer.votes < 0 ? "-" : null }}
@@ -36,7 +36,7 @@
           : $last && voteService.downVote(answer.id)
       "
     >
-      <img src="../../../../assets/icons/bookmark.svg" alt="Action" />
+      <mat-icon>{{ icons[$index] }}</mat-icon>
       <span>
         {{ action }}
       </span>

@@ -5,6 +5,7 @@
 
     .avatar {
         background-color: var(--opacity-color);
+        color: var(--dark-blue-color);
         width: 52px;
         height: 52px;
         border-radius: 50%;
@@ -15,6 +16,7 @@
     }
 
     .data {
+        color: var(--alice-blue);
         display: flex;
         flex-direction: column;
     }

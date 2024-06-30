@@ -1,5 +1,5 @@
 <div class="results">
   @for(question of questions; track $index ) {
   <app-question [data]="question" />
-  }
+  @if (!$last) {<mat-divider />} }
 </div>

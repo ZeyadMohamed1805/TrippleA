@@ -3,10 +3,14 @@
     <div class="info">
       <app-avatar [data]="{ userName: userName! }" />
       <div class="data">
-        <textarea
-          placeholder="Answer this question"
-          formControlName="description"
-        ></textarea>
+        <mat-form-field appearance="fill" color="accent">
+          <mat-label>Answer The Question</mat-label>
+          <textarea
+            matInput
+            formControlName="description"
+            placeholder="Your answer..."
+          ></textarea>
+        </mat-form-field>
       </div>
     </div>
     @if(previewImage) {<img
@@ -26,7 +30,7 @@
         accept="image/*"
         multiple
       />
-      <img src="../../../../assets/icons/bookmark.svg" alt="action" />
+      <mat-icon>image</mat-icon>
       {{ action }}
     </button>
     } @else {
@@ -35,7 +39,7 @@
       type="button"
       class="poppins-medium"
     >
-      <img src="../../../../assets/icons/bookmark.svg" alt="action" />
+      <mat-icon>{{ $index === 2 ? "clear" : "question_answer" }}</mat-icon>
       {{ action }}
     </button>
     } }

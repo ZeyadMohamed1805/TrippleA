@@ -2,8 +2,10 @@
     width: 100%;
     padding: 16px;
     display: flex;
+    align-items: center;
     gap: 16px;
     box-shadow: 0 0 1px;
+    color: var(--alice-blue);
     cursor: pointer;
     transition-duration: 0.25s;
 
@@ -20,10 +22,24 @@
             font-size: 12px;
         }
     }
+
+    .content {
+        display: flex;
+        align-items: center;
+        gap: 4px;
+    }
+
+    .alert {
+        height: 8px;
+        width: 8px;
+        border-radius: 50%;
+        background-color: var(--fail-color);
+        margin-left: auto;
+    }
 }
 
 .isUnread {
-    background-color: rgb(202, 253, 255);
+    background-color: var(--light-blue-color);
 }
 
 .isRead {

@@ -1,30 +1,36 @@
 <header>
   <nav>
     <img src="../../../assets/logos/dark-logo.svg" alt="Logo" />
+    <ul>
+      @for( link of links; track link ) {
+      <li>
+        <a [routerLink]="link.path">
+          <img [src]="link.icon" alt="icon" />
+          <h4 class="poppins-medium">
+            {{ link.path | titlecase }}
+          </h4>
+        </a>
+      </li>
+      }
+      <li>
+        <a routerLink="notifications">
+          <div
+            [matBadge]="notificationService.notifications.length"
+            matBadgeColor="warn"
+            class="notification"
+          >
+            <img src="../../../assets/icons/notification.svg" alt="avatar" />
+            <h4 class="poppins-medium">Notifications</h4>
+          </div>
+        </a>
+      </li>
+    </ul>
     <div class="content">
-      <ul>
-        @for( link of links; track link ) {
-        <li>
-          <a [routerLink]="link.path">
-            <img [src]="link.icon" alt="icon" />
-          </a>
-        </li>
-        }
-        <li>
-          <a routerLink="notifications">
-            <div
-              [matBadge]="notificationService.notifications.length"
-              matBadgeColor="warn"
-            >
-              <img src="../../../assets/icons/notification.svg" alt="avatar" />
-            </div>
-          </a>
-        </li>
-      </ul>
       <div class="avatar" [matMenuTriggerFor]="menu">
+        <h3>{{ userName }}</h3>
         <app-avatar [data]="{ userName: userName! }" />
       </div>
-      <mat-menu #menu="matMenu">
+      <mat-menu #menu="matMenu" [xPosition]="'before'" class="menu">
         <button mat-menu-item (click)="onAvatarClick('profile')">
           Profile
         </button>

@@ -11,6 +11,7 @@ import {
   FormGroup,
 } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { MatInputModule } from '@angular/material/input';
 
 @Component({
   selector: 'app-comment',
@@ -19,6 +20,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
     AvatarComponent,
     MatDivider,
     ReplyComponent,
+    MatInputModule,
     FormsModule,
     ReactiveFormsModule,
   ],
@@ -36,7 +38,7 @@ export class CommentComponent implements OnInit {
     private readonly snackBar: MatSnackBar
   ) {
     this.commentForm = this.formBuilder.group({
-      content: ['', Validators.required],
+      content: [''],
     });
   }
 
@@ -53,10 +55,7 @@ export class CommentComponent implements OnInit {
   }
 
   onSubmit(): void {
-    if (
-      !this.commentForm.invalid &&
-      this.commentForm.value.content.trim('').length
-    ) {
+    if (this.commentForm.value.content.trim('').length) {
       const body = {
         content: this.commentForm.value.content,
         answerId: this.answerId!,
