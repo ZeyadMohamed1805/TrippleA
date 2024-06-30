@@ -5,6 +5,9 @@ import { AvatarComponent } from '../../common/avatar/avatar.component';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
+import { MatDialog } from '@angular/material/dialog';
+import { UpdateComponent } from '../update/update.component';
+import { DeleteComponent } from '../delete/delete.component';
 
 @Component({
   selector: 'app-reply',
@@ -17,7 +20,10 @@ export class ReplyComponent implements OnChanges {
   @Input() comment: TComment | undefined;
   userName: string | undefined;
 
-  constructor(private readonly userService: UserService) {}
+  constructor(
+    private readonly userService: UserService,
+    private readonly dialog: MatDialog
+  ) {}
 
   ngOnChanges(): void {
     this.comment &&
@@ -26,7 +32,15 @@ export class ReplyComponent implements OnChanges {
       });
   }
 
-  onUpdate() {}
+  onUpdate() {
+    this.dialog.open(UpdateComponent, {
+      data: this.comment?.id,
+    });
+  }
 
-  onDelete() {}
+  onDelete() {
+    this.dialog.open(DeleteComponent, {
+      data: this.comment?.id,
+    });
+  }
 }
