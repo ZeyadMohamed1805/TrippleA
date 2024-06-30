@@ -15,5 +15,6 @@ export class NotificationsComponent implements OnInit {
   ngOnInit(): void {
     this.notificationService.connect();
     this.notificationService.receiveNotifications();
+    this.notificationService.patchNotifications();
   }
 }
