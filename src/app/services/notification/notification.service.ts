@@ -15,11 +15,7 @@ export class NotificationService {
   constructor(
     private readonly apiService: ApiService,
     private readonly tokenService: TokenService
-  ) {
-    this.connect();
-    this.getNotifications();
-    this.receiveNotifications();
-  }
+  ) {}
 
   connect() {
     this.hubConnection = new signalR.HubConnectionBuilder()
@@ -28,12 +24,12 @@ export class NotificationService {
 
     this.hubConnection
       .start()
-      .then(() => console.log('Connection started'))
+      .then(() => this.sendUserId())
       .catch((err) => console.log('Error while starting connection: ' + err));
   }
 
   receiveNotifications() {
-    this.hubConnection!.on('ReceiveNotification', (message) => {
+    this.hubConnection!.on('ReceiveNotification', () => {
       this.getNotifications();
     });
   }
@@ -45,9 +41,14 @@ export class NotificationService {
       .subscribe({
         next: (response) => {
           this.notifications = response.data;
-          console.log(response);
         },
         error: (error) => console.log(error),
       });
+  }
+
+  sendUserId() {
+    this.hubConnection
+      ?.invoke('reauthme', this.tokenService.getUserId())
+      .catch((err) => console.error(err));
   }
 }

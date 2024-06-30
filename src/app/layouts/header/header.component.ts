@@ -6,6 +6,7 @@ import { MatBadgeModule } from '@angular/material/badge';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatDivider } from '@angular/material/divider';
 import { TokenService } from '../../services/token/token.service';
+import { NotificationService } from '../../services/notification/notification.service';
 
 @Component({
   selector: 'app-header',
@@ -30,11 +31,15 @@ export class HeaderComponent implements OnInit {
 
   constructor(
     private readonly router: Router,
-    private readonly tokenService: TokenService
+    private readonly tokenService: TokenService,
+    public notificationService: NotificationService
   ) {}
 
   ngOnInit(): void {
     this.userName = this.tokenService.getUsername();
+    this.notificationService.connect();
+    this.notificationService.getNotifications();
+    this.notificationService.receiveNotifications();
   }
 
   onAvatarClick(route: string): void {
