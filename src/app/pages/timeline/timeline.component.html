@@ -4,7 +4,7 @@
     @for(question of questionService.questions; track question.id) {
     <mat-divider />
     <app-question [data]="question" />
-    } @if(questionService.hasNextPage) {
+    @if($index % 3 === 0) {<app-ads /> } } @if(questionService.hasNextPage) {
     <div class="spinner">
       <app-spinner />
     </div>

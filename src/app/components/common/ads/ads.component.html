@@ -1,1 +1,30 @@
-<p>ads works!</p>
+@if(advertisement) {
+<div class="advertisement">
+  <h2>Sponsored Ad</h2>
+  <div class="data">
+    <app-avatar [data]="{ userName: advertisement.companyName[0] }" />
+    <h1>
+      {{ advertisement.title || "Title" }}
+    </h1>
+  </div>
+  <p
+    class="description"
+    [ngStyle]="{ 'min-height': advertisement.image === 'NOFile' && '120px' }"
+  >
+    {{ advertisement.title }}
+  </p>
+  @if (advertisement.image !== "NOFile") {
+  <img
+    class="advertisement-image"
+    [src]="advertisement.image"
+    alt="Advertisement"
+  />
+  }
+  <div class="actions">
+    <button class="action poppins-medium" (click)="onVisitClick()">
+      <mat-icon>visit</mat-icon>
+      Visit Now
+    </button>
+  </div>
+</div>
+}
