@@ -7,6 +7,7 @@ import { MatMenuModule } from '@angular/material/menu';
 import { MatDivider } from '@angular/material/divider';
 import { TokenService } from '../../services/token/token.service';
 import { NotificationService } from '../../services/notification/notification.service';
+import { TitleCasePipe } from '@angular/common';
 
 @Component({
   selector: 'app-header',
@@ -18,6 +19,7 @@ import { NotificationService } from '../../services/notification/notification.se
     MatIconModule,
     MatMenuModule,
     MatDivider,
+    TitleCasePipe,
   ],
   templateUrl: './header.component.html',
   styleUrl: './header.component.scss',
@@ -25,8 +27,8 @@ import { NotificationService } from '../../services/notification/notification.se
 export class HeaderComponent implements OnInit {
   userName: string | undefined;
   links: { icon: string; path: string }[] = [
-    { icon: '../../../assets/icons/timeline.svg', path: '/timeline' },
-    { icon: '../../../assets/icons/search.svg', path: '/search' },
+    { icon: '../../../assets/icons/timeline.svg', path: 'timeline' },
+    { icon: '../../../assets/icons/search.svg', path: 'search' },
   ];
 
   constructor(

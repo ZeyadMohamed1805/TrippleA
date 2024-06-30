@@ -1,7 +1,7 @@
 .bookmarks {
     width: 100%;
     min-height: 100vh;
-    background-image: linear-gradient(30deg, var(--primary-color), var(--light-blue-color) , var(--primary-color));
+    background-image: var(--gradient-color);
     background-attachment: fixed;
     display: flex;
     justify-content: center;

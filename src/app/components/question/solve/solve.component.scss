@@ -1,5 +1,5 @@
 .answer {
-    background-color: var(--white-color);
+    background-color: var(--light-blue-color);
     padding: 16px;
     display: flex;
     flex-direction: column;
@@ -51,11 +51,12 @@
             cursor: pointer;
             border: none;
             outline: none;
-            background-color: transparent;
+            background-color: var(--secondary-color);
+            color: var(--black-color);
             text-align: center;
             font-size: 16px;
             padding: 16px 8px;
-            box-shadow: 0 0 1px;
+            box-shadow: 0 0 2px var(--alice-blue);
             display: flex;
             align-items: center;
             justify-content: center;
@@ -64,8 +65,7 @@
             white-space: nowrap;
 
             &:hover {
-                background-color: var(--secondary-color);
-                color: var(--white-color);
+                opacity: 0.5;
             }
         }
     }

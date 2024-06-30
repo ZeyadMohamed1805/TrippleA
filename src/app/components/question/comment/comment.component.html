@@ -1,9 +1,13 @@
 <form class="comment" [formGroup]="commentForm">
-  <textarea
-    (keydown.enter)="onSubmit()"
-    formControlName="content"
-    placeholder="Comment on this answer..."
-  ></textarea>
+  <mat-form-field appearance="fill" color="accent">
+    <mat-label>Description</mat-label>
+    <textarea
+      (keydown.enter)="onSubmit()"
+      matInput
+      formControlName="content"
+      placeholder="Comment on this answer..."
+    ></textarea>
+  </mat-form-field>
   @if(commentService.comments.length) {
   <h3>Comments</h3>
   <ul class="comments">

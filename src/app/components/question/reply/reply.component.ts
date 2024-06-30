@@ -1,4 +1,4 @@
-import { Component, Input, OnChanges, SimpleChanges } from '@angular/core';
+import { Component, Input, OnChanges } from '@angular/core';
 import { TComment } from '../../../types/data/comment';
 import { UserService } from '../../../services/user/user.service';
 import { AvatarComponent } from '../../common/avatar/avatar.component';

@@ -1,5 +1,5 @@
 .comment {
-    background-color: var(--alice-blue);
+    background-color: var(--light-blue-color);
     padding: 16px;
     display: flex;
     flex-direction: column;
@@ -32,8 +32,9 @@
     }
 
     .button {
+        width: 100%;
         background-color: var(--secondary-color);
-        color: var(--white-color);
+        color: white;
         padding: 8px 16px;
         font-size: 16px;
         border: none;

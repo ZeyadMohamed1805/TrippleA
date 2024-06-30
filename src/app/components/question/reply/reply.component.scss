@@ -1,4 +1,14 @@
 .data {
     display: flex;
     gap: 16px;
+
+    .description {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+
+        span {
+            font-size: 12px;
+        }
+    }
 }

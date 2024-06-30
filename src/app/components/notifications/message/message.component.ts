@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { AvatarComponent } from '../../common/avatar/avatar.component';
-import { DatePipe, NgClass } from '@angular/common';
+import { DatePipe, NgClass, NgIf } from '@angular/common';
 import { Router } from '@angular/router';
 import { TNotification } from '../../../types/data/notification';
 import { TAvatar } from '../../../types/data/avatar';
@@ -8,7 +8,7 @@ import { TAvatar } from '../../../types/data/avatar';
 @Component({
   selector: 'app-message',
   standalone: true,
-  imports: [AvatarComponent, NgClass, DatePipe],
+  imports: [AvatarComponent, NgClass, NgIf, DatePipe],
   templateUrl: './message.component.html',
   styleUrl: './message.component.scss',
 })

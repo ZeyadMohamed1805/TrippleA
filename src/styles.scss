@@ -1,11 +1,12 @@
 :root {
     --primary-color: #32BFBF;
     --secondary-color: #1C836D;
-    --light-blue-color: rgba(11, 170, 202, 0.4);
-    --white-color: #FFFFFF;
+    --light-blue-color: #12516B;
+    --white-color: rgb(43, 59, 78);
     --alice-blue: aliceblue;
     --dark-blue-color: #102E44;
-    --black-color: #121212;
+    --black-color: aliceblue;
+    --gradient-color: linear-gradient(30deg, rgb(22, 22, 44), rgb(22, 22, 44) , rgb(22, 22, 44));
     --light-grey-color: #807E7E;
     --dark-grey-color: #605F5F;
     --success-color: #34D15E;

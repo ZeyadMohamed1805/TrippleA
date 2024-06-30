@@ -6,16 +6,24 @@ import {
   FormGroup,
   FormsModule,
   ReactiveFormsModule,
-  Validators,
 } from '@angular/forms';
 import { AnswerService } from '../../../services/answer/answer.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { MatInputModule } from '@angular/material/input';
 import { NgIf } from '@angular/common';
+import { MatIcon } from '@angular/material/icon';
 
 @Component({
   selector: 'app-solve',
   standalone: true,
-  imports: [AvatarComponent, FormsModule, ReactiveFormsModule, NgIf],
+  imports: [
+    AvatarComponent,
+    FormsModule,
+    MatInputModule,
+    ReactiveFormsModule,
+    MatIcon,
+    NgIf,
+  ],
   templateUrl: './solve.component.html',
   styleUrl: './solve.component.scss',
 })
@@ -34,7 +42,7 @@ export class SolveComponent implements OnInit {
     private readonly snackBar: MatSnackBar
   ) {
     this.answerForm = this.formBuilder.group({
-      description: ['', Validators.required],
+      description: [''],
     });
   }
 
@@ -55,25 +63,27 @@ export class SolveComponent implements OnInit {
   }
 
   onSubmit(): void {
-    let formData = new FormData();
+    if (this.answerForm.value.description.length) {
+      let formData = new FormData();
 
-    Object.keys(this.answerForm.value).forEach((key) => {
-      formData.append(key, this.answerForm.value[key]);
-    });
+      Object.keys(this.answerForm.value).forEach((key) => {
+        formData.append(key, this.answerForm.value[key]);
+      });
 
-    formData.append('image', this.image);
-    formData.append('questionId', `${this.questionId}`);
+      formData.append('image', this.image);
+      formData.append('questionId', `${this.questionId}`);
 
-    this.answerService.postAnswers(formData).subscribe({
-      next: () => {
-        this.snackBar.open('Answer successfully added', 'Awesome!');
-        this.onClear();
-      },
-      error: () => {
-        this.snackBar.open('Please try again', 'Ok!', {
-          panelClass: ['error-snackbar'],
-        });
-      },
-    });
+      this.answerService.postAnswers(formData).subscribe({
+        next: () => {
+          this.snackBar.open('Answer successfully added', 'Awesome!');
+          this.onClear();
+        },
+        error: () => {
+          this.snackBar.open('Please try again', 'Ok!', {
+            panelClass: ['error-snackbar'],
+          });
+        },
+      });
+    }
   }
 }

@@ -1,8 +1,11 @@
 @if (comment) {
 <div class="data">
   <app-avatar [data]="{ userName: userName || '' }" />
-  <p>
-    {{ comment.content }}
-  </p>
+  <div class="description">
+    <div class="content">
+      <h3>{{ userName }}</h3>
+      {{ comment.content }}
+    </div>
+  </div>
 </div>
 }

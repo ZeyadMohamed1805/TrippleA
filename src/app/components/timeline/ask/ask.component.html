@@ -41,7 +41,7 @@
           accept="image/*"
           multiple
         />
-        <img src="../../../../assets/icons/bookmark.svg" alt="action" />
+        <mat-icon>{{ icons[$index] }}</mat-icon>
         {{ action }}
       </button>
       } @else if($index === 0) {
@@ -50,7 +50,7 @@
         class="poppins-medium"
         [disabled]="!questionForm.valid"
       >
-        <img src="../../../../assets/icons/bookmark.svg" alt="action" />
+        <mat-icon>{{ icons[$index] }}</mat-icon>
         {{ action }}
       </button>
       } @else {
@@ -59,7 +59,7 @@
         class="poppins-medium"
         (click)="$index === 1 ? onSearchClick() : $last && onClear()"
       >
-        <img src="../../../../assets/icons/bookmark.svg" alt="action" />
+        <mat-icon>{{ icons[$index] }}</mat-icon>
         {{ action }}
       </button>
       } }

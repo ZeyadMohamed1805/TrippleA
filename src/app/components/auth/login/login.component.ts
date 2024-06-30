@@ -12,6 +12,7 @@ import { NgIf } from '@angular/common';
 import { Router } from '@angular/router';
 import { AuthService } from '../../../services/auth/auth.service';
 import { StorageService } from '../../../services/storage/storage.service';
+import { TokenService } from '../../../services/token/token.service';
 
 @Component({
   selector: 'app-login',
@@ -28,6 +29,7 @@ export class LoginComponent {
     private router: Router,
     private authService: AuthService,
     private storageService: StorageService,
+    private tokenService: TokenService,
     private snackBar: MatSnackBar
   ) {
     this.loginForm = this.formBuilder.group({
@@ -43,6 +45,7 @@ export class LoginComponent {
           'AAA_TOKEN',
           response.data.accessToken
         );
+        this.tokenService.decodeToken();
         this.router.navigateByUrl('loading');
       },
       error: () => {

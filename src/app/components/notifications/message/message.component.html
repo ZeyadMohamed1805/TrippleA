@@ -6,12 +6,14 @@
 >
   <app-avatar [data]="avatar" />
   <div class="description">
-    <p>
-      {{ notification.message }}
-    </p>
-    <span>
+    <div class="content">
+      <h3>{{ notification.responder }}</h3>
+      {{ notification.message.slice(21) }}
+    </div>
+    <span class="poppins-medium">
       {{ notification.createdIn | date }}
     </span>
   </div>
+  <div class="alert" *ngIf="!notification.isRead"></div>
 </div>
 }

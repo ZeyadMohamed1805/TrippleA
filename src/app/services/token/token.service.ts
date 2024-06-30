@@ -10,7 +10,12 @@ export class TokenService {
 
   constructor(private readonly storageService: StorageService) {
     const token: string = this.storageService.getItem('AAA_TOKEN');
-    this.token = jwtDecode(token);
+    this.token = token && jwtDecode(token);
+  }
+
+  decodeToken() {
+    const token: string = this.storageService.getItem('AAA_TOKEN');
+    this.token = token && jwtDecode(token);
   }
 
   getUserId() {
