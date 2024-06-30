@@ -19,7 +19,12 @@
   }
   <div class="actions">
     @for( action of actions; track action ) {
-    <button class="action poppins-medium" (click)="$first && onDetailsClick()">
+    <button
+      class="action poppins-medium"
+      (click)="
+        $first ? onDetailsClick() : $last ? onShareClick() : onBookmarkClick()
+      "
+    >
       <mat-icon>{{ icons[$index] }}</mat-icon>
       {{ action }}
     </button>
