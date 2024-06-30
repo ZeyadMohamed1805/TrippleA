@@ -72,11 +72,30 @@ header {
                 }
             }
 
-            
+            div {
+                width: 100%;
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+
+                a, img {
+                    margin-left: auto;
+                }
+            }
         }
     }
 }
 
 ::ng-deep .mat-mdc-menu-content {
     width: 274.5px;
+}
+
+@media (max-width: 1100px) {
+    header nav ul { 
+        gap: 0;
+
+        li a h4 {
+            display: none;
+        }
+    }
 }
