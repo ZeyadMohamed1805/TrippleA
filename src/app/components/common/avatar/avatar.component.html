@@ -1,6 +1,15 @@
 @if(data && data.userName) {
 <div class="user">
-  <div class="avatar">{{ data.userName[0] }}</div>
+  <div
+    class="avatar"
+    [ngStyle]="{
+      width: size + 'px' || '52px',
+      height: size + 'px' || '52px',
+      fontSize: size ? size / 2 + 'px' : '24px'
+    }"
+  >
+    {{ data.userName[0] }}
+  </div>
   @if(data.createdIn) {
   <div class="data">
     <h3>{{ data.userName }}</h3>

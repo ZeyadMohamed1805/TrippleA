@@ -1,17 +1,26 @@
 <div class="intro shadow">
   <div class="intro-container">
-    <app-avatar />
-    <hr />
-    <div class="data-container">
-      <h1>Zeyad Mohamed</h1>
-      <div>
-        <p>
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorem,
-          optio. Ullam, eos magnam! Ullam possimus odit voluptate cumque hic,
-          quidem laboriosam vero maxime tempore earum?
-        </p>
-        <button>Update</button>
+    <app-avatar
+      [data]="{ userName: this.user ? this.user.userName[0] : '' }"
+      [size]="180"
+    />
+    <h1>{{ this.user?.userName }}</h1>
+    <div class="votes-container">
+      <div class="votes">
+        <span class="poppins-bold">{{ this.user?.votes }}</span>
+        <h2>
+          <mat-icon>how_to_vote</mat-icon>
+          Votes
+        </h2>
+      </div>
+      <div class="votes">
+        <span class="poppins-bold">{{ 50 }}</span>
+        <h2>
+          <mat-icon>bookmark</mat-icon>
+          Bookmarks
+        </h2>
       </div>
     </div>
+    <hr />
   </div>
 </div>

@@ -31,14 +31,9 @@
         <app-avatar [data]="{ userName: userName! }" />
       </div>
       <mat-menu #menu="matMenu" [xPosition]="'before'" class="menu">
-        <button mat-menu-item (click)="onAvatarClick('profile')">
-          Profile
-        </button>
-        <button mat-menu-item (click)="onAvatarClick('bookmarks')">
-          Bookmarks
-        </button>
+        <button mat-menu-item (click)="onProfileClick()">Profile</button>
         <mat-divider />
-        <button mat-menu-item (click)="onAvatarClick('auth')">Logout</button>
+        <button mat-menu-item (click)="onLogout()">Logout</button>
       </mat-menu>
     </div>
   </nav>
