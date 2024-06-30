@@ -1,19 +1,19 @@
 <div class="intro shadow">
   <div class="intro-container">
     <app-avatar
-      [data]="{ userName: this.user ? this.user.userName[0] : '' }"
+      [data]="{ userName: (userService.userProfile?.userName)![0] || '' }"
       [size]="180"
     />
-    <h1>{{ this.user?.userName }}</h1>
+    <h1>{{ userService.userProfile?.userName }}</h1>
     <div class="votes-container">
       <div class="votes">
-        <span class="poppins-bold">{{ this.user?.votes }}</span>
+        <span class="poppins-bold">{{ userService.userProfile?.votes }}</span>
         <h2>
           <mat-icon>how_to_vote</mat-icon>
           Votes
         </h2>
       </div>
-      <div class="votes">
+      <div class="votes" *ngIf="isItMe">
         <span class="poppins-bold">{{ bookmarkService.bookmarks.length }}</span>
         <h2>
           <mat-icon>bookmark</mat-icon>
