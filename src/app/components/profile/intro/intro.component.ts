@@ -5,6 +5,7 @@ import { TokenService } from '../../../services/token/token.service';
 import { UserService } from '../../../services/user/user.service';
 import { TUser } from '../../../types/data/user';
 import { MatIcon } from '@angular/material/icon';
+import { BookmarkService } from '../../../services/bookmark/bookmark.service';
 
 @Component({
   selector: 'app-intro',
@@ -18,6 +19,7 @@ export class IntroComponent {
 
   constructor(
     public userService: UserService,
+    public bookmarkService: BookmarkService,
     public tokenService: TokenService
   ) {}
 
