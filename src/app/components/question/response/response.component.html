@@ -25,7 +25,13 @@
   <p class="description">
     {{ answer.description }}
   </p>
-  <img class="answer-image" [src]="answer.image" alt="Answer" />
+  @if(answer.image !== "NoFile") {<img
+    class="answer-image"
+    [src]="answer.image"
+    alt="Answer"
+  />} @else {
+  <div class="space"></div>
+  }
   <div class="actions">
     @for( action of actions; track action ) {
     <button
