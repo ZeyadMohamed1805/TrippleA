@@ -18,6 +18,6 @@ export const routes: Routes = [
   { path: 'search', component: SearchComponent },
   { path: 'bookmarks', component: BookmarksComponent },
   { path: 'notifications', component: NotificationsComponent },
-  { path: 'profile', component: ProfileComponent },
+  { path: 'profile/:id', component: ProfileComponent },
   { path: '**', component: NotFoundComponent },
 ];

@@ -47,7 +47,7 @@ export class HeaderComponent implements OnInit {
   }
 
   onProfileClick(): void {
-    this.router.navigateByUrl('profile');
+    this.router.navigateByUrl(`profile/${this.tokenService.getUserId()}`);
   }
 
   onLogout() {

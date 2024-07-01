@@ -1,0 +1,47 @@
+<div class="answers">
+  <div class="answers-container">
+    @for(answer of userService.userProfile?.userProfileAnswers; track $index) {
+    <div class="answer">
+      <div class="user">
+        <h1>
+          {{ answer.questionTitle }}
+        </h1>
+        <div
+          class="votes"
+          [ngStyle]="{
+            'background-color':
+              answer.votes > 0
+                ? 'var(--success-color)'
+                : answer.votes < 0
+                ? 'var(--fail-color)'
+                : 'var(--light-blue-color)'
+          }"
+        >
+          {{ answer.votes > 0 ? "+" : answer.votes < 0 ? "-" : null }}
+          {{ answer.votes < 1 ? answer.votes * -1 : answer.votes }}
+        </div>
+      </div>
+      <p class="description">
+        {{ answer.answerContent }}
+      </p>
+      <div class="actions">
+        @for( action of actions; track action ) {
+        <div
+          class="action"
+          (click)="
+            $first
+              ? onVisitClick(answer.questionId)
+              : onDeleteClick(answer.answerId)
+          "
+        >
+          <mat-icon>{{ icons[$index] }}</mat-icon>
+          <span>
+            {{ action }}
+          </span>
+        </div>
+        }
+      </div>
+    </div>
+    }
+  </div>
+</div>
