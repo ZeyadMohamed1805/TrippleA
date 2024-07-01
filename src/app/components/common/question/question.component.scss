@@ -54,9 +54,3 @@
         }
     }
 }
-
-::ng-deep .mat-mdc-menu-panel, .mat-mdc-menu-panel  * {
-    background-color: var(--primary-color);
-    color: red !important;
-    white-space: nowrap;
-}

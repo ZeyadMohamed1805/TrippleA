@@ -18,8 +18,8 @@ export class MessageComponent implements OnInit {
 
   constructor(private router: Router) {}
 
-  onMessageClick(): void {
-    this.router.navigateByUrl(`question/${this.notification?.questionId}`);
+  onMessageClick(id: number): void {
+    this.notification && this.router.navigateByUrl(`question/${id}`);
   }
 
   ngOnInit(): void {
