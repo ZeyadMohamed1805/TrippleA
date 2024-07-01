@@ -1,1 +1,48 @@
-<p>questions works!</p>
+<div class="questions">
+  <div class="questions-container">
+    @for( question of userService.userProfile?.userProfileQuestions; track
+    $index ) {
+    <div class="question">
+      @if(userService.userProfile) {<app-avatar
+        [data]="{
+          userName: userService.userProfile.userName || '',
+          createdIn: question.createdIn
+        }"
+      />}
+      <h1>
+        {{ question.title }}
+      </h1>
+      <p
+        class="description"
+        [ngStyle]="{ 'min-height': question.image === 'NOFile' && '120px' }"
+      >
+        {{ question.description || "Description" }}
+      </p>
+      @if (question.image !== "NOFile") {
+      <img
+        class="question-image"
+        [src]="question.image || '../../../../assets/images/question.svg'"
+        alt="Question"
+      />
+      }
+      <div class="actions">
+        @for( action of actions; track action ) {
+        <button
+          class="action poppins-medium"
+          (click)="
+            $first
+              ? onDetailsClick(question.id)
+              : $last
+              ? onShareClick()
+              : onBookmarkClick(question.id)
+          "
+        >
+          <mat-icon>{{ icons[$index] }}</mat-icon>
+          {{ action }}
+        </button>
+        }
+      </div>
+    </div>
+    }
+  </div>
+</div>
