@@ -1,0 +1,80 @@
+<mat-accordion>
+  <mat-expansion-panel hideToggle disabled class="panel">
+    <mat-expansion-panel-header class="panel">
+      @for(column of displayedColumns; track $index) {
+      <mat-panel-description
+        ><span> {{ column | titlecase }} </span></mat-panel-description
+      >
+      }
+      <mat-panel-description
+        ><span> {{ "Action" }} </span></mat-panel-description
+      >
+    </mat-expansion-panel-header>
+  </mat-expansion-panel>
+  @for( element of ELEMENT_DATA; track $index ) {
+  <mat-expansion-panel
+    (opened)="panelOpenState = true"
+    (closed)="panelOpenState = false"
+    class="panel"
+  >
+    <mat-expansion-panel-header>
+      @for(column of displayedColumns; track $index) {
+      <mat-panel-description>
+        {{ element[displayedColumns[$index]] }}
+      </mat-panel-description>
+      }
+      <mat-panel-description>
+        <button
+          mat-button
+          (click)="onDelete($event, element[displayedColumns[0]])"
+        >
+          <span> Remove </span>
+        </button>
+      </mat-panel-description>
+    </mat-expansion-panel-header>
+    <form>
+      <h1>
+        <span>Update Product</span>
+      </h1>
+      @for(column of displayedColumns; track $index) {
+      <mat-form-field color="accent">
+        <mat-label>{{ displayedColumns[$index] | titlecase }}</mat-label>
+        <input
+          matInput
+          placeholder="{{ displayedColumns[$index] | titlecase }}"
+          [value]="element[displayedColumns[$index]]"
+        />
+      </mat-form-field>
+      }
+      <mat-divider />
+      <button
+        type="button"
+        mat-flat-button
+        color="warn"
+        mat-button
+        class="submit-button"
+      >
+        <span> Submit </span>
+      </button>
+    </form>
+  </mat-expansion-panel>
+  }
+</mat-accordion>
+
+<form class="add-form">
+  <h1>
+    <span>Post Form</span>
+  </h1>
+  @for(column of displayedColumns; track $index) {
+  <mat-form-field color="accent">
+    <mat-label>{{ displayedColumns[$index] | titlecase }}</mat-label>
+    <input
+      matInput
+      placeholder="{{ displayedColumns[$index] | titlecase }}"
+      [title]="displayedColumns[$index]"
+    />
+  </mat-form-field>
+  }
+  <mat-divider />
+  <button type="button" mat-button class="submit-button">Submit</button>
+</form>

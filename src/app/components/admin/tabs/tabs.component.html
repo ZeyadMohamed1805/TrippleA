@@ -1,44 +1,42 @@
 <mat-tab-group class="tabs">
-  <mat-tab label="Questions">
-    <app-table
-      [ELEMENT_DATA]="adminService.questions"
-      [displayedColumns]="[
-        'id',
-        'description',
-        'title',
-        'categoryName',
-        'action'
-      ]"
-    />
-  </mat-tab>
-  <mat-tab label="Answers">
-    <app-table
-      [ELEMENT_DATA]="answers"
-      [displayedColumns]="['id', 'description', 'questionId', 'action']"
+  <mat-tab label="Categories">
+    <app-accordion
+      [ELEMENT_DATA]="adminService.categories"
+      [displayedColumns]="['id', 'name']"
+      [endpoints]="['/AddCategory', '/EditCategory', '/DeleteCategory?id=']"
+      (emitter)="onEmit($event)"
     />
   </mat-tab>
   <mat-tab label="Advertisements">
-    <app-table
+    <app-accordion
       [ELEMENT_DATA]="adminService.ads"
-      [displayedColumns]="[
-        'id',
-        'title',
-        'companyLink',
-        'companyName',
-        'action'
-      ]"
+      [displayedColumns]="['id', 'title', 'companyLink', 'companyName']"
+      [endpoints]="['/AddAdvertisment', '', '/DeleteAdvertisement?id=']"
+      (emitter)="onEmit($event)"
     />
   </mat-tab>
-  <mat-tab label="Categories">
-    <app-table
-      [ELEMENT_DATA]="adminService.categories"
-      [displayedColumns]="['id', 'name', 'action']"
+  <mat-tab label="Questions">
+    <app-accordion
+      [ELEMENT_DATA]="adminService.questions"
+      [displayedColumns]="['id', 'description', 'title', 'categoryName']"
+      [endpoints]="['/AddQuestion', '/editQuestion', '/deleteQuestion?id=']"
+      (emitter)="onEmit($event)"
+    />
+  </mat-tab>
+  <mat-tab label="Answers">
+    <app-accordion
+      [ELEMENT_DATA]="adminService.answers"
+      [displayedColumns]="['id', 'description', 'questionId']"
+      [endpoints]="['/AddAnswer', '/editAnswer', '/deleteAnswer?id=']"
+      (emitter)="onEmit($event)"
     />
   </mat-tab>
   <mat-tab label="Users">
-    <app-table
-      [displayedColumns]="['email', 'password', 'userName', 'name', 'action']"
-      [ELEMENT_DATA]="users"
+    <app-accordion
+      [displayedColumns]="['id', 'userName', 'email']"
+      [endpoints]="['/Api/V1/User/CreateUser', '', '/DeleteUser?id=']"
+      (emitter)="onEmit($event)"
+      [ELEMENT_DATA]="adminService.users"
     />
   </mat-tab>
 </mat-tab-group>

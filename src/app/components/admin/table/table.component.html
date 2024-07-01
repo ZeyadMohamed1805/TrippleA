@@ -22,7 +22,7 @@
       </button>
       <mat-menu #options="matMenu">
         <button mat-menu-item>Update</button>
-        <button mat-menu-item>Delete</button>
+        <button mat-menu-item (click)="onDelete(element)">Delete</button>
       </mat-menu>
       } @else {
       {{ element[displayedColumns[$index]] }}
