@@ -11,15 +11,15 @@
       class="votes"
       [ngStyle]="{
         'background-color':
-          answer.votes > 0
+          voteService.votes > 0
             ? 'var(--success-color)'
-            : answer.votes < 0
+            : voteService.votes < 0
             ? 'var(--fail-color)'
             : 'var(--light-blue-color)'
       }"
     >
-      {{ answer.votes > 0 ? "+" : answer.votes < 0 ? "-" : null }}
-      {{ answer.votes < 1 ? answer.votes * -1 : answer.votes }}
+      {{ voteService.votes > 0 ? "+" : voteService.votes < 0 ? "-" : null }}
+      {{ voteService.votes < 1 ? voteService.votes * -1 : voteService.votes }}
     </div>
   </div>
   <p class="description">
@@ -28,19 +28,26 @@
   <img class="answer-image" [src]="answer.image" alt="Answer" />
   <div class="actions">
     @for( action of actions; track action ) {
-    <div
+    <button
       class="action"
+      [disabled]="voteService.hasVoted"
+      [ngStyle]="{
+        'background-color':
+          $first && voteService.hasUpvoted
+            ? 'var(--success-color)'
+            : $last && voteService.hasDownvoted
+            ? 'var(--fail-color)'
+            : 'var(--secondary-color)'
+      }"
       (click)="
-        $first
-          ? voteService.upVote(answer.id)
-          : $last && voteService.downVote(answer.id)
+        $first ? voteService.upVote(answer.id) : voteService.downVote(answer.id)
       "
     >
       <mat-icon>{{ icons[$index] }}</mat-icon>
       <span>
         {{ action }}
       </span>
-    </div>
+    </button>
     }
   </div>
   <app-comment [answerId]="answer.id" />
