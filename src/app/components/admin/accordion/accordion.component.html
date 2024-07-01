@@ -1,1 +1,152 @@
-<p>accordion works!</p>
+<mat-accordion>
+  <mat-expansion-panel hideToggle disabled>
+    <mat-expansion-panel-header>
+      <mat-panel-title
+        ><span style="color: black"> Image </span></mat-panel-title
+      >
+      <mat-panel-description
+        ><span style="color: black"> Name </span></mat-panel-description
+      >
+      <mat-panel-description
+        ><span style="color: black"> Price </span></mat-panel-description
+      >
+      <mat-panel-description
+        ><span style="color: black"> Quantity </span></mat-panel-description
+      >
+    </mat-expansion-panel-header>
+  </mat-expansion-panel>
+  @for( element of ELEMENT_DATA; track element.product.name ) {
+  <mat-expansion-panel
+    (opened)="panelOpenState = true"
+    (closed)="panelOpenState = false"
+  >
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        <img
+          src="{{ element.product.image }}"
+          alt="{{ element.product.name }}"
+          style="height: 32px; aspect-ratio: 3 / 2"
+        />
+      </mat-panel-title>
+      <mat-panel-description>
+        <span>
+          {{ element.product.name }}
+        </span>
+      </mat-panel-description>
+      <mat-panel-description>
+        <span>
+          {{ element.price | currency }}
+        </span>
+      </mat-panel-description>
+      <mat-panel-description>
+        <span>
+          {{ element.quantity }}
+        </span>
+      </mat-panel-description>
+    </mat-expansion-panel-header>
+    <form>
+      <h1>
+        <span>Update Product</span>
+      </h1>
+      <mat-form-field>
+        <mat-label>Name</mat-label>
+        <input
+          matInput
+          placeholder="Name"
+          [value]="element.product.name"
+          required
+        />
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>Price</mat-label>
+        <input
+          matInput
+          type="number"
+          placeholder="Price"
+          [value]="element.price"
+          required
+        />
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>Quantity</mat-label>
+        <input
+          matInput
+          number
+          placeholder="Quantity"
+          [value]="element.quantity"
+          required
+        />
+      </mat-form-field>
+      <mat-divider />
+      <button mat-button class="submit-button">Submit</button>
+    </form>
+  </mat-expansion-panel>
+  }
+</mat-accordion>
+
+<form (submit)="addProduct()" [formGroup]="formGroup">
+  <h1>
+    <span>Add Product</span>
+  </h1>
+  <div>
+    <mat-label>Images</mat-label>
+    <input
+      type="file"
+      (change)="onFileSelected($event)"
+      accept="image/*"
+      multiple
+      placeholder="h"
+    />
+  </div>
+  <mat-form-field>
+    <mat-label>Name</mat-label>
+    <input matInput placeholder="Name" required formControlName="firstCtrl" />
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>Price</mat-label>
+    <input
+      matInput
+      type="number"
+      placeholder="Price"
+      required
+      formControlName="secondCtrl"
+    />
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>Quantity</mat-label>
+    <input
+      matInput
+      number
+      placeholder="Quantity"
+      required
+      formControlName="thirdCtrl"
+    />
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>Description</mat-label>
+    <input
+      matInput
+      number
+      placeholder="Description"
+      required
+      formControlName="fifthCtrl"
+    />
+  </mat-form-field>
+  <mat-form-field>
+    <mat-select
+      matInput
+      placeholder="Categories"
+      class="select"
+      formControlName="sixthCtrl"
+      multiple
+    >
+      @for (category of categories; track category._id) {
+      <mat-option [value]="category">
+        <span>{{ category.name }}</span>
+      </mat-option>
+      }
+    </mat-select>
+  </mat-form-field>
+  <mat-divider />
+  <button mat-button class="submit-button">Submit</button>
+</form>
