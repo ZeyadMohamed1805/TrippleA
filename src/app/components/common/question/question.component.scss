@@ -22,6 +22,10 @@
         object-fit: cover;
     }
 
+    .space {
+        min-height: 160px;
+    }
+
     .actions {
         width: 100%;
         display: grid;

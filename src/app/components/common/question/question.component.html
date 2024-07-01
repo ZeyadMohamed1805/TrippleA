@@ -10,12 +10,14 @@
   >
     {{ data?.description || "Description" }}
   </p>
-  @if (data?.image !== "NOFile") {
+  @if (data?.image !== "NoFile") {
   <img
     class="question-image"
     [src]="data?.image || '../../../../assets/images/question.svg'"
     alt="Question"
   />
+  } @else {
+  <div class="space"></div>
   }
   <div class="actions">
     @for( action of actions; track action ) {
