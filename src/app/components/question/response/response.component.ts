@@ -16,8 +16,8 @@ import { MatIcon } from '@angular/material/icon';
   providers: [VoteService],
 })
 export class ResponseComponent implements OnChanges {
-  actions: string[] = ['Upvote', 'Comment', 'Downvote'];
-  icons: string[] = ['thumb_up', 'comment', 'thumb_down'];
+  actions: string[] = ['Upvote', 'Downvote'];
+  icons: string[] = ['thumb_up', 'thumb_down'];
   @Input() answer: TAnswer | undefined;
   userName: string | undefined;
 
@@ -27,9 +27,11 @@ export class ResponseComponent implements OnChanges {
   ) {}
 
   ngOnChanges(): void {
-    this.answer &&
+    if (this.answer) {
+      this.voteService.votes = this.answer?.votes || 0;
       this.userService.getUser(this.answer.userId).subscribe({
         next: (response) => (this.userName = response.data.userName),
       });
+    }
   }
 }
