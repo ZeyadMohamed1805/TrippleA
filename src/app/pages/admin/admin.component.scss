@@ -1,6 +1,6 @@
 .admin {
     width: 100%;
-    min-height: 100vh;
+    min-height: calc(100vh - 132px);
     background-image: var(--gradient-color);
     background-attachment: fixed;
     display: flex;
@@ -9,7 +9,7 @@
 
     .container {
         width: 100%;
-        max-width: 1000px;
+        max-width: 1400px;
         background-color: var(--white-color);
         display: flex;
         flex-direction: column;

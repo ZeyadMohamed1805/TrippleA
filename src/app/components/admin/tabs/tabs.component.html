@@ -1,20 +1,20 @@
 <mat-tab-group class="tabs">
   <mat-tab label="Categories">
     <app-accordion
-      [ELEMENT_DATA]="categories"
+      [ELEMENT_DATA]="adminService.categories"
       [displayedColumns]="['id', 'name']"
     />
   </mat-tab>
   <mat-tab label="Advertisements">
     <app-accordion
-      [ELEMENT_DATA]="ads"
+      [ELEMENT_DATA]="adminService.ads"
       [displayedColumns]="['id', 'title', 'companyLink', 'companyName']"
     />
   </mat-tab>
   <mat-tab label="Questions">
     <app-accordion
-      [ELEMENT_DATA]="questions"
-      [displayedColumns]="['id', 'description', 'title', 'categoryid']"
+      [ELEMENT_DATA]="adminService.questions"
+      [displayedColumns]="['id', 'description', 'title', 'categoryName']"
     />
   </mat-tab>
   <mat-tab label="Answers">
