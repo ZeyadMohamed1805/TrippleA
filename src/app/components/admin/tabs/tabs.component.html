@@ -1,0 +1,32 @@
+<mat-tab-group class="tabs">
+  <mat-tab label="Categories">
+    <app-accordion
+      [ELEMENT_DATA]="categories"
+      [displayedColumns]="['id', 'name']"
+    />
+  </mat-tab>
+  <mat-tab label="Advertisements">
+    <app-accordion
+      [ELEMENT_DATA]="ads"
+      [displayedColumns]="['id', 'title', 'companyLink', 'companyName']"
+    />
+  </mat-tab>
+  <mat-tab label="Questions">
+    <app-accordion
+      [ELEMENT_DATA]="questions"
+      [displayedColumns]="['id', 'description', 'title', 'categoryid']"
+    />
+  </mat-tab>
+  <mat-tab label="Answers">
+    <app-accordion
+      [ELEMENT_DATA]="answers"
+      [displayedColumns]="['id', 'description', 'questionId']"
+    />
+  </mat-tab>
+  <mat-tab label="Users">
+    <app-accordion
+      [displayedColumns]="['email', 'password', 'userName', 'name']"
+      [ELEMENT_DATA]="users"
+    />
+  </mat-tab>
+</mat-tab-group>

@@ -8,6 +8,7 @@ import { NotificationsComponent } from './pages/notifications/notifications.comp
 import { ProfileComponent } from './pages/profile/profile.component';
 import { QuestionComponent } from './pages/question/question.component';
 import { NotFoundComponent } from './pages/not-found/not-found.component';
+import { AdminComponent } from './pages/admin/admin.component';
 
 export const routes: Routes = [
   { path: '', pathMatch: 'full', redirectTo: 'loading' },
@@ -18,6 +19,7 @@ export const routes: Routes = [
   { path: 'search', component: SearchComponent },
   { path: 'bookmarks', component: BookmarksComponent },
   { path: 'notifications', component: NotificationsComponent },
+  { path: 'admin', component: AdminComponent },
   { path: 'profile/:id', component: ProfileComponent },
   { path: '**', component: NotFoundComponent },
 ];
