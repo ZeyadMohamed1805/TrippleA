@@ -33,7 +33,7 @@
         </button>
       </mat-panel-description>
     </mat-expansion-panel-header>
-    <form>
+    <form (ngSubmit)="onPost($event)">
       <h1>
         <span>Update Product</span>
       </h1>
@@ -41,6 +41,8 @@
       <mat-form-field color="accent">
         <mat-label>{{ displayedColumns[$index] | titlecase }}</mat-label>
         <input
+          #output
+          [id]="displayedColumns[$index]"
           matInput
           placeholder="{{ displayedColumns[$index] | titlecase }}"
           [value]="element[displayedColumns[$index]]"
@@ -49,7 +51,7 @@
       }
       <mat-divider />
       <button
-        type="button"
+        type="submit"
         mat-flat-button
         color="warn"
         mat-button

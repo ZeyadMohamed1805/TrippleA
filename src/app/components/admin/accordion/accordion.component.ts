@@ -49,6 +49,7 @@ export class AccordionComponent {
   @Input() ELEMENT_DATA: any = [];
   @Output() emitter = new EventEmitter<any>();
   @ViewChildren('input') inputs: any;
+  @ViewChildren('output') outputs: any;
   panelOpenState = false;
   dataSource = this.ELEMENT_DATA;
 
@@ -57,9 +58,19 @@ export class AccordionComponent {
   onDelete(event: any, id: string) {
     event.stopPropagation();
     this.adminService.delete(`${this.endpoints[2]}${id}`);
-    // this.emitter.emit(id);
   }
-  onUpdate() {}
+
+  onUpdate() {
+    const body: any = {};
+
+    this.outputs._results.forEach(
+      (result: any) =>
+        (body[`${result.nativeElement.id}`] = result.nativeElement.value)
+    );
+
+    this.adminService.put(`${this.endpoints[1]}`, body);
+  }
+
   onPost(data: any) {
     const body: any = {};
     this.inputs._results.forEach(
