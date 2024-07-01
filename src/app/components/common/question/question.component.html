@@ -20,17 +20,25 @@
   <div class="space"></div>
   }
   <div class="actions">
-    @for( action of actions; track action ) {
+    @for( action of actions; track action ) { @if($last) {
+    <button [matMenuTriggerFor]="menu" class="action poppins-medium">
+      <mat-icon>{{ icons[$index] }}</mat-icon>
+      {{ action }}
+    </button>
+    } @else {
     <button
       class="action poppins-medium"
-      (click)="
-        $first ? onDetailsClick() : $last ? onShareClick() : onBookmarkClick()
-      "
+      (click)="$first ? onDetailsClick() : onBookmarkClick()"
     >
       <mat-icon>{{ icons[$index] }}</mat-icon>
       {{ action }}
     </button>
-    }
+    } }
   </div>
+  <mat-menu #menu="matMenu" class="menu">
+    <button mat-menu-item (click)="copyLink()">
+      <span>http://localhost:4200/question/{{ data?.id }}</span>
+      <mat-icon>content_copy</mat-icon>
+    </button>
+  </mat-menu>
 </div>
-<!-- } -->
