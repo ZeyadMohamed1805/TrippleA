@@ -19,15 +19,23 @@ export class AdminService {
       error: (error) => console.log(error),
     });
     this.apiService.get('/GetQuestionsPaginated').subscribe({
-      next: (response: any) => (this.questions = response.data),
-      error: (error) => console.log(error),
-    });
-    this.apiService.get('/moreAnswers').subscribe({
-      next: (response: any) => (this.answers = response.data),
+      next: (response: any) =>
+        (this.questions = response.data.data.map((question: any) => ({
+          id: question.id,
+          title: question.title,
+          description: question.description,
+          categoryName: question.categoryName,
+        }))),
       error: (error) => console.log(error),
     });
     this.apiService.get('/api/Advertisment').subscribe({
-      next: (response: any) => (this.ads = response.data),
+      next: (response: any) =>
+        (this.ads = response.data.map((ad: any) => ({
+          id: ad.id,
+          title: ad.title,
+          companyLink: ad.companyLink,
+          companyName: ad.companyName,
+        }))),
       error: (error) => console.log(error),
     });
   }

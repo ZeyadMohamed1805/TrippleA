@@ -1,6 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { MatTabsModule } from '@angular/material/tabs';
 import { AccordionComponent } from '../accordion/accordion.component';
+import { AdminService } from '../../../services/admin/admin.service';
 
 @Component({
   selector: 'app-tabs',
@@ -9,7 +10,7 @@ import { AccordionComponent } from '../accordion/accordion.component';
   templateUrl: './tabs.component.html',
   styleUrl: './tabs.component.scss',
 })
-export class TabsComponent {
+export class TabsComponent implements OnInit {
   categories: any[] = [
     { id: 1, name: 'test' },
     { id: 2, name: 'PD' },
@@ -51,4 +52,10 @@ export class TabsComponent {
       name: 'name',
     },
   ];
+
+  constructor(public adminService: AdminService) {}
+
+  ngOnInit(): void {
+    this.adminService.getAll();
+  }
 }
