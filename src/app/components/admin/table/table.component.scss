@@ -1,0 +1,12 @@
+table {
+    width: 100%;
+  }
+  
+  th.mat-sort-header-sorted {
+    color: black;
+  }
+  
+  table * {
+    background-color: var(--light-blue-color);
+    color: var(--alice-blue);
+  }
