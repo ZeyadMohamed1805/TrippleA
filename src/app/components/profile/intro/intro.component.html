@@ -7,17 +7,28 @@
     <h1>{{ userService.userProfile?.userName }}</h1>
     <div class="votes-container">
       <div class="votes">
+        <span class="poppins-bold">{{
+          userService.userProfile?.userProfileQuestions?.length
+        }}</span>
+        <h2>
+          <mat-icon>help</mat-icon>
+          Questions
+        </h2>
+      </div>
+      <div class="votes">
         <span class="poppins-bold">{{ userService.userProfile?.votes }}</span>
         <h2>
           <mat-icon>how_to_vote</mat-icon>
           Votes
         </h2>
       </div>
-      <div class="votes" *ngIf="isItMe">
-        <span class="poppins-bold">{{ bookmarkService.bookmarks.length }}</span>
+      <div class="votes">
+        <span class="poppins-bold">{{
+          userService.userProfile?.userProfileAnswers?.length
+        }}</span>
         <h2>
-          <mat-icon>bookmark</mat-icon>
-          Bookmarks
+          <mat-icon>question_answer</mat-icon>
+          Answers
         </h2>
       </div>
     </div>

@@ -14,17 +14,9 @@ import { NgIf } from '@angular/common';
   templateUrl: './intro.component.html',
   styleUrl: './intro.component.scss',
 })
-export class IntroComponent implements OnInit {
-  isItMe: boolean = true;
-
+export class IntroComponent {
   constructor(
     public userService: UserService,
-    public bookmarkService: BookmarkService,
     public tokenService: TokenService
   ) {}
-
-  ngOnInit(): void {
-    const userId: string = this.tokenService.getUserId();
-    this.isItMe = userId === this.userService.userProfile?.id;
-  }
 }

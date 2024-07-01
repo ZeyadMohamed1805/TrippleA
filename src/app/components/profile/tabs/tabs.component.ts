@@ -21,7 +21,7 @@ import { AnswersComponent } from '../answers/answers.component';
   styleUrl: './tabs.component.scss',
 })
 export class TabsComponent implements OnInit {
-  isItMe: boolean = true;
+  isItMe: boolean = false;
 
   constructor(
     public userService: UserService,
@@ -29,7 +29,7 @@ export class TabsComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    const userId: string = this.tokenService.getUserId();
-    this.isItMe = userId === this.userService.userProfile?.id;
+    this.isItMe =
+      this.tokenService.getUserId() === this.userService.userProfile?.id;
   }
 }
