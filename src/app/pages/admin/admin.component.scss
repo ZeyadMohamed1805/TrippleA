@@ -9,11 +9,11 @@
 
     .container {
         width: 100%;
-        max-width: 800px;
-        background-color: transparent;
+        max-width: 1000px;
+        background-color: var(--white-color);
         display: flex;
         flex-direction: column;
-        padding-bottom: 24px;
+        padding: 0 16px 16px 16px;
         gap: 4px;
     }
 }

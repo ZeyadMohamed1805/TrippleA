@@ -1,90 +1,65 @@
 <mat-accordion>
-  <mat-expansion-panel hideToggle disabled>
-    <mat-expansion-panel-header>
-      <mat-panel-title
-        ><span style="color: black"> Image </span></mat-panel-title
-      >
+  <mat-expansion-panel hideToggle disabled class="panel">
+    <mat-expansion-panel-header class="panel">
+      @for(column of displayedColumns; track $index) {
       <mat-panel-description
-        ><span style="color: black"> Name </span></mat-panel-description
+        ><span> {{ column | titlecase }} </span></mat-panel-description
       >
+      }
       <mat-panel-description
-        ><span style="color: black"> Price </span></mat-panel-description
-      >
-      <mat-panel-description
-        ><span style="color: black"> Quantity </span></mat-panel-description
+        ><span> {{ "Action" }} </span></mat-panel-description
       >
     </mat-expansion-panel-header>
   </mat-expansion-panel>
-  @for( element of ELEMENT_DATA; track element.product.name ) {
+  @for( element of ELEMENT_DATA; track $index ) {
   <mat-expansion-panel
     (opened)="panelOpenState = true"
     (closed)="panelOpenState = false"
+    class="panel"
   >
     <mat-expansion-panel-header>
-      <mat-panel-title>
-        <img
-          src="{{ element.product.image }}"
-          alt="{{ element.product.name }}"
-          style="height: 32px; aspect-ratio: 3 / 2"
-        />
-      </mat-panel-title>
+      @for(column of displayedColumns; track $index) {
       <mat-panel-description>
-        <span>
-          {{ element.product.name }}
-        </span>
+        {{ element[displayedColumns[$index]] }}
       </mat-panel-description>
+      }
       <mat-panel-description>
-        <span>
-          {{ element.price | currency }}
-        </span>
-      </mat-panel-description>
-      <mat-panel-description>
-        <span>
-          {{ element.quantity }}
-        </span>
+        <button mat-button (click)="deleteProduct('', $index)">
+          <span> Remove </span>
+        </button>
       </mat-panel-description>
     </mat-expansion-panel-header>
     <form>
       <h1>
         <span>Update Product</span>
       </h1>
+      @for(column of displayedColumns; track $index) {
       <mat-form-field>
         <mat-label>Name</mat-label>
         <input
           matInput
           placeholder="Name"
-          [value]="element.product.name"
+          [value]="element[displayedColumns[$index]]"
           required
         />
       </mat-form-field>
-      <mat-form-field>
-        <mat-label>Price</mat-label>
-        <input
-          matInput
-          type="number"
-          placeholder="Price"
-          [value]="element.price"
-          required
-        />
-      </mat-form-field>
-      <mat-form-field>
-        <mat-label>Quantity</mat-label>
-        <input
-          matInput
-          number
-          placeholder="Quantity"
-          [value]="element.quantity"
-          required
-        />
-      </mat-form-field>
+      }
       <mat-divider />
-      <button mat-button class="submit-button">Submit</button>
+      <button
+        type="button"
+        mat-flat-button
+        color="warn"
+        mat-button
+        class="submit-button"
+      >
+        <span> Submit </span>
+      </button>
     </form>
   </mat-expansion-panel>
   }
 </mat-accordion>
 
-<form (submit)="addProduct()" [formGroup]="formGroup">
+<!-- <form (submit)="addProduct()" [formGroup]="formGroup" class="add-form">
   <h1>
     <span>Add Product</span>
   </h1>
@@ -148,5 +123,5 @@
     </mat-select>
   </mat-form-field>
   <mat-divider />
-  <button mat-button class="submit-button">Submit</button>
-</form>
+  <button type="button" mat-button class="submit-button">Submit</button>
+</form> -->

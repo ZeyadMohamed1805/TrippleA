@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { MatSelectModule } from '@angular/material/select';
 import { MatTableModule } from '@angular/material/table';
 import { MatTabsModule } from '@angular/material/tabs';
@@ -20,6 +20,7 @@ import { MatIcon } from '@angular/material/icon';
 import { MatDivider } from '@angular/material/divider';
 import { ApiService } from '../../../services/api/api.service';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { MatButtonModule } from '@angular/material/button';
 
 @Component({
   selector: 'app-accordion',
@@ -34,6 +35,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
     ReactiveFormsModule,
     MatInputModule,
     MatIcon,
+    MatButtonModule,
     MatDivider,
     MatTabsModule,
     MatBadgeModule,
@@ -44,7 +46,7 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 })
 export class AccordionComponent {
   panelOpenState = false;
-  displayedColumns: string[] = ['image', 'name', 'price', 'quantity'];
+  @Input() displayedColumns: string[] = ['image', 'name', 'price', 'quantity'];
   amounts: Array<number> = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
   options: Array<string> = ['Buyer', 'Seller'];
   categories: Array<any> = [
@@ -151,6 +153,20 @@ export class AccordionComponent {
     //   });
   }
 
+  deleteProduct(id: string, index: number) {
+    // console.log(id, this.updateFormGroups[index].value);
+    // this.apiService
+    //   .deleteData<any>(`products/${id}`)
+    //   .pipe(takeUntil(this.destroyedFive))
+    //   .subscribe((response) => {
+    //     console.log(response);
+    //     this.openSnackBar('Product deleted successfully!', 'Close');
+    //     this.updateFormGroups.splice(index, 1);
+    //     this.ELEMENT_DATA.splice(index, 1);
+    //     this.dataSource = this.ELEMENT_DATA;
+    //   });
+  }
+
   formGroup = this._formBuilder.group({
     firstCtrl: [this.addProductInfo.name, Validators.required],
     secondCtrl: [this.addProductInfo.price, Validators.required],
@@ -158,26 +174,26 @@ export class AccordionComponent {
     fifthCtrl: [this.addProductInfo.description, Validators.required],
     sixthCtrl: [this.addProductInfo.categories, Validators.required],
   });
-  ELEMENT_DATA: Array<{
-    product: { image: string; name: string };
-    price: number;
-    quantity: number;
-  }> = [
+  @Input() ELEMENT_DATA: any = [
     {
-      product: { image: '../../../assets/images/light-logo.svg', name: 'Name' },
+      image: '../../../assets/images/light-logo.svg',
+      name: 'Name',
       price: 250,
       quantity: 0,
     },
     {
-      product: { image: '../../../assets/images/light-logo.svg', name: 'Name' },
+      image: '../../../assets/images/light-logo.svg',
+      name: 'Name',
       price: 250,
       quantity: 0,
     },
     {
-      product: { image: '../../../assets/images/light-logo.svg', name: 'Name' },
+      image: '../../../assets/images/light-logo.svg',
+      name: 'Name',
       price: 250,
       quantity: 0,
     },
   ];
+
   dataSource = this.ELEMENT_DATA;
 }

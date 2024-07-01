@@ -1,10 +1,10 @@
 import { Component } from '@angular/core';
-import { AccordionComponent } from '../../components/admin/accordion/accordion.component';
+import { TabsComponent } from '../../components/admin/tabs/tabs.component';
 
 @Component({
   selector: 'app-admin',
   standalone: true,
-  imports: [AccordionComponent],
+  imports: [TabsComponent],
   templateUrl: './admin.component.html',
   styleUrl: './admin.component.scss',
 })
