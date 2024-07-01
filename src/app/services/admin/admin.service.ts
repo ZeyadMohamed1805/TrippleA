@@ -38,6 +38,14 @@ export class AdminService {
         }))),
       error: (error) => console.log(error),
     });
+    this.apiService.get('/api/Answer').subscribe({
+      next: (response: any) => (this.answers = response.data),
+      error: (error) => console.log(error),
+    });
+    this.apiService.get('/GetUserList').subscribe({
+      next: (response: any) => (this.users = response.data),
+      error: (error) => console.log(error),
+    });
   }
 
   post(endpoint: string, body: any) {

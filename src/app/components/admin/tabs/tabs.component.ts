@@ -1,12 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { MatTabsModule } from '@angular/material/tabs';
+import { AccordionComponent } from '../accordion/accordion.component';
 import { AdminService } from '../../../services/admin/admin.service';
-import { TableComponent } from '../table/table.component';
 
 @Component({
   selector: 'app-tabs',
   standalone: true,
-  imports: [MatTabsModule, TableComponent],
+  imports: [MatTabsModule, AccordionComponent],
   templateUrl: './tabs.component.html',
   styleUrl: './tabs.component.scss',
 })
@@ -57,5 +57,9 @@ export class TabsComponent implements OnInit {
 
   ngOnInit(): void {
     this.adminService.getAll();
+  }
+
+  onEmit(event: any) {
+    console.log(event);
   }
 }
