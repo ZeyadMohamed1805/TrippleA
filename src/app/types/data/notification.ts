@@ -5,4 +5,5 @@ export type TNotification = {
   userId: string;
   responder: string;
   createdIn: Date;
+  questionId: number;
 };
