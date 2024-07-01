@@ -62,7 +62,7 @@
   }
 </mat-accordion>
 
-<form class="add-form" *ngIf="endpoints[0].length">
+<form class="add-form" *ngIf="endpoints[0].length" (ngSubmit)="onPost($event)">
   <h1>
     <span>Post Form</span>
   </h1>
@@ -72,15 +72,33 @@
     <input
       matInput
       placeholder="{{ displayedColumns[$index] | titlecase }}"
+      [id]="displayedColumns[$index]"
+      #input
       [title]="displayedColumns[$index]"
     />
   </mat-form-field>
   } @if(endpoints[0].toLowerCase().includes('user')) {
   <mat-form-field color="accent">
     <mat-label>{{ "Name" | titlecase }}</mat-label>
-    <input matInput placeholder="{{ 'Name' | titlecase }}" title="Name" />
+    <input
+      matInput
+      #input
+      id="name"
+      placeholder="{{ 'Name' | titlecase }}"
+      title="Name"
+    />
+  </mat-form-field>
+  <mat-form-field color="accent">
+    <mat-label>{{ "password" | titlecase }}</mat-label>
+    <input
+      matInput
+      #input
+      id="password"
+      placeholder="{{ 'password' | titlecase }}"
+      title="Password"
+    />
   </mat-form-field>
   }
   <mat-divider />
-  <button type="button" mat-button class="submit-button">Submit</button>
+  <button type="submit" mat-button class="submit-button">Submit</button>
 </form>

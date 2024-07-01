@@ -1,5 +1,12 @@
 import { CommonModule } from '@angular/common';
-import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
+import {
+  Component,
+  Input,
+  OnInit,
+  Output,
+  EventEmitter,
+  ViewChildren,
+} from '@angular/core';
 import { MatSelectModule } from '@angular/material/select';
 import { MatTableModule } from '@angular/material/table';
 import { MatTabsModule } from '@angular/material/tabs';
@@ -41,6 +48,7 @@ export class AccordionComponent {
   @Input() displayedColumns: string[] = [];
   @Input() ELEMENT_DATA: any = [];
   @Output() emitter = new EventEmitter<any>();
+  @ViewChildren('input') inputs: any;
   panelOpenState = false;
   dataSource = this.ELEMENT_DATA;
 
@@ -52,5 +60,24 @@ export class AccordionComponent {
     // this.emitter.emit(id);
   }
   onUpdate() {}
-  onPost() {}
+  onPost(data: any) {
+    const body: any = {};
+    this.inputs._results.forEach(
+      (result: any) =>
+        (body[`${result.nativeElement.id}`] = result.nativeElement.value)
+    );
+    if (this.endpoints[0].toLowerCase().includes('advert')) {
+      console.log(body);
+
+      let formData = new FormData();
+
+      Object.keys(body).forEach((key) => {
+        formData.append(key, body[key]);
+      });
+
+      this.adminService.post(`${this.endpoints[0]}`, formData);
+    } else {
+      this.adminService.post(`${this.endpoints[0]}`, body);
+    }
+  }
 }

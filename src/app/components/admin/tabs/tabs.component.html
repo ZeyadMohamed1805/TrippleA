@@ -11,7 +11,7 @@
     <app-accordion
       [ELEMENT_DATA]="adminService.ads"
       [displayedColumns]="['id', 'title', 'companyLink', 'companyName']"
-      [endpoints]="['/AddAdvertisment', '', '/DeleteAdvertisement?id=']"
+      [endpoints]="['/AddAdvertismet', '', '/DeleteAdvertisement?id=']"
       (emitter)="onEmit($event)"
     />
   </mat-tab>
