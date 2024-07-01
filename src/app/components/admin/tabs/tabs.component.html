@@ -19,7 +19,7 @@
     <app-accordion
       [ELEMENT_DATA]="adminService.questions"
       [displayedColumns]="['id', 'description', 'title', 'categoryName']"
-      [endpoints]="['/AddQuestion', '/editQuestion', '/deleteQuestion?id=']"
+      [endpoints]="['', '', '/deleteQuestion?id=']"
       (emitter)="onEmit($event)"
     />
   </mat-tab>
@@ -27,7 +27,7 @@
     <app-accordion
       [ELEMENT_DATA]="adminService.answers"
       [displayedColumns]="['id', 'description', 'questionId']"
-      [endpoints]="['/AddAnswer', '/editAnswer', '/deleteAnswer?id=']"
+      [endpoints]="['', '', '/deleteAnswer?id=']"
       (emitter)="onEmit($event)"
     />
   </mat-tab>

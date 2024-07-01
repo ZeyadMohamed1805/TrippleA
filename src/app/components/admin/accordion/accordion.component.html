@@ -15,6 +15,7 @@
   <mat-expansion-panel
     (opened)="panelOpenState = true"
     (closed)="panelOpenState = false"
+    [disabled]="!endpoints[1].length"
     class="panel"
   >
     <mat-expansion-panel-header>
@@ -61,18 +62,23 @@
   }
 </mat-accordion>
 
-<form class="add-form">
+<form class="add-form" *ngIf="endpoints[0].length">
   <h1>
     <span>Post Form</span>
   </h1>
   @for(column of displayedColumns; track $index) {
-  <mat-form-field color="accent">
+  <mat-form-field color="accent" *ngIf="!$first">
     <mat-label>{{ displayedColumns[$index] | titlecase }}</mat-label>
     <input
       matInput
       placeholder="{{ displayedColumns[$index] | titlecase }}"
       [title]="displayedColumns[$index]"
     />
+  </mat-form-field>
+  } @if(endpoints[0].toLowerCase().includes('user')) {
+  <mat-form-field color="accent">
+    <mat-label>{{ "Name" | titlecase }}</mat-label>
+    <input matInput placeholder="{{ 'Name' | titlecase }}" title="Name" />
   </mat-form-field>
   }
   <mat-divider />
