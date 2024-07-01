@@ -1,12 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { MatTabsModule } from '@angular/material/tabs';
-import { AccordionComponent } from '../accordion/accordion.component';
 import { AdminService } from '../../../services/admin/admin.service';
+import { TableComponent } from '../table/table.component';
 
 @Component({
   selector: 'app-tabs',
   standalone: true,
-  imports: [MatTabsModule, AccordionComponent],
+  imports: [MatTabsModule, TableComponent],
   templateUrl: './tabs.component.html',
   styleUrl: './tabs.component.scss',
 })

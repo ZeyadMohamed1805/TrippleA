@@ -1,31 +1,43 @@
 <mat-tab-group class="tabs">
-  <mat-tab label="Categories">
-    <app-accordion
-      [ELEMENT_DATA]="adminService.categories"
-      [displayedColumns]="['id', 'name']"
-    />
-  </mat-tab>
-  <mat-tab label="Advertisements">
-    <app-accordion
-      [ELEMENT_DATA]="adminService.ads"
-      [displayedColumns]="['id', 'title', 'companyLink', 'companyName']"
-    />
-  </mat-tab>
   <mat-tab label="Questions">
-    <app-accordion
+    <app-table
       [ELEMENT_DATA]="adminService.questions"
-      [displayedColumns]="['id', 'description', 'title', 'categoryName']"
+      [displayedColumns]="[
+        'id',
+        'description',
+        'title',
+        'categoryName',
+        'action'
+      ]"
     />
   </mat-tab>
   <mat-tab label="Answers">
-    <app-accordion
+    <app-table
       [ELEMENT_DATA]="answers"
-      [displayedColumns]="['id', 'description', 'questionId']"
+      [displayedColumns]="['id', 'description', 'questionId', 'action']"
+    />
+  </mat-tab>
+  <mat-tab label="Advertisements">
+    <app-table
+      [ELEMENT_DATA]="adminService.ads"
+      [displayedColumns]="[
+        'id',
+        'title',
+        'companyLink',
+        'companyName',
+        'action'
+      ]"
+    />
+  </mat-tab>
+  <mat-tab label="Categories">
+    <app-table
+      [ELEMENT_DATA]="adminService.categories"
+      [displayedColumns]="['id', 'name', 'action']"
     />
   </mat-tab>
   <mat-tab label="Users">
-    <app-accordion
-      [displayedColumns]="['email', 'password', 'userName', 'name']"
+    <app-table
+      [displayedColumns]="['email', 'password', 'userName', 'name', 'action']"
       [ELEMENT_DATA]="users"
     />
   </mat-tab>
