@@ -8,42 +8,25 @@
   <mat-tab label="Advertisements">
     <app-accordion
       [ELEMENT_DATA]="ads"
-      [displayedColumns]="[
-        'id',
-        'image',
-        'title',
-        'companyLink',
-        'companyName'
-      ]"
+      [displayedColumns]="['id', 'title', 'companyLink', 'companyName']"
     />
   </mat-tab>
   <mat-tab label="Questions">
     <app-accordion
       [ELEMENT_DATA]="questions"
-      [displayedColumns]="[
-        'id',
-        'description',
-        'title',
-        'image',
-        'createdIn',
-        'categoryName',
-        'userName'
-      ]"
+      [displayedColumns]="['id', 'description', 'title', 'categoryid']"
     />
   </mat-tab>
   <mat-tab label="Answers">
     <app-accordion
       [ELEMENT_DATA]="answers"
-      [displayedColumns]="[
-        'id',
-        'votes',
-        'createdIn',
-        'image',
-        'description',
-        'questionId',
-        'userId'
-      ]"
+      [displayedColumns]="['id', 'description', 'questionId']"
     />
   </mat-tab>
-  <mat-tab label="Users"> <app-accordion /> </mat-tab>
+  <mat-tab label="Users">
+    <app-accordion
+      [displayedColumns]="['email', 'password', 'userName', 'name']"
+      [ELEMENT_DATA]="users"
+    />
+  </mat-tab>
 </mat-tab-group>

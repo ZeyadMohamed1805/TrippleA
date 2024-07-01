@@ -24,7 +24,7 @@
       </mat-panel-description>
       }
       <mat-panel-description>
-        <button mat-button (click)="deleteProduct('', $index)">
+        <button mat-button>
           <span> Remove </span>
         </button>
       </mat-panel-description>
@@ -34,13 +34,12 @@
         <span>Update Product</span>
       </h1>
       @for(column of displayedColumns; track $index) {
-      <mat-form-field>
-        <mat-label>Name</mat-label>
+      <mat-form-field color="accent">
+        <mat-label>{{ displayedColumns[$index] | titlecase }}</mat-label>
         <input
           matInput
-          placeholder="Name"
+          placeholder="{{ displayedColumns[$index] | titlecase }}"
           [value]="element[displayedColumns[$index]]"
-          required
         />
       </mat-form-field>
       }
@@ -59,69 +58,20 @@
   }
 </mat-accordion>
 
-<!-- <form (submit)="addProduct()" [formGroup]="formGroup" class="add-form">
+<form class="add-form">
   <h1>
-    <span>Add Product</span>
+    <span>Post Form</span>
   </h1>
-  <div>
-    <mat-label>Images</mat-label>
-    <input
-      type="file"
-      (change)="onFileSelected($event)"
-      accept="image/*"
-      multiple
-      placeholder="h"
-    />
-  </div>
-  <mat-form-field>
-    <mat-label>Name</mat-label>
-    <input matInput placeholder="Name" required formControlName="firstCtrl" />
-  </mat-form-field>
-  <mat-form-field>
-    <mat-label>Price</mat-label>
+  @for(column of displayedColumns; track $index) {
+  <mat-form-field color="accent">
+    <mat-label>{{ displayedColumns[$index] | titlecase }}</mat-label>
     <input
       matInput
-      type="number"
-      placeholder="Price"
-      required
-      formControlName="secondCtrl"
+      placeholder="{{ displayedColumns[$index] | titlecase }}"
+      [title]="displayedColumns[$index]"
     />
   </mat-form-field>
-  <mat-form-field>
-    <mat-label>Quantity</mat-label>
-    <input
-      matInput
-      number
-      placeholder="Quantity"
-      required
-      formControlName="thirdCtrl"
-    />
-  </mat-form-field>
-  <mat-form-field>
-    <mat-label>Description</mat-label>
-    <input
-      matInput
-      number
-      placeholder="Description"
-      required
-      formControlName="fifthCtrl"
-    />
-  </mat-form-field>
-  <mat-form-field>
-    <mat-select
-      matInput
-      placeholder="Categories"
-      class="select"
-      formControlName="sixthCtrl"
-      multiple
-    >
-      @for (category of categories; track category._id) {
-      <mat-option [value]="category">
-        <span>{{ category.name }}</span>
-      </mat-option>
-      }
-    </mat-select>
-  </mat-form-field>
+  }
   <mat-divider />
   <button type="button" mat-button class="submit-button">Submit</button>
-</form> -->
+</form>
