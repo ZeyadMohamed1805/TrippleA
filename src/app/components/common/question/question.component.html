@@ -13,6 +13,7 @@
   @if (data?.image !== "NoFile") {
   <img
     class="question-image"
+    (click)="onExpand(data?.image!)"
     [src]="data?.image || '../../../../assets/images/question.svg'"
     alt="Question"
   />

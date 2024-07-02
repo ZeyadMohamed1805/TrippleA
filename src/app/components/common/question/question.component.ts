@@ -9,6 +9,8 @@ import { MatIcon } from '@angular/material/icon';
 import { BookmarkService } from '../../../services/bookmark/bookmark.service';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatSnackBar } from '@angular/material/snack-bar';
+import { MatDialog } from '@angular/material/dialog';
+import { ModalComponent } from '../modal/modal.component';
 
 @Component({
   selector: 'app-question',
@@ -27,7 +29,8 @@ export class QuestionComponent implements OnInit {
     private router: Router,
     private readonly bookmarkService: BookmarkService,
     private clipboard: Clipboard,
-    private snackBar: MatSnackBar
+    private snackBar: MatSnackBar,
+    private readonly dialog: MatDialog
   ) {}
 
   onDetailsClick(): void {
@@ -52,6 +55,14 @@ export class QuestionComponent implements OnInit {
       this.clipboard.copy(`http://localhost:4200/question/${this.data.id}`);
     this.snackBar.open('Link copied to clipboard!', 'Close', {
       duration: 2000,
+    });
+  }
+
+  onExpand(image: string) {
+    this.dialog.open(ModalComponent, {
+      data: {
+        image: image,
+      },
     });
   }
 }

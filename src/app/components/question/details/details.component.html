@@ -12,6 +12,13 @@
   <p class="description">
     {{ question.description }}
   </p>
-  <img class="question-image" [src]="question.image" alt="Question" />
+  @if(question.image !== "NoFile") {<img
+    class="question-image"
+    (click)="onExpand(question.image)"
+    [src]="question.image"
+    alt="Question"
+  />} @else {
+  <div class="space"></div>
+  }
 </div>
 }
