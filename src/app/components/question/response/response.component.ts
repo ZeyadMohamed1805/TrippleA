@@ -6,6 +6,8 @@ import { NgStyle } from '@angular/common';
 import { UserService } from '../../../services/user/user.service';
 import { VoteService } from '../../../services/vote/vote.service';
 import { MatIcon } from '@angular/material/icon';
+import { MatDialog } from '@angular/material/dialog';
+import { ModalComponent } from '../../common/modal/modal.component';
 
 @Component({
   selector: 'app-response',
@@ -23,7 +25,8 @@ export class ResponseComponent implements OnChanges {
 
   constructor(
     private readonly userService: UserService,
-    public voteService: VoteService
+    public voteService: VoteService,
+    private readonly dialog: MatDialog
   ) {}
 
   ngOnChanges(): void {
@@ -33,5 +36,13 @@ export class ResponseComponent implements OnChanges {
         next: (response) => (this.userName = response.data.userName),
       });
     }
+  }
+
+  onExpand(image: string) {
+    this.dialog.open(ModalComponent, {
+      data: {
+        image: image,
+      },
+    });
   }
 }

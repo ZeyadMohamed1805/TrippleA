@@ -3,6 +3,8 @@ import { AvatarComponent } from '../../common/avatar/avatar.component';
 import { TPaginatedQuestion } from '../../../types/data/question';
 import { DatePipe } from '@angular/common';
 import { UserService } from '../../../services/user/user.service';
+import { MatDialog } from '@angular/material/dialog';
+import { ModalComponent } from '../../common/modal/modal.component';
 
 @Component({
   selector: 'app-details',
@@ -15,7 +17,10 @@ export class DetailsComponent implements OnChanges {
   @Input() question: TPaginatedQuestion | undefined;
   userName: string | undefined;
 
-  constructor(private readonly userService: UserService) {}
+  constructor(
+    private readonly userService: UserService,
+    private readonly dialog: MatDialog
+  ) {}
 
   ngOnChanges(): void {
     this.question &&
@@ -26,5 +31,13 @@ export class DetailsComponent implements OnChanges {
         },
         error: (error) => console.log(error),
       });
+  }
+
+  onExpand(image: string) {
+    this.dialog.open(ModalComponent, {
+      data: {
+        image: image,
+      },
+    });
   }
 }

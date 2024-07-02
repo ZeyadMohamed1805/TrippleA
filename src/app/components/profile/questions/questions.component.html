@@ -21,27 +21,37 @@
       @if (question.image !== "NOFile") {
       <img
         class="question-image"
+        (click)="onExpand(question.image)"
         [src]="question.image || '../../../../assets/images/question.svg'"
         alt="Question"
       />
+      } @else {
+      <div class="space"></div>
       }
       <div class="actions">
-        @for( action of actions; track action ) {
+        @for( action of actions; track action ) { @if($last) {
+        <button [matMenuTriggerFor]="menu" class="action poppins-medium">
+          <mat-icon>{{ icons[$index] }}</mat-icon>
+          {{ action }}
+        </button>
+        } @else {
         <button
           class="action poppins-medium"
           (click)="
-            $first
-              ? onDetailsClick(question.id)
-              : $last
-              ? onShareClick()
-              : onBookmarkClick(question.id)
+            $first ? onDetailsClick(question.id) : onBookmarkClick(question.id)
           "
         >
           <mat-icon>{{ icons[$index] }}</mat-icon>
           {{ action }}
         </button>
-        }
+        } }
       </div>
+      <mat-menu #menu="matMenu" class="menu">
+        <button mat-menu-item (click)="copyLink(question.id)">
+          <span>http://localhost:4200/question/{{ question.id }}</span>
+          <mat-icon>content_copy</mat-icon>
+        </button>
+      </mat-menu>
     </div>
     }
   </div>

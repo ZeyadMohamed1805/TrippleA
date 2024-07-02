@@ -16,6 +16,7 @@
   @if (advertisement.image !== "NoFile") {
   <img
     class="advertisement-image"
+    (click)="onExpand(advertisement.image)"
     [src]="advertisement.image"
     alt="Advertisement"
   />

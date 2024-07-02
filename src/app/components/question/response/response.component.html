@@ -27,6 +27,7 @@
   </p>
   @if(answer.image !== "NoFile") {<img
     class="answer-image"
+    (click)="onExpand(answer.image)"
     [src]="answer.image"
     alt="Answer"
   />} @else {
